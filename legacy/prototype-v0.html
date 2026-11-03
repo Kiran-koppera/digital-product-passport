@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Battery Digital Product Passport</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .card { border: 1px solid #ccc; padding: 20px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Battery Digital Product Passport</h1>
+  <p>Scan the QR code to access battery data.</p>
+  <div id="qrcode"></div>
+
+  <div class="card">
+    <h2>Battery ID: 9a3f2b1e-7c4d-4e2f-bd1e</h2>
+    <p><strong>Manufacturer:</strong> Kiran"s Volts GmbH</p>
+    <p><strong>Production Date:</strong> 2025-09-14</p>
+    <p><strong>Chemistry:</strong> NMC</p>
+    <p><strong>Capacity:</strong> 3.2 kWh</p>
+    <p><strong>Carbon Footprint:</strong> 14.7 kg CO₂e</p>
+    <p><strong>Recycled Content:</strong> 22%</p>
+    <p><strong>Critical Raw Materials:</strong> Lithium (2.3%), Nickel (1.8%)</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script>
+    QRCode.toCanvas(document.getElementById('qrcode'), window.location.href, function (error) {
+      if (error) console.error(error);
+    });
+  </script>
+</body>
+</html>

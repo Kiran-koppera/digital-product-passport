@@ -1,0 +1,14 @@
+{
+  "description": "Registry of battery passport records served by this demo. Each id resolves to data/passports/<id>.json and to passport.html?id=<id>.",
+  "demoAccess": {
+    "algorithm": "SHA-256",
+    "restrictedHash": "196daaa7444c90f40cd654b32c6fd3afcc523698d276ea073835c3c4a3bbb122",
+    "note": "Client-side gate only. The demo password (SSC123) is published in the project presentation; see docs/architecture.md#layered-access."
+  },
+  "passports": [
+    { "id": "solid-state-cell", "productName": "Solid State Cell" },
+    { "id": "lithium-ion-battery", "productName": "Lithium Ion Battery" },
+    { "id": "sodium-ion-cell", "productName": "Sodium Ion Cell" },
+    { "id": "sodium-chloride-battery", "productName": "Sodium Chloride Battery" }
+  ]
+}

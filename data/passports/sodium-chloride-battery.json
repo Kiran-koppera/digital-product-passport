@@ -1,0 +1,199 @@
+{
+  "$schema": "../schema/passport.schema.json",
+  "id": "sodium-chloride-battery",
+  "uid": null,
+  "productName": "Sodium Chloride Battery",
+  "recordStatus": "placeholder",
+  "source": "Battery listed in the MM03 presentation (slide 5) with a QR code; its attribute data was not included in the submitted documentation.",
+  "legacyQr": "https://qr.codes/kc3pva",
+  "sections": [
+    {
+      "key": "product-identification",
+      "title": "Product Identification",
+      "access": "public",
+      "fields": [
+        {
+          "label": "Unique ID",
+          "value": null
+        },
+        {
+          "label": "Product name",
+          "value": "Sodium Chloride Battery"
+        },
+        {
+          "label": "Product status",
+          "value": null
+        },
+        {
+          "label": "Product sustainability profile",
+          "value": null
+        }
+      ]
+    },
+    {
+      "key": "material-composition",
+      "title": "Material Composition",
+      "access": "public",
+      "fields": [
+        {
+          "label": "Critical raw materials",
+          "value": null
+        },
+        {
+          "label": "Battery chemistry",
+          "value": null
+        },
+        {
+          "label": "Hazardous substances",
+          "value": null
+        },
+        {
+          "label": "Impact of substances on environment, human health & safety",
+          "value": null
+        },
+        {
+          "label": "Bill of materials",
+          "value": null
+        }
+      ]
+    },
+    {
+      "key": "manufacturing-data",
+      "title": "Manufacturing Data",
+      "access": "public",
+      "fields": [
+        {
+          "label": "Name of manufacturer",
+          "value": null
+        },
+        {
+          "label": "Address of manufacturer",
+          "value": null
+        },
+        {
+          "label": "Web address of manufacturer",
+          "value": null
+        },
+        {
+          "label": "Email of manufacturer",
+          "value": null
+        },
+        {
+          "label": "Date of manufacture",
+          "value": null
+        },
+        {
+          "label": "Place of manufacture",
+          "value": null
+        }
+      ]
+    },
+    {
+      "key": "technical-data",
+      "title": "Technical Data",
+      "access": "restricted",
+      "fields": [
+        {
+          "label": "Cell voltage",
+          "value": null
+        },
+        {
+          "label": "Rated capacity",
+          "value": null
+        },
+        {
+          "label": "Energy density",
+          "value": null
+        },
+        {
+          "label": "Cycle life",
+          "value": null
+        },
+        {
+          "label": "Battery weight",
+          "value": null
+        }
+      ]
+    },
+    {
+      "key": "environmental-impact",
+      "title": "Environmental Impact",
+      "access": "public",
+      "fields": [
+        {
+          "label": "Carbon footprint as declared (kg CO₂e / kWh of total energy)",
+          "value": null
+        },
+        {
+          "label": "Energy rating",
+          "value": null
+        }
+      ]
+    },
+    {
+      "key": "circularity",
+      "title": "Circularity & Resource Efficiency",
+      "access": "public",
+      "fields": [
+        {
+          "label": "Manual for removal of the battery from the appliance",
+          "value": null
+        },
+        {
+          "label": "Manual for disassembly and dismantling of the battery pack",
+          "value": null
+        },
+        {
+          "label": "Part numbers for components",
+          "value": null
+        },
+        {
+          "label": "Postal, e-mail and web address of sources for spare parts",
+          "value": null
+        },
+        {
+          "label": "Safety measures / instructions",
+          "value": null
+        }
+      ]
+    },
+    {
+      "key": "supply-chain",
+      "title": "Supply Chain & Logistics",
+      "access": "restricted",
+      "fields": [
+        {
+          "label": "Supplier list",
+          "value": null
+        },
+        {
+          "label": "Packaging information",
+          "value": null
+        },
+        {
+          "label": "Transport modes",
+          "value": null
+        }
+      ]
+    },
+    {
+      "key": "compliance",
+      "title": "Compliance & Certification",
+      "access": "restricted",
+      "fields": [
+        {
+          "label": "ISO / IATF certificates",
+          "value": null
+        },
+        {
+          "label": "Supplier code of conduct",
+          "value": null
+        },
+        {
+          "label": "Customer-specific requirements",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

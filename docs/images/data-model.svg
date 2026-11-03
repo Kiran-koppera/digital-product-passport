@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title id="t">Battery DPP attribute model</title>
+  <desc id="d">Eight attribute categories. Five are public; technical data, supply chain and logistics, and compliance and certification are restricted.</desc>
+  <defs>
+    <style>
+      .pub{fill:#f4fbf8;stroke:#0f9d68;stroke-width:1.3}
+      .res{fill:#fff8ec;stroke:#c27c0e;stroke-width:1.3}
+      .h{font-size:14px;font-weight:650;fill:#0b1220}
+      .s{font-size:12px;fill:#4a5565}
+      .bp{font-size:10.5px;font-weight:700;letter-spacing:.06em;fill:#0b7a51}
+      .br{font-size:10.5px;font-weight:700;letter-spacing:.06em;fill:#9a5f00}
+      .lbl{font-size:11px;font-weight:700;letter-spacing:.08em;fill:#5b6778}
+    </style>
+  </defs>
+  <rect width="960" height="430" rx="14" fill="#ffffff"/>
+  <text x="16" y="32" class="lbl">ATTRIBUTE MODEL · 8 CATEGORIES · 2 ACCESS LAYERS</text>
+
+  <g transform="translate(12 48)">
+    <rect class="pub" width="222" height="172" rx="10"/>
+    <text x="16" y="26" class="bp">PUBLIC</text>
+    <text x="16" y="50" class="h">Product Identification</text>
+    <text x="16" y="76" class="s">• Unique ID (in QR)</text>
+    <text x="16" y="96" class="s">• Product name</text>
+    <text x="16" y="116" class="s">• Battery status</text>
+    <text x="16" y="136" class="s">• Sustainability profile</text>
+  </g>
+  <g transform="translate(246 48)">
+    <rect class="pub" width="222" height="172" rx="10"/>
+    <text x="16" y="26" class="bp">PUBLIC</text>
+    <text x="16" y="50" class="h">Material Composition</text>
+    <text x="16" y="76" class="s">• Critical raw materials</text>
+    <text x="16" y="96" class="s">• Battery chemistry</text>
+    <text x="16" y="116" class="s">• Hazardous substances</text>
+    <text x="16" y="136" class="s">• Substance impact (EHS)</text>
+    <text x="16" y="156" class="s">• Bill of materials</text>
+  </g>
+  <g transform="translate(480 48)">
+    <rect class="pub" width="222" height="172" rx="10"/>
+    <text x="16" y="26" class="bp">PUBLIC</text>
+    <text x="16" y="50" class="h">Manufacturing Data</text>
+    <text x="16" y="76" class="s">• Manufacturer name</text>
+    <text x="16" y="96" class="s">• Postal address &amp; location</text>
+    <text x="16" y="116" class="s">• Web address, e-mail</text>
+    <text x="16" y="136" class="s">• Date of manufacture</text>
+    <text x="16" y="156" class="s">• Place of manufacture</text>
+  </g>
+  <g transform="translate(714 48)">
+    <rect class="res" width="234" height="172" rx="10"/>
+    <text x="16" y="26" class="br">RESTRICTED</text>
+    <text x="16" y="50" class="h">Technical Data</text>
+    <text x="16" y="76" class="s">• Cell voltage</text>
+    <text x="16" y="96" class="s">• Rated capacity</text>
+    <text x="16" y="116" class="s">• Energy density</text>
+    <text x="16" y="136" class="s">• Cycle life</text>
+    <text x="16" y="156" class="s">• Battery weight</text>
+  </g>
+
+  <g transform="translate(12 234)">
+    <rect class="pub" width="222" height="172" rx="10"/>
+    <text x="16" y="26" class="bp">PUBLIC</text>
+    <text x="16" y="50" class="h">Environmental Impact</text>
+    <text x="16" y="76" class="s">• Carbon footprint</text>
+    <text x="16" y="96" class="s">   (kg CO₂e / kWh)</text>
+    <text x="16" y="116" class="s">• Energy rating</text>
+  </g>
+  <g transform="translate(246 234)">
+    <rect class="pub" width="222" height="172" rx="10"/>
+    <text x="16" y="26" class="bp">PUBLIC</text>
+    <text x="16" y="50" class="h">Circularity</text>
+    <text x="16" y="76" class="s">• Removal manual</text>
+    <text x="16" y="96" class="s">• Disassembly manual</text>
+    <text x="16" y="116" class="s">• Component part numbers</text>
+    <text x="16" y="136" class="s">• Spare-part sources</text>
+    <text x="16" y="156" class="s">• Safety instructions</text>
+  </g>
+  <g transform="translate(480 234)">
+    <rect class="res" width="222" height="172" rx="10"/>
+    <text x="16" y="26" class="br">RESTRICTED</text>
+    <text x="16" y="50" class="h">Supply Chain &amp; Logistics</text>
+    <text x="16" y="76" class="s">• Supplier list</text>
+    <text x="16" y="96" class="s">• Packaging information</text>
+    <text x="16" y="116" class="s">• Transport modes</text>
+  </g>
+  <g transform="translate(714 234)">
+    <rect class="res" width="234" height="172" rx="10"/>
+    <text x="16" y="26" class="br">RESTRICTED</text>
+    <text x="16" y="50" class="h">Compliance &amp; Certification</text>
+    <text x="16" y="76" class="s">• ISO / IATF certificates</text>
+    <text x="16" y="96" class="s">• Supplier code of conduct</text>
+    <text x="16" y="116" class="s">• Customer-specific</text>
+    <text x="16" y="136" class="s">   requirements</text>
+  </g>
+</svg>

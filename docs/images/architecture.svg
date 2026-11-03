@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title id="t">Battery DPP system architecture</title>
+  <desc id="d">Runtime: a QR label on the battery is scanned and opens a static passport page on GitHub Pages, which loads the JSON record and renders public and password-gated sections. Build time: GitHub Actions validates data, regenerates and verifies QR codes, then deploys.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b6778"/></marker>
+    <style>
+      .box{fill:#f4f7fb;stroke:#c8d2df;stroke-width:1.2}
+      .key{fill:#e9f8f1;stroke:#0f9d68;stroke-width:1.4}
+      .lock{fill:#fff6e6;stroke:#c27c0e;stroke-width:1.4}
+      .h{font-size:13.5px;font-weight:650;fill:#0b1220}
+      .s{font-size:11.5px;fill:#4a5565}
+      .m{font-family:ui-monospace,'Cascadia Code',Consolas,monospace;font-size:11px;fill:#4a5565}
+      .lbl{font-size:11px;font-weight:700;letter-spacing:.08em;fill:#5b6778}
+      .ln{stroke:#5b6778;stroke-width:1.4;fill:none;marker-end:url(#a)}
+    </style>
+  </defs>
+  <rect width="960" height="440" rx="14" fill="#ffffff"/>
+  <text x="20" y="34" class="lbl">RUNTIME · WHAT HAPPENS WHEN A QR CODE IS SCANNED</text>
+
+  <rect class="box" x="20" y="52" width="160" height="78" rx="10"/>
+  <text x="100" y="82" class="h" text-anchor="middle">Physical battery</text>
+  <text x="100" y="101" class="s" text-anchor="middle">QR label with static</text>
+  <text x="100" y="116" class="s" text-anchor="middle">passport URL</text>
+
+  <rect class="box" x="210" y="52" width="160" height="78" rx="10"/>
+  <text x="290" y="82" class="h" text-anchor="middle">Any phone camera</text>
+  <text x="290" y="101" class="s" text-anchor="middle">No app, no account,</text>
+  <text x="290" y="116" class="s" text-anchor="middle">no short-link service</text>
+
+  <rect class="box" x="400" y="52" width="160" height="78" rx="10"/>
+  <text x="480" y="82" class="h" text-anchor="middle">GitHub Pages</text>
+  <text x="480" y="101" class="s" text-anchor="middle">Static hosting, HTTPS,</text>
+  <text x="480" y="116" class="s" text-anchor="middle">free, no expiry</text>
+
+  <rect class="key" x="590" y="52" width="160" height="78" rx="10"/>
+  <text x="670" y="82" class="h" text-anchor="middle">passport.html</text>
+  <text x="670" y="101" class="m" text-anchor="middle">?id=solid-state-cell</text>
+  <text x="670" y="116" class="s" text-anchor="middle">vanilla JS viewer</text>
+
+  <rect class="box" x="780" y="52" width="160" height="78" rx="10"/>
+  <text x="860" y="82" class="h" text-anchor="middle">JSON record</text>
+  <text x="860" y="101" class="m" text-anchor="middle">data/passports/</text>
+  <text x="860" y="116" class="m" text-anchor="middle">&lt;id&gt;.json</text>
+
+  <path class="ln" d="M180 91H208"/>
+  <path class="ln" d="M370 91H398"/>
+  <path class="ln" d="M560 91H588"/>
+  <path class="ln" d="M780 85H752"/>
+  <text x="766" y="77" class="s" text-anchor="middle">fetch</text>
+
+  <rect class="key" x="400" y="182" width="250" height="84" rx="10"/>
+  <text x="525" y="208" class="h" text-anchor="middle">Public layer · 5 categories</text>
+  <text x="525" y="228" class="s" text-anchor="middle">Identification, materials, manufacturing,</text>
+  <text x="525" y="244" class="s" text-anchor="middle">environment, circularity</text>
+  <text x="525" y="259" class="s" text-anchor="middle">rendered immediately</text>
+
+  <rect class="lock" x="670" y="182" width="270" height="84" rx="10"/>
+  <text x="805" y="208" class="h" text-anchor="middle">Restricted layer · 3 categories</text>
+  <text x="805" y="228" class="s" text-anchor="middle">Technical data, supply chain,</text>
+  <text x="805" y="244" class="s" text-anchor="middle">compliance &amp; certification</text>
+  <text x="805" y="259" class="s" text-anchor="middle">password gate (SHA-256 compare)</text>
+
+  <path class="ln" d="M650 130L560 180"/>
+  <path class="ln" d="M690 130L775 180"/>
+
+  <rect x="20" y="182" width="350" height="84" rx="10" fill="none" stroke="#c8d2df" stroke-dasharray="4 4"/>
+  <text x="38" y="208" class="h">Serverless by design</text>
+  <text x="38" y="228" class="s">No database server, no paid APIs, no runtime</text>
+  <text x="38" y="244" class="s">dependencies. Data is versioned in Git, so every</text>
+  <text x="38" y="259" class="s">change to a passport is traceable in history.</text>
+
+  <text x="20" y="306" class="lbl">BUILD &amp; DEPLOY · GITHUB ACTIONS ON EVERY PUSH</text>
+  <rect x="12" y="316" width="936" height="108" rx="12" fill="none" stroke="#c8d2df" stroke-dasharray="5 5"/>
+
+  <rect class="box" x="20" y="336" width="160" height="70" rx="10"/>
+  <text x="100" y="364" class="h" text-anchor="middle">Passport records</text>
+  <text x="100" y="384" class="m" text-anchor="middle">data/*.json</text>
+
+  <rect class="box" x="210" y="336" width="160" height="70" rx="10"/>
+  <text x="290" y="364" class="h" text-anchor="middle">validate_data.py</text>
+  <text x="290" y="384" class="s" text-anchor="middle">JSON Schema + rules</text>
+
+  <rect class="box" x="400" y="336" width="160" height="70" rx="10"/>
+  <text x="480" y="364" class="h" text-anchor="middle">generate_qr.py</text>
+  <text x="480" y="384" class="s" text-anchor="middle">segno · SVG + PNG</text>
+
+  <rect class="box" x="590" y="336" width="160" height="70" rx="10"/>
+  <text x="670" y="364" class="h" text-anchor="middle">verify_qr.py</text>
+  <text x="670" y="384" class="s" text-anchor="middle">OpenCV decode test</text>
+
+  <rect class="key" x="780" y="336" width="160" height="70" rx="10"/>
+  <text x="860" y="364" class="h" text-anchor="middle">Deploy to Pages</text>
+  <text x="860" y="384" class="s" text-anchor="middle">only if all checks pass</text>
+
+  <path class="ln" d="M180 371H208"/>
+  <path class="ln" d="M370 371H398"/>
+  <path class="ln" d="M560 371H588"/>
+  <path class="ln" d="M750 371H778"/>
+</svg>

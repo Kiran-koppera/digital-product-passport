@@ -1,0 +1,87 @@
+name: CI & Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Validate data, QR codes and site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - run: pip install -r requirements-dev.txt
+
+      - name: Validate passport data (JSON Schema + rules)
+        run: python scripts/validate_data.py
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: QR codes are up to date with the data
+        run: |
+          python scripts/generate_qr.py
+          git diff --exit-code -- qr/ || (echo "::error::QR codes are stale. Run 'python scripts/generate_qr.py' and commit." && exit 1)
+      - name: QR codes decode to the correct passport URLs
+        run: python scripts/verify_qr.py
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: End-to-end tests (desktop + mobile)
+        run: npx playwright test
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: test
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble site
+        run: |
+          mkdir _site
+          cp -r index.html passport.html labels.html 404.html .nojekyll assets data qr legacy _site/
+          mkdir -p _site/docs && cp -r docs/images docs/original _site/docs/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  smoke:
+    name: Live QR smoke test
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-dev.txt
+      - name: Every QR target returns HTTP 200 on the live site
+        run: |
+          for i in 1 2 3 4 5 6; do python scripts/verify_qr.py --online && exit 0; echo "retrying in 20s"; sleep 20; done; exit 1

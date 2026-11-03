@@ -1,0 +1,16 @@
+{
+  "name": "digital-product-passport",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Battery Digital Product Passport: static, QR-linked passport demo with layered access.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "test:e2e": "playwright test",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}
