@@ -33,7 +33,7 @@ await shot("passport-public", "passport.html?id=solid-state-cell#material-compos
 await shot("passport-locked", "passport.html?id=solid-state-cell#technical-data");
 await shot("passport-unlocked", "passport.html?id=solid-state-cell#technical-data", { before: unlock });
 await shot("passport-mobile", "passport.html?id=solid-state-cell#manufacturing-data", { device: "Pixel 7" });
-await shot("passport-placeholder", "passport.html?id=sodium-ion-cell");
+await shot("passport-illustrative", "passport.html?id=sodium-ion-cell");
 await shot("uid-decoder", "#uid", { before: (p) => p.waitForTimeout(400) });
 await shot("labels", "labels.html");
 await shot("social-preview", "", { viewport: { width: 1280, height: 640 } });

@@ -4,7 +4,7 @@
   "uid": "SSC123-BAT01-20260118-A3",
   "productName": "Solid State Cell",
   "recordStatus": "documented",
-  "source": "Transcribed from the project's HTML prototype as shown in the MM03 presentation (27 Jan 2026), slides 4 and 6-12.",
+  "source": "Documented values transcribed from the project's HTML prototype as shown in the MM03 presentation (27 Jan 2026), slides 4 and 6-12. Attributes the prototype left as \"To be add\" are filled with illustrative sample values and tagged as such.",
   "legacyQr": "https://qr.codes/byrKQP",
   "sections": [
     {
@@ -12,9 +12,19 @@
       "title": "Product Identification",
       "access": "public",
       "fields": [
-        { "label": "Unique ID", "value": "SSC123-BAT01-20260118-A3", "format": "mono" },
-        { "label": "Product name", "value": "Solid State Cell" },
-        { "label": "Product status", "value": "Original" },
+        {
+          "label": "Unique ID",
+          "value": "SSC123-BAT01-20260118-A3",
+          "format": "mono"
+        },
+        {
+          "label": "Product name",
+          "value": "Solid State Cell"
+        },
+        {
+          "label": "Product status",
+          "value": "Original"
+        },
         {
           "label": "Product sustainability profile",
           "value": [
@@ -22,7 +32,10 @@
             "Renewable energy sources (solar/wind) used in production facilities.",
             "Manufactured as per requirements of the EU Battery Regulation."
           ],
-          "link": { "text": "Regulation (EU) 2023/1542 on EUR-Lex", "href": "https://eur-lex.europa.eu/eli/reg/2023/1542/oj" }
+          "link": {
+            "text": "Regulation (EU) 2023/1542 on EUR-Lex",
+            "href": "https://eur-lex.europa.eu/eli/reg/2023/1542/oj"
+          }
         }
       ]
     },
@@ -31,11 +44,53 @@
       "title": "Material Composition",
       "access": "public",
       "fields": [
-        { "label": "Critical raw materials", "value": ["Cathode (NMC811)", "Solid electrolyte (LLZO)", "Anode (lithium metal)", "Current collectors (copper & aluminium)"] },
-        { "label": "Battery chemistry", "value": null },
-        { "label": "Hazardous substances", "value": ["Li metal", "NMC811 cathode", "LLZO ceramic dust"] },
-        { "label": "Impact of substances on environment, human health & safety", "value": null },
-        { "label": "Bill of materials", "value": ["Nickel", "Manganese", "Cobalt", "Solid electrolyte (LLZO)", "Anode (lithium metal)", "Copper foil", "Aluminium foil", "Pressure springs", "Casing & plates", "Thermal interface materials"] }
+        {
+          "label": "Critical raw materials",
+          "value": [
+            "Cathode (NMC811)",
+            "Solid electrolyte (LLZO)",
+            "Anode (lithium metal)",
+            "Current collectors (copper & aluminium)"
+          ]
+        },
+        {
+          "label": "Battery chemistry",
+          "value": "Solid-state lithium-metal — NMC811 cathode | LLZO garnet-oxide solid electrolyte | lithium-metal anode",
+          "origin": "illustrative"
+        },
+        {
+          "label": "Hazardous substances",
+          "value": [
+            "Li metal",
+            "NMC811 cathode",
+            "LLZO ceramic dust"
+          ]
+        },
+        {
+          "label": "Impact of substances on environment, human health & safety",
+          "value": [
+            "Lithium metal reacts with water and moisture, releasing flammable hydrogen.",
+            "NMC811 contains nickel and cobalt compounds: skin sensitisers and suspected carcinogens.",
+            "LLZO ceramic dust can irritate the lungs during production and recycling.",
+            "No flammable liquid electrolyte, which lowers the risk of fire."
+          ],
+          "origin": "illustrative"
+        },
+        {
+          "label": "Bill of materials",
+          "value": [
+            "Nickel",
+            "Manganese",
+            "Cobalt",
+            "Solid electrolyte (LLZO)",
+            "Anode (lithium metal)",
+            "Copper foil",
+            "Aluminium foil",
+            "Pressure springs",
+            "Casing & plates",
+            "Thermal interface materials"
+          ]
+        }
       ]
     },
     {
@@ -43,12 +98,34 @@
       "title": "Manufacturing Data",
       "access": "public",
       "fields": [
-        { "label": "Name of manufacturer", "value": "Solid State Battery" },
-        { "label": "Address of manufacturer", "value": "Berlin" },
-        { "label": "Web address of manufacturer", "value": null },
-        { "label": "Email of manufacturer", "value": null, "note": "The prototype used a placeholder address (xyz@…); no real contact was assigned." },
-        { "label": "Date of manufacture", "value": "2025-12-01", "format": "date" },
-        { "label": "Place of manufacture", "value": "Berlin, 12489, Germany" }
+        {
+          "label": "Name of manufacturer",
+          "value": "Solid State Battery"
+        },
+        {
+          "label": "Address of manufacturer",
+          "value": "Berlin"
+        },
+        {
+          "label": "Web address of manufacturer",
+          "value": "https://www.solid-state-battery.example",
+          "origin": "illustrative"
+        },
+        {
+          "label": "Email of manufacturer",
+          "value": "info@solid-state-battery.example",
+          "note": "The prototype used a placeholder address (xyz@…). This is an illustrative address on a reserved .example domain.",
+          "origin": "illustrative"
+        },
+        {
+          "label": "Date of manufacture",
+          "value": "2025-12-01",
+          "format": "date"
+        },
+        {
+          "label": "Place of manufacture",
+          "value": "Berlin, 12489, Germany"
+        }
       ]
     },
     {
@@ -56,11 +133,26 @@
       "title": "Technical Data",
       "access": "restricted",
       "fields": [
-        { "label": "Cell voltage", "value": "3.8 V" },
-        { "label": "Rated capacity", "value": "5 Ah" },
-        { "label": "Energy density", "value": "350–380 Wh/kg" },
-        { "label": "Cycle life", "value": "> 1000 cycles" },
-        { "label": "Battery weight", "value": "> 196.54 g" }
+        {
+          "label": "Cell voltage",
+          "value": "3.8 V"
+        },
+        {
+          "label": "Rated capacity",
+          "value": "5 Ah"
+        },
+        {
+          "label": "Energy density",
+          "value": "350–380 Wh/kg"
+        },
+        {
+          "label": "Cycle life",
+          "value": "> 1000 cycles"
+        },
+        {
+          "label": "Battery weight",
+          "value": "> 196.54 g"
+        }
       ]
     },
     {
@@ -68,8 +160,16 @@
       "title": "Environmental Impact",
       "access": "public",
       "fields": [
-        { "label": "Carbon footprint as declared (kg CO₂e / kWh of total energy)", "value": null },
-        { "label": "Energy rating", "value": null }
+        {
+          "label": "Carbon footprint as declared (kg CO₂e / kWh of total energy)",
+          "value": "68 kg CO₂e/kWh",
+          "origin": "illustrative"
+        },
+        {
+          "label": "Energy rating",
+          "value": "Carbon footprint performance class B",
+          "origin": "illustrative"
+        }
       ]
     },
     {
@@ -77,11 +177,42 @@
       "title": "Circularity & Resource Efficiency",
       "access": "public",
       "fields": [
-        { "label": "Manual for removal of the battery from the appliance", "value": null },
-        { "label": "Manual for disassembly and dismantling of the battery pack", "value": null },
-        { "label": "Part numbers for components", "value": null },
-        { "label": "Postal, e-mail and web address of sources for spare parts", "value": null },
-        { "label": "Safety measures / instructions", "value": null }
+        {
+          "label": "Manual for removal of the battery from the appliance",
+          "value": "Removal guide RM-SSC123 (rev. 1.0): switch off device, remove housing, disconnect cell tabs, release pressure plates.",
+          "origin": "illustrative"
+        },
+        {
+          "label": "Manual for disassembly and dismantling of the battery pack",
+          "value": "Dismantling guide DM-SSC123 (rev. 1.0): open in a dry room, separate casing, pressure springs, current collectors and cell stack for recycling.",
+          "origin": "illustrative"
+        },
+        {
+          "label": "Part numbers for components",
+          "value": [
+            "Cell: SSC123-C05",
+            "Cathode: CAT-811-S",
+            "Solid electrolyte layer: SE-LLZO-01",
+            "Pressure spring set: PS-04",
+            "Casing: CAS-SSC-01"
+          ],
+          "origin": "illustrative"
+        },
+        {
+          "label": "Postal, e-mail and web address of sources for spare parts",
+          "value": "Solid State Battery Service, Berlin, 12489, Germany · parts@solid-state-battery.example · https://www.solid-state-battery.example/parts",
+          "origin": "illustrative"
+        },
+        {
+          "label": "Safety measures / instructions",
+          "value": [
+            "Do not crush, puncture or open the cell.",
+            "Keep away from water: lithium metal reacts with moisture.",
+            "Operating temperature 0–60 °C.",
+            "Use a class D extinguisher or dry sand for lithium-metal fires."
+          ],
+          "origin": "illustrative"
+        }
       ]
     },
     {
@@ -89,9 +220,30 @@
       "title": "Supply Chain & Logistics",
       "access": "restricted",
       "fields": [
-        { "label": "Supplier list", "value": ["Umicore (Belgium)", "Norilsk Nickel", "Eramet", "Glencore", "Fraunhofer IKTS (Germany)"], "note": "Suppliers as listed in the prototype; illustrative, not confirmed commercial relationships." },
-        { "label": "Packaging information", "value": null },
-        { "label": "Transport modes", "value": null }
+        {
+          "label": "Supplier list",
+          "value": [
+            "Umicore (Belgium)",
+            "Norilsk Nickel",
+            "Eramet",
+            "Glencore",
+            "Fraunhofer IKTS (Germany)"
+          ],
+          "note": "Suppliers as listed in the prototype; illustrative, not confirmed commercial relationships."
+        },
+        {
+          "label": "Packaging information",
+          "value": "Cells sealed in moisture-barrier aluminium-laminate bags with desiccant, in recycled cardboard boxes.",
+          "origin": "illustrative"
+        },
+        {
+          "label": "Transport modes",
+          "value": [
+            "Road (EU, ADR class 9)",
+            "Sea freight (IMDG class 9)"
+          ],
+          "origin": "illustrative"
+        }
       ]
     },
     {
@@ -99,9 +251,28 @@
       "title": "Compliance & Certification",
       "access": "restricted",
       "fields": [
-        { "label": "ISO / IATF certificates", "value": null },
-        { "label": "Supplier code of conduct", "value": null },
-        { "label": "Customer-specific requirements", "value": null }
+        {
+          "label": "ISO / IATF certificates",
+          "value": [
+            "ISO 9001:2015 — quality management",
+            "ISO 14001:2015 — environmental management",
+            "UN 38.3 transport test report"
+          ],
+          "origin": "illustrative"
+        },
+        {
+          "label": "Supplier code of conduct",
+          "value": "Supplier Code of Conduct v1.0 — responsible sourcing of lithium, nickel and cobalt following OECD due-diligence guidance.",
+          "origin": "illustrative"
+        },
+        {
+          "label": "Customer-specific requirements",
+          "value": [
+            "Stack pressure applied during operation: 1–3 MPa",
+            "Dry-room handling (dew point ≤ −40 °C) before sealing"
+          ],
+          "origin": "illustrative"
+        }
       ]
     }
   ]

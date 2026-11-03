@@ -32,9 +32,21 @@ def check_record(pid: str, record: dict, validator: Draft202012Validator) -> lis
     if record["recordStatus"] == "documented":
         if not record["uid"]:
             errs.append("documented records need a uid")
-        populated = sum(1 for s in record["sections"] for f in s["fields"] if f["value"] is not None)
-        if populated == 0:
-            errs.append("documented record has no populated fields")
+        documented = sum(1 for s in record["sections"] for f in s["fields"]
+                         if f["value"] is not None and f.get("origin") != "illustrative")
+        if documented == 0:
+            errs.append("documented record has no documented (non-illustrative) fields")
+    elif record["recordStatus"] == "illustrative":
+        if not record["uid"]:
+            errs.append("illustrative records need a uid")
+        untagged = [f["label"] for s in record["sections"] for f in s["fields"]
+                    if f["value"] is not None and f.get("origin") != "illustrative" and f["label"] != "Product name"]
+        if untagged:
+            errs.append(f"illustrative record has values not tagged origin=illustrative: {untagged}")
+    for s in record["sections"]:
+        for f in s["fields"]:
+            if f["value"] is None and "origin" in f:
+                errs.append(f"{s['key']} > {f['label']}: origin set on an empty field")
     return errs
 
 
@@ -67,7 +79,8 @@ def main() -> int:
         if not errs:
             fields = [f for s in record["sections"] for f in s["fields"]]
             filled = sum(f["value"] is not None for f in fields)
-            stats = f"{record['recordStatus']:10s} {filled:2d}/{len(fields)} fields populated"
+            ill = sum(f.get("origin") == "illustrative" for f in fields)
+            stats = f"{record['recordStatus']:12s} {filled:2d}/{len(fields)} fields populated ({ill} illustrative)"
         print(f"[{'FAIL' if errs else ' OK '}] {pid:26s} {stats}")
         problems += [f"{pid}: {e}" for e in errs]
 

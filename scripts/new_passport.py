@@ -4,7 +4,8 @@ Usage:
     python scripts/new_passport.py <id> "<Product name>" [--uid UID] [--legacy-qr URL]
 
 Every field is created with value null ("pending"). Fill in the values, set
-recordStatus to "documented", add the id to data/passports.json and run
+recordStatus to "documented" (or "illustrative" for sample data, tagging each value
+with "origin": "illustrative"), add the id to data/passports.json and run
 scripts/generate_qr.py.
 """
 
@@ -35,7 +36,7 @@ def build_record(pid: str, name: str, uid: str | None, legacy_qr: str | None) ->
             "title": title,
             "access": access,
             "fields": [
-                {"label": label, "value": name if label == "Product name" else None}
+                {"label": label, "value": {"Product name": name, "Unique ID": uid}.get(label)}
                 for label in labels
             ],
         }

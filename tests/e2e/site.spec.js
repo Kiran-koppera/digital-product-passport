@@ -73,10 +73,21 @@ test("keyboard navigation moves between tabs", async ({ page }) => {
   await expect(page).toHaveURL(/#material-composition$/);
 });
 
-test("placeholder records are clearly labelled", async ({ page }) => {
-  await page.goto("passport.html?id=sodium-ion-cell");
-  await expect(page.getByText("Placeholder record.", { exact: false }).first()).toBeVisible();
-  await expect(page.locator("#panel")).toContainText("Pending");
+test("illustrative records are clearly labelled", async ({ page }) => {
+  await page.goto("passport.html?id=sodium-ion-cell#material-composition");
+  await expect(page.getByText("Illustrative sample record.", { exact: false }).first()).toBeVisible();
+  await expect(page.locator("#panel")).toContainText("Prussian white");
+  const fields = page.locator("#panel .field");
+  await expect(fields.locator(".tag-ill")).toHaveCount(await fields.count());
+  await expect(page.locator("#panel")).not.toContainText("Pending");
+});
+
+test("solid state cell tags only gap-filled values as illustrative", async ({ page }) => {
+  await page.goto("passport.html?id=solid-state-cell#material-composition");
+  const field = (label) => page.locator("#panel .field", { has: page.locator("dt", { hasText: label }) });
+  await expect(field("Critical raw materials").locator(".tag-ill")).toHaveCount(0);
+  await expect(field("Battery chemistry").locator(".tag-ill")).toHaveCount(1);
+  await expect(page.getByText("Documented record with illustrative gap-fill.", { exact: false })).toBeVisible();
 });
 
 test("unknown passport id shows a helpful error", async ({ page }) => {

@@ -1,10 +1,10 @@
 {
   "$schema": "../schema/passport.schema.json",
   "id": "sodium-chloride-battery",
-  "uid": null,
+  "uid": "ZNC075-BAT05-20260109-000057-76",
   "productName": "Sodium Chloride Battery",
-  "recordStatus": "placeholder",
-  "source": "Battery listed in the MM03 presentation (slide 5) with a QR code; its attribute data was not included in the submitted documentation.",
+  "recordStatus": "illustrative",
+  "source": "Battery listed in the MM03 presentation (slide 5) with a QR code; its attribute data was not part of the submitted documentation. All values in this record are illustrative sample data for demonstration, chosen to be typical for a high-temperature sodium–nickel chloride (ZEBRA-type) cell. They are not measured or manufacturer data.",
   "legacyQr": "https://qr.codes/kc3pva",
   "sections": [
     {
@@ -14,7 +14,9 @@
       "fields": [
         {
           "label": "Unique ID",
-          "value": null
+          "value": "ZNC075-BAT05-20260109-000057-76",
+          "format": "mono",
+          "origin": "illustrative"
         },
         {
           "label": "Product name",
@@ -22,11 +24,21 @@
         },
         {
           "label": "Product status",
-          "value": null
+          "value": "Original",
+          "origin": "illustrative"
         },
         {
           "label": "Product sustainability profile",
-          "value": null
+          "value": [
+            "Made mostly from abundant materials: common salt (NaCl), nickel, iron and ceramic.",
+            "No flammable liquid electrolyte and no cobalt or lithium.",
+            "Nickel and steel are recovered through stainless-steel production at end of life."
+          ],
+          "link": {
+            "text": "Regulation (EU) 2023/1542 on EUR-Lex",
+            "href": "https://eur-lex.europa.eu/eli/reg/2023/1542/oj"
+          },
+          "origin": "illustrative"
         }
       ]
     },
@@ -37,23 +49,51 @@
       "fields": [
         {
           "label": "Critical raw materials",
-          "value": null
+          "value": [
+            "Nickel",
+            "Sodium chloride",
+            "Aluminium",
+            "Iron"
+          ],
+          "origin": "illustrative"
         },
         {
           "label": "Battery chemistry",
-          "value": null
+          "value": "Sodium–nickel chloride (ZEBRA) — Ni/NaCl cathode | molten sodium anode | β″-alumina ceramic electrolyte with NaAlCl₄ secondary electrolyte; operating temperature 270–350 °C",
+          "origin": "illustrative"
         },
         {
           "label": "Hazardous substances",
-          "value": null
+          "value": [
+            "Sodium metal (formed when charged)",
+            "Nickel powder",
+            "Sodium tetrachloroaluminate (NaAlCl₄)"
+          ],
+          "origin": "illustrative"
         },
         {
           "label": "Impact of substances on environment, human health & safety",
-          "value": null
+          "value": [
+            "Molten sodium reacts violently with water; cells must stay sealed.",
+            "Nickel powder is a skin sensitiser and suspected carcinogen; avoid dust.",
+            "NaAlCl₄ releases corrosive HCl in contact with moisture.",
+            "Cell failures usually lead to a low-resistance short instead of thermal runaway."
+          ],
+          "origin": "illustrative"
         },
         {
           "label": "Bill of materials",
-          "value": null
+          "value": [
+            "β″-alumina ceramic tube",
+            "Nickel powder",
+            "Sodium chloride",
+            "NaAlCl₄ secondary electrolyte",
+            "Iron and aluminium additives",
+            "Steel cell case",
+            "Thermal insulation (module level)",
+            "Heater and BMS (module level)"
+          ],
+          "origin": "illustrative"
         }
       ]
     },
@@ -64,27 +104,34 @@
       "fields": [
         {
           "label": "Name of manufacturer",
-          "value": null
+          "value": "SaltCell Energy GmbH (fictional)",
+          "origin": "illustrative"
         },
         {
           "label": "Address of manufacturer",
-          "value": null
+          "value": "Hafenstraße 22, 28217 Bremen, Germany",
+          "origin": "illustrative"
         },
         {
           "label": "Web address of manufacturer",
-          "value": null
+          "value": "https://www.saltcell-energy.example",
+          "origin": "illustrative"
         },
         {
           "label": "Email of manufacturer",
-          "value": null
+          "value": "info@saltcell-energy.example",
+          "origin": "illustrative"
         },
         {
           "label": "Date of manufacture",
-          "value": null
+          "value": "2026-01-09",
+          "format": "date",
+          "origin": "illustrative"
         },
         {
           "label": "Place of manufacture",
-          "value": null
+          "value": "Bremen, 28217, Germany",
+          "origin": "illustrative"
         }
       ]
     },
@@ -95,23 +142,28 @@
       "fields": [
         {
           "label": "Cell voltage",
-          "value": null
+          "value": "2.58 V (open-circuit), 1.8–2.8 V operating window",
+          "origin": "illustrative"
         },
         {
           "label": "Rated capacity",
-          "value": null
+          "value": "38 Ah",
+          "origin": "illustrative"
         },
         {
           "label": "Energy density",
-          "value": null
+          "value": "140 Wh/kg (cell) · 110 Wh/kg (module)",
+          "origin": "illustrative"
         },
         {
           "label": "Cycle life",
-          "value": null
+          "value": "4500 cycles to 80 % capacity (80 % DoD)",
+          "origin": "illustrative"
         },
         {
           "label": "Battery weight",
-          "value": null
+          "value": "700 g",
+          "origin": "illustrative"
         }
       ]
     },
@@ -122,11 +174,13 @@
       "fields": [
         {
           "label": "Carbon footprint as declared (kg CO₂e / kWh of total energy)",
-          "value": null
+          "value": "85 kg CO₂e/kWh",
+          "origin": "illustrative"
         },
         {
           "label": "Energy rating",
-          "value": null
+          "value": "Carbon footprint performance class C",
+          "origin": "illustrative"
         }
       ]
     },
@@ -137,23 +191,39 @@
       "fields": [
         {
           "label": "Manual for removal of the battery from the appliance",
-          "value": null
+          "value": "Removal guide RM-ZNC075 (rev. 1.0): switch off and let the module cool below 50 °C (approx. 24 h), disconnect power and heater cables, lift module with approved equipment.",
+          "origin": "illustrative"
         },
         {
           "label": "Manual for disassembly and dismantling of the battery pack",
-          "value": null
+          "value": "Dismantling guide DM-ZNC075 (rev. 1.0): remove insulation casing, separate cells, send cells to a pyrometallurgical plant for nickel and steel recovery.",
+          "origin": "illustrative"
         },
         {
           "label": "Part numbers for components",
-          "value": null
+          "value": [
+            "Cell: ZNC075-C38",
+            "Ceramic tube: BAL-T38",
+            "Module heater: HTR-075",
+            "BMS board: BMS-ZNC-02",
+            "Insulation casing: INS-075"
+          ],
+          "origin": "illustrative"
         },
         {
           "label": "Postal, e-mail and web address of sources for spare parts",
-          "value": null
+          "value": "SaltCell Service, Hafenstraße 22, 28217 Bremen · service@saltcell-energy.example · https://www.saltcell-energy.example/service",
+          "origin": "illustrative"
         },
         {
           "label": "Safety measures / instructions",
-          "value": null
+          "value": [
+            "Hot surfaces: internal temperature up to 350 °C; do not open modules.",
+            "Keep water away from damaged cells.",
+            "Allow at least 24 h to cool before handling or transport.",
+            "Use a class D extinguisher or dry sand for metal fires."
+          ],
+          "origin": "illustrative"
         }
       ]
     },
@@ -164,15 +234,28 @@
       "fields": [
         {
           "label": "Supplier list",
-          "value": null
+          "value": [
+            "Ceramic electrolyte: CeraIon AG (fictional, Switzerland)",
+            "Nickel powder: NickelPro Oy (fictional, Finland)",
+            "Salts: SalzWerk Chemie (fictional, Germany)",
+            "Steel cases: StahlForm GmbH (fictional, Germany)"
+          ],
+          "origin": "illustrative"
         },
         {
           "label": "Packaging information",
-          "value": null
+          "value": "Modules in reusable steel transport frames; cells in wooden crates with cardboard spacers.",
+          "origin": "illustrative"
         },
         {
           "label": "Transport modes",
-          "value": null
+          "value": [
+            "Road (ADR, UN 3292)",
+            "Rail",
+            "Sea freight",
+            "Transported cold (not in operation)"
+          ],
+          "origin": "illustrative"
         }
       ]
     },
@@ -183,15 +266,27 @@
       "fields": [
         {
           "label": "ISO / IATF certificates",
-          "value": null
+          "value": [
+            "ISO 9001:2015 — quality management",
+            "ISO 14001:2015 — environmental management",
+            "ISO 50001:2018 — energy management",
+            "UN 38.3 transport test report"
+          ],
+          "origin": "illustrative"
         },
         {
           "label": "Supplier code of conduct",
-          "value": null
+          "value": "SaltCell Supplier Code of Conduct v1.2 — responsible nickel sourcing following OECD guidance, environmental compliance, fair labour standards.",
+          "origin": "illustrative"
         },
         {
           "label": "Customer-specific requirements",
-          "value": null
+          "value": [
+            "Operation at ambient −40 to 60 °C for telecom back-up",
+            "Remote monitoring interface (Modbus)",
+            "Service life of 15 years"
+          ],
+          "origin": "illustrative"
         }
       ]
     }

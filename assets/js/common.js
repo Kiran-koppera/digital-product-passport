@@ -31,7 +31,8 @@ export async function sha256Hex(text) {
 export function fieldStats(record) {
   const fields = record.sections.flatMap((s) => s.fields);
   const filled = fields.filter((f) => f.value !== null).length;
-  return { filled, total: fields.length, pct: Math.round((filled / fields.length) * 100) };
+  const illustrative = fields.filter((f) => f.value !== null && f.origin === "illustrative").length;
+  return { filled, illustrative, documented: filled - illustrative, total: fields.length, pct: Math.round((filled / fields.length) * 100) };
 }
 
 // ----- theme -----

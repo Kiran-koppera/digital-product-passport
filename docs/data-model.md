@@ -29,7 +29,7 @@ Each record (`data/passports/<id>.json`) is validated against
   "id": "solid-state-cell",              // URL slug, encoded in the QR code
   "uid": "SSC123-BAT01-20260118-A3",     // unique product identifier (null if not assigned)
   "productName": "Solid State Cell",
-  "recordStatus": "documented",          // or "placeholder"
+  "recordStatus": "documented",          // or "illustrative" / "placeholder"
   "source": "Where the values come from",
   "legacyQr": "https://qr.codes/byrKQP", // the deactivated QR link this record replaces
   "sections": [                          // exactly 8, in the order above
@@ -41,7 +41,8 @@ Each record (`data/passports/<id>.json`) is validated against
         { "label": "Cell voltage", "value": "3.8 V" },
         { "label": "Battery chemistry", "value": null },          // null = pending
         { "label": "Hazardous substances", "value": ["Li metal", "NMC811 cathode"] },
-        { "label": "Date of manufacture", "value": "2025-12-01", "format": "date" }
+        { "label": "Date of manufacture", "value": "2025-12-01", "format": "date" },
+        { "label": "Energy rating", "value": "Carbon footprint performance class B", "origin": "illustrative" }
       ]
     }
   ]
@@ -51,6 +52,25 @@ Each record (`data/passports/<id>.json`) is validated against
 Values are a string, a list of strings, or `null`. `null` means the attribute is part of the model but has
 not been populated yet. The original prototype showed these as "To be add". The viewer shows them as
 *Pending* and counts them in the completeness bar.
+
+### Documented vs. illustrative values
+
+| `recordStatus` | Meaning |
+|---|---|
+| `documented` | Core values are transcribed from the project documents. Gaps may be filled with fields tagged `"origin": "illustrative"`. |
+| `illustrative` | Every value is sample data. Validation enforces that each populated field (except the product name) has `"origin": "illustrative"`. |
+| `placeholder` | Structure only; all values `null`. Created by `scripts/new_passport.py`. |
+
+A field with `"origin": "illustrative"` is sample data created for demonstration. It is realistic for the chemistry
+but not measured, certified or manufacturer data. The site shows an **Illustrative** tag next to it. In the sample
+records, all companies are fictional and web and e-mail addresses use the reserved `.example` domain. Their UIDs
+follow the 5-part scheme with the CRC-8 check code proposed in this repository.
+
+| Record | UID | Chemistry modelled |
+|---|---|---|
+| Lithium Ion Battery | `LIC204-BAT02-20260112-000418-4C` | NMC622 / graphite, 21700 cylindrical cell |
+| Sodium Ion Cell | `NAI310-BAT04-20260126-000932-AD` | Prussian white / hard carbon, prismatic cell |
+| Sodium Chloride Battery | `ZNC075-BAT05-20260109-000057-76` | Sodium–nickel chloride (ZEBRA), β″-alumina electrolyte |
 
 ## Unique identifier
 
@@ -84,9 +104,9 @@ All values were transcribed from the interface screenshots in the presentation, 
 | Original | In this repo | Reason |
 |----------|--------------|--------|
 | `01-12-2025` | `2025-12-01` | ISO 8601 date |
-| "To be add" | `null` | Explicit "pending" state |
-| E-mail `xyz@gmail.com` | `null` + note | Placeholder, not a real contact |
-| Web address "To be decided" | `null` | Not populated |
+| "To be add" | Illustrative sample value, tagged `"origin": "illustrative"` | Complete demo; provenance stays visible |
+| E-mail `xyz@gmail.com` | Illustrative `.example` address + note | The original was a placeholder, not a real contact |
+| Web address "To be decided" | Illustrative `.example` address | Not populated in the prototype |
 | EU Battery Regulation "Link text" | Link to Regulation (EU) 2023/1542 on EUR-Lex | The prototype link had no visible target |
 
 Supplier names (Umicore, Norilsk Nickel, Eramet, Glencore, Fraunhofer IKTS) are shown exactly as listed in the

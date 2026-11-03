@@ -48,6 +48,17 @@ class ScaffoldTests(unittest.TestCase):
         self.assertTrue(list(self.validator.iter_errors(rec)))
 
 
+    def test_illustrative_records_must_tag_every_value(self):
+        rec = build_record("demo-cell", "Demo Cell", "ABC1-BAT01-20250101-000001-A3", None)
+        rec["recordStatus"] = "illustrative"
+        rec["sections"][0]["fields"][0]["origin"] = "illustrative"
+        rec["sections"][1]["fields"][0]["value"] = "Lithium"
+        errs = validate_data.check_record("demo-cell", rec, self.validator)
+        self.assertTrue(any("not tagged" in e for e in errs))
+        rec["sections"][1]["fields"][0]["origin"] = "illustrative"
+        self.assertEqual(validate_data.check_record("demo-cell", rec, self.validator), [])
+
+
 class RepositoryDataTests(unittest.TestCase):
     def test_repository_data_is_valid(self):
         self.assertEqual(validate_data.main(), 0)

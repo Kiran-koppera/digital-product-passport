@@ -11,17 +11,18 @@ async function renderGallery() {
     const records = await Promise.all(registry.passports.map((p) => fetchJSON(`data/passports/${p.id}.json`)));
     grid.innerHTML = records.map((r) => {
       const s = fieldStats(r);
-      const documented = r.recordStatus === "documented";
       return `
       <article class="card pp-card">
         <div class="qr-frame"><img src="qr/${r.id}.svg" alt="QR code for the ${escapeHtml(r.productName)} passport" width="220" height="220" loading="lazy"></div>
         <div>
-          ${documented
-            ? `<span class="badge badge-ok">${icons.check} Documented · ${s.filled}/${s.total}</span>`
-            : `<span class="badge badge-pending">${icons.clock} Placeholder</span>`}
+          ${{
+            documented: `<span class="badge badge-ok">${icons.check} Documented · ${s.documented}/${s.total}</span>`,
+            illustrative: `<span class="badge badge-ill">${icons.info} Illustrative data</span>`,
+            placeholder: `<span class="badge badge-pending">${icons.clock} Placeholder</span>`,
+          }[r.recordStatus]}
         </div>
         <h3>${escapeHtml(r.productName)}</h3>
-        <div class="uid">${r.uid ? escapeHtml(r.uid) : "UID not assigned in source"}</div>
+        <div class="uid">${r.uid ? escapeHtml(r.uid).replaceAll("-", "-<wbr>") : "UID not assigned in source"}</div>
         <div class="actions">
           <a class="btn btn-primary btn-sm" href="passport.html?id=${r.id}">Open passport ${icons.arrow}</a>
           <a class="btn btn-ghost btn-sm" href="qr/${r.id}.png" download="dpp-${r.id}-qr.png" aria-label="Download ${escapeHtml(r.productName)} QR code as PNG">${icons.download} PNG</a>
