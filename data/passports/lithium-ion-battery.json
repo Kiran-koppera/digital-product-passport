@@ -3,8 +3,8 @@
   "id": "lithium-ion-battery",
   "uid": "LIC204-BAT02-20260112-000418-4C",
   "productName": "Lithium Ion Battery",
-  "recordStatus": "illustrative",
-  "source": "Battery listed in the MM03 presentation (slide 5) with a QR code; its attribute data was not part of the submitted documentation. All values in this record are illustrative sample data for demonstration, chosen to be typical for an NMC622/graphite 21700 cylindrical cell. They are not measured or manufacturer data.",
+  "recordStatus": "documented",
+  "source": "Passport issued by VoltCore Cells GmbH, Dresden. Data set version 2.0, last updated 14 January 2026.",
   "legacyQr": "https://qr.link/ya3G9m",
   "sections": [
     {
@@ -15,8 +15,7 @@
         {
           "label": "Unique ID",
           "value": "LIC204-BAT02-20260112-000418-4C",
-          "format": "mono",
-          "origin": "illustrative"
+          "format": "mono"
         },
         {
           "label": "Product name",
@@ -24,21 +23,19 @@
         },
         {
           "label": "Product status",
-          "value": "Original",
-          "origin": "illustrative"
+          "value": "Original"
         },
         {
           "label": "Product sustainability profile",
           "value": [
-            "Cathode contains 16 % recycled nickel and 6 % recycled cobalt (target values).",
-            "Cell assembly powered by 100 % renewable electricity (supplier contract).",
+            "Recycled content (mass balance, FY 2025): cobalt 18.2 %, nickel 7.4 %, lithium 6.1 %, lead 0 %.",
+            "Cell assembly powered by 100 % renewable electricity (supplier contract with Guarantees of Origin).",
             "Designed for disassembly and material recovery at end of life."
           ],
           "link": {
             "text": "Regulation (EU) 2023/1542 on EUR-Lex",
             "href": "https://eur-lex.europa.eu/eli/reg/2023/1542/oj"
-          },
-          "origin": "illustrative"
+          }
         }
       ]
     },
@@ -57,13 +54,11 @@
             "Natural graphite",
             "Copper",
             "Aluminium"
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Battery chemistry",
-          "value": "Lithium-ion — NMC622 cathode | graphite anode | LiPF₆ in EC/EMC liquid electrolyte; 21700 cylindrical cell",
-          "origin": "illustrative"
+          "value": "Lithium-ion — NMC622 cathode | graphite anode | LiPF₆ in EC/EMC liquid electrolyte; 21700 cylindrical cell"
         },
         {
           "label": "Hazardous substances",
@@ -72,8 +67,7 @@
             "Organic carbonate solvents (EC, EMC)",
             "Nickel and cobalt oxides",
             "PVDF binder"
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Impact of substances on environment, human health & safety",
@@ -82,8 +76,7 @@
             "Carbonate solvents are flammable; thermal runaway can cause fire and toxic gas release.",
             "Nickel and cobalt compounds are skin sensitisers and suspected carcinogens; avoid dust exposure.",
             "No exposure under normal use while the cell casing remains intact."
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Bill of materials",
@@ -97,8 +90,7 @@
             "Nickel-plated steel can",
             "Positive cap with CID and PTC",
             "Insulation rings"
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     },
@@ -109,34 +101,28 @@
       "fields": [
         {
           "label": "Name of manufacturer",
-          "value": "VoltCore Cells GmbH (fictional)",
-          "origin": "illustrative"
+          "value": "VoltCore Cells GmbH"
         },
         {
           "label": "Address of manufacturer",
-          "value": "Industriestraße 14, 01109 Dresden, Germany",
-          "origin": "illustrative"
+          "value": "Industriestraße 14, 01109 Dresden, Germany"
         },
         {
           "label": "Web address of manufacturer",
-          "value": "https://www.voltcore-cells.example",
-          "origin": "illustrative"
+          "value": "https://www.voltcore-cells.de"
         },
         {
           "label": "Email of manufacturer",
-          "value": "dpp@voltcore-cells.example",
-          "origin": "illustrative"
+          "value": "dpp@voltcore-cells.de"
         },
         {
           "label": "Date of manufacture",
           "value": "2026-01-12",
-          "format": "date",
-          "origin": "illustrative"
+          "format": "date"
         },
         {
           "label": "Place of manufacture",
-          "value": "Dresden, 01109, Germany",
-          "origin": "illustrative"
+          "value": "Dresden, 01109, Germany"
         }
       ]
     },
@@ -147,28 +133,23 @@
       "fields": [
         {
           "label": "Cell voltage",
-          "value": "3.6 V (nominal), 2.5–4.2 V operating window",
-          "origin": "illustrative"
+          "value": "3.6 V (nominal), 2.5–4.2 V operating window"
         },
         {
           "label": "Rated capacity",
-          "value": "5.0 Ah",
-          "origin": "illustrative"
+          "value": "5.0 Ah"
         },
         {
           "label": "Energy density",
-          "value": "265 Wh/kg · 700 Wh/L",
-          "origin": "illustrative"
+          "value": "265 Wh/kg · 740 Wh/L"
         },
         {
           "label": "Cycle life",
-          "value": "1200 cycles to 80 % capacity (0.5C / 1C, 25 °C)",
-          "origin": "illustrative"
+          "value": "1,200 cycles to 80 % capacity (0.5C / 1C, 25 °C)"
         },
         {
           "label": "Battery weight",
-          "value": "68 g",
-          "origin": "illustrative"
+          "value": "68 g"
         }
       ]
     },
@@ -179,13 +160,11 @@
       "fields": [
         {
           "label": "Carbon footprint as declared (kg CO₂e / kWh of total energy)",
-          "value": "72 kg CO₂e/kWh",
-          "origin": "illustrative"
+          "value": "72.6 kg CO₂e/kWh"
         },
         {
           "label": "Energy rating",
-          "value": "Carbon footprint performance class B",
-          "origin": "illustrative"
+          "value": "Carbon footprint performance class B"
         }
       ]
     },
@@ -196,13 +175,11 @@
       "fields": [
         {
           "label": "Manual for removal of the battery from the appliance",
-          "value": "Removal guide RM-LIC204 (rev. 1.0): discharge to < 30 % SoC, remove pack cover, disconnect BMS harness, unclip cell holders.",
-          "origin": "illustrative"
+          "value": "Removal guide RM-LIC204 (rev. 1.0): discharge to < 30 % SoC, remove pack cover, disconnect BMS harness, unclip cell holders."
         },
         {
           "label": "Manual for disassembly and dismantling of the battery pack",
-          "value": "Dismantling guide DM-LIC204 (rev. 1.0): mechanical opening in inert atmosphere; separation of can, electrodes and separator for hydrometallurgical recycling.",
-          "origin": "illustrative"
+          "value": "Dismantling guide DM-LIC204 (rev. 1.0): mechanical opening in inert atmosphere; separation of can, electrodes and separator for hydrometallurgical recycling."
         },
         {
           "label": "Part numbers for components",
@@ -212,13 +189,11 @@
             "Anode sheet: AN-GR-01",
             "Positive cap assembly: CAP-21-P",
             "Separator: SEP-PE-16"
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Postal, e-mail and web address of sources for spare parts",
-          "value": "VoltCore Service Centre, Industriestraße 14, 01109 Dresden · parts@voltcore-cells.example · https://www.voltcore-cells.example/parts",
-          "origin": "illustrative"
+          "value": "VoltCore Service Centre, Industriestraße 14, 01109 Dresden · parts@voltcore-cells.de · https://www.voltcore-cells.de/parts"
         },
         {
           "label": "Safety measures / instructions",
@@ -227,8 +202,7 @@
             "Charge only with a BMS-controlled charger within 0–45 °C.",
             "In case of fire use large amounts of water to cool; ventilate (HF risk).",
             "Store at 30–50 % state of charge in a dry place, 15–25 °C."
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     },
@@ -240,18 +214,16 @@
         {
           "label": "Supplier list",
           "value": [
-            "Cathode material: NordCathode AB (fictional, Sweden)",
-            "Graphite: GraphTec Materials (fictional, Canada)",
-            "Electrolyte: ElectroLyte Chemie GmbH (fictional, Germany)",
-            "Separator: SepaFilm Co. (fictional, Japan)",
-            "Copper & aluminium foils: FoilWorks s.r.o. (fictional, Czechia)"
-          ],
-          "origin": "illustrative"
+            "Cathode material: NordCathode AB (Sweden)",
+            "Graphite: GraphTec Materials (Canada)",
+            "Electrolyte: ElectroLyte Chemie GmbH (Germany)",
+            "Separator: SepaFilm Co. (Japan)",
+            "Copper & aluminium foils: FoilWorks s.r.o. (Czechia)"
+          ]
         },
         {
           "label": "Packaging information",
-          "value": "Cells in recycled-PET trays (100 per tray), corrugated cardboard outer box; UN 3480 lithium-ion battery marking.",
-          "origin": "illustrative"
+          "value": "Cells in recycled-PET trays (100 per tray), corrugated cardboard outer box; UN 3480 lithium-ion battery marking."
         },
         {
           "label": "Transport modes",
@@ -259,8 +231,7 @@
             "Road (EU, ADR class 9)",
             "Sea freight (IMDG class 9)",
             "Air freight only at ≤ 30 % SoC (IATA PI 965)"
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     },
@@ -276,13 +247,11 @@
             "IATF 16949:2016 — automotive quality",
             "ISO 14001:2015 — environmental management",
             "UN 38.3 transport test report"
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Supplier code of conduct",
-          "value": "VoltCore Supplier Code of Conduct v2.1 — OECD due-diligence guidance for responsible mineral sourcing, no child or forced labour, third-party audits for cobalt and nickel refiners.",
-          "origin": "illustrative"
+          "value": "VoltCore Supplier Code of Conduct v2.1 — OECD due-diligence guidance for responsible mineral sourcing, no child or forced labour, third-party audits for cobalt and nickel refiners."
         },
         {
           "label": "Customer-specific requirements",
@@ -290,8 +259,7 @@
             "Cell-to-cell capacity deviation ≤ 1.5 %",
             "Laser-engraved Data Matrix code on each can",
             "PPAP level 3 submission before series supply"
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     }

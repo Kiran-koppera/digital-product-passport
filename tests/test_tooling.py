@@ -47,15 +47,15 @@ class ScaffoldTests(unittest.TestCase):
         rec["sections"][1]["fields"][0]["value"] = ""
         self.assertTrue(list(self.validator.iter_errors(rec)))
 
-
-    def test_illustrative_records_must_tag_every_value(self):
+    def test_documented_records_must_be_complete(self):
         rec = build_record("demo-cell", "Demo Cell", "ABC1-BAT01-20250101-000001-A3", None)
-        rec["recordStatus"] = "illustrative"
-        rec["sections"][0]["fields"][0]["origin"] = "illustrative"
-        rec["sections"][1]["fields"][0]["value"] = "Lithium"
+        rec["recordStatus"] = "documented"
         errs = validate_data.check_record("demo-cell", rec, self.validator)
-        self.assertTrue(any("not tagged" in e for e in errs))
-        rec["sections"][1]["fields"][0]["origin"] = "illustrative"
+        self.assertTrue(any("empty fields" in e for e in errs))
+        for s in rec["sections"]:
+            for f in s["fields"]:
+                if f["value"] is None:
+                    f["value"] = "x"
         self.assertEqual(validate_data.check_record("demo-cell", rec, self.validator), [])
 
 

@@ -110,8 +110,6 @@ code, .mono { font-family: var(--mono); font-size: .92em; }
 .badge-lock { background: var(--lock-soft); color: var(--lock); }
 .badge-pending { background: var(--pending-soft); color: var(--pending); }
 .badge-ill { background: var(--ill-soft); color: var(--ill); }
-.tag-ill { display: inline-block; margin-left: 8px; padding: 1px 7px; border: 1px dashed var(--ill); border-radius: 999px;
-  color: var(--ill); font-size: .7rem; font-weight: 600; font-style: normal; letter-spacing: .02em; vertical-align: middle; white-space: nowrap; }
 
 .eyebrow { font: 700 .78rem/1 var(--font); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: block; }
 .lead { font-size: 1.15rem; color: var(--ink-2); max-width: 62ch; }

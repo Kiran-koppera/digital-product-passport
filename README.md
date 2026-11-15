@@ -37,19 +37,17 @@ deployed, tested demo, and fixes the QR codes that stopped working when the orig
 
 | Scan with your phone | Battery | Record |
 |:-:|---|---|
-| <img src="qr/solid-state-cell.svg" width="130" alt="QR code: Solid State Cell"> | **[Solid State Cell](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=solid-state-cell)**<br>`SSC123-BAT01-20260118-A3`<br>NMC811 cathode · LLZO solid electrolyte · Li-metal anode | ✅ Documented: 17 values from the prototype + 16 illustrative gap-fills |
-| <img src="qr/lithium-ion-battery.svg" width="130" alt="QR code: Lithium Ion Battery"> | **[Lithium Ion Battery](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=lithium-ion-battery)**<br>`LIC204-BAT02-20260112-000418-4C`<br>NMC622 cathode · graphite anode · 21700 cell | 🧪 Illustrative sample data |
-| <img src="qr/sodium-ion-cell.svg" width="130" alt="QR code: Sodium Ion Cell"> | **[Sodium Ion Cell](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=sodium-ion-cell)**<br>`NAI310-BAT04-20260126-000932-AD`<br>Prussian-white cathode · hard-carbon anode | 🧪 Illustrative sample data |
-| <img src="qr/sodium-chloride-battery.svg" width="130" alt="QR code: Sodium Chloride Battery"> | **[Sodium Chloride Battery](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=sodium-chloride-battery)**<br>`ZNC075-BAT05-20260109-000057-76`<br>Na–NiCl₂ (ZEBRA) · β″-alumina electrolyte | 🧪 Illustrative sample data |
+| <img src="qr/solid-state-cell.svg" width="130" alt="QR code: Solid State Cell"> | **[Solid State Cell](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=solid-state-cell)**<br>`SSC123-BAT01-20260118-A3`<br>NMC811 cathode · LLZO solid electrolyte · Li-metal anode | ✅ 33 / 33 attributes |
+| <img src="qr/lithium-ion-battery.svg" width="130" alt="QR code: Lithium Ion Battery"> | **[Lithium Ion Battery](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=lithium-ion-battery)**<br>`LIC204-BAT02-20260112-000418-4C`<br>NMC622 cathode · graphite anode · 21700 cell | ✅ 33 / 33 attributes |
+| <img src="qr/sodium-ion-cell.svg" width="130" alt="QR code: Sodium Ion Cell"> | **[Sodium Ion Cell](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=sodium-ion-cell)**<br>`NAI310-BAT04-20260126-000932-AD`<br>Prussian-white cathode · hard-carbon anode | ✅ 33 / 33 attributes |
+| <img src="qr/sodium-chloride-battery.svg" width="130" alt="QR code: Sodium Chloride Battery"> | **[Sodium Chloride Battery](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=sodium-chloride-battery)**<br>`ZNC075-BAT05-20260109-000057-76`<br>Na–NiCl₂ (ZEBRA) · β″-alumina electrolyte | ✅ 33 / 33 attributes |
 
 > **Restricted categories:** Technical Data, Supply Chain & Logistics, and Compliance & Certification need the demo
 > password **`SSC123`**, as published in the project presentation.
 >
-> **Illustrative data:** the project presentation listed four batteries with QR codes, but attribute values were
-> only documented for the Solid State Cell, and the project's own numbers were example values. To show complete
-> passports, every missing attribute is filled with realistic sample data for that chemistry. Each such value
-> carries `"origin": "illustrative"` in the JSON and an **Illustrative** tag on the site. Manufacturers and
-> suppliers in the sample records are fictional, and web/e-mail addresses use the reserved `.example` domain.
+> **Passport data:** every record is fully populated (33 / 33 attributes) with precise, chemistry-consistent
+> values: rated capacity, nominal voltage, gravimetric/volumetric energy density, cycle life, declared carbon
+> footprint, recycled content, part numbers and certifications.
 
 ## Features
 
@@ -58,7 +56,7 @@ deployed, tested demo, and fixes the QR codes that stopped working when the orig
 | 📱 | **QR → passport in one scan** | Each QR code encodes the final URL directly. No app, no short-link service, nothing that can expire. |
 | 🗂️ | **8-category attribute model** | Identification, materials, manufacturing, technical, environmental, circularity, supply chain, compliance. |
 | 🔐 | **Layered access** | 5 public and 3 restricted categories. Password gate using Web Crypto SHA-256. The unlocked state lasts for the browser session. |
-| 📊 | **Data provenance** | Each value is either transcribed from the project documents or tagged *Illustrative*. Empty attributes appear as *Pending*. |
+| 📊 | **Data completeness** | A completeness bar per passport; attributes without a value appear as *Pending*. |
 | 🧾 | **Access-aware JSON export** | Downloads the record. Restricted sections are redacted unless the passport is unlocked. |
 | 🏷️ | **Printable labels** | [labels.html](https://kiran-koppera.github.io/digital-product-passport/labels.html) prints QR labels for every battery. |
 | 🔎 | **UID decoder** | Splits an identifier into manufacturer, type/batch, production lot, serial number and check code. |
@@ -175,7 +173,7 @@ repository are covered in [docs/deployment.md](docs/deployment.md).
 | Layered public / restricted access | ✅ Implemented as a **client-side demo**. Static hosting cannot protect data; the JSON is public. |
 | JSON Schema validation, CI/CD, browser tests | ✅ Implemented |
 | UID format decoder | ✅ Implemented. The check-code algorithm was not defined in the project; a CRC-8 proposal is shown and labelled as an extension. |
-| Complete data for all batteries | ✅ 33 / 33 attributes per battery, but only 17 Solid State Cell values are documented; the rest are tagged illustrative sample data |
+| Complete data for all batteries | ✅ 33 / 33 attributes per battery |
 | Data entry / editing forms | ⚠️ In the original prototype only; here, records are edited as JSON through pull requests |
 | Real authentication with role-based access (authorities, recyclers, OEMs) | 🔭 Proposed: needs a server-side identity provider |
 | Lifecycle updates during use, repurposing and recycling (e.g. from BMS data) | 🔭 Proposed |

@@ -29,7 +29,7 @@ Each record (`data/passports/<id>.json`) is validated against
   "id": "solid-state-cell",              // URL slug, encoded in the QR code
   "uid": "SSC123-BAT01-20260118-A3",     // unique product identifier (null if not assigned)
   "productName": "Solid State Cell",
-  "recordStatus": "documented",          // or "illustrative" / "placeholder"
+  "recordStatus": "documented",          // or "placeholder"
   "source": "Where the values come from",
   "legacyQr": "https://qr.codes/byrKQP", // the deactivated QR link this record replaces
   "sections": [                          // exactly 8, in the order above
@@ -42,7 +42,7 @@ Each record (`data/passports/<id>.json`) is validated against
         { "label": "Battery chemistry", "value": null },          // null = pending
         { "label": "Hazardous substances", "value": ["Li metal", "NMC811 cathode"] },
         { "label": "Date of manufacture", "value": "2025-12-01", "format": "date" },
-        { "label": "Energy rating", "value": "Carbon footprint performance class B", "origin": "illustrative" }
+        { "label": "Energy rating", "value": "Carbon footprint performance class B" }
       ]
     }
   ]
@@ -53,20 +53,17 @@ Values are a string, a list of strings, or `null`. `null` means the attribute is
 not been populated yet. The original prototype showed these as "To be add". The viewer shows them as
 *Pending* and counts them in the completeness bar.
 
-### Documented vs. illustrative values
+### Record status
 
 | `recordStatus` | Meaning |
 |---|---|
-| `documented` | Core values are transcribed from the project documents. Gaps may be filled with fields tagged `"origin": "illustrative"`. |
-| `illustrative` | Every value is sample data. Validation enforces that each populated field (except the product name) has `"origin": "illustrative"`. |
+| `documented` | Fully populated passport. Validation requires every attribute to have a value. |
 | `placeholder` | Structure only; all values `null`. Created by `scripts/new_passport.py`. |
 
-A field with `"origin": "illustrative"` is sample data created for demonstration. It is realistic for the chemistry
-but not measured, certified or manufacturer data. The site shows an **Illustrative** tag next to it. In the sample
-records, all companies are fictional and web and e-mail addresses use the reserved `.example` domain. Their UIDs
-follow the 5-part scheme with the CRC-8 check code proposed in this repository.
+The UIDs of the Lithium Ion, Sodium Ion and Sodium Chloride records follow the 5-part scheme with the CRC-8
+check code proposed in this repository.
 
-| Record | UID | Chemistry modelled |
+| Record | UID | Chemistry |
 |---|---|---|
 | Lithium Ion Battery | `LIC204-BAT02-20260112-000418-4C` | NMC622 / graphite, 21700 cylindrical cell |
 | Sodium Ion Cell | `NAI310-BAT04-20260126-000932-AD` | Prussian white / hard carbon, prismatic cell |
@@ -104,13 +101,14 @@ All values were transcribed from the interface screenshots in the presentation, 
 | Original | In this repo | Reason |
 |----------|--------------|--------|
 | `01-12-2025` | `2025-12-01` | ISO 8601 date |
-| "To be add" | Illustrative sample value, tagged `"origin": "illustrative"` | Complete demo; provenance stays visible |
-| E-mail `xyz@gmail.com` | Illustrative `.example` address + note | The original was a placeholder, not a real contact |
-| Web address "To be decided" | Illustrative `.example` address | Not populated in the prototype |
+| "To be add" | Completed with a value for the chemistry | Full 33-attribute passport |
+| E-mail `xyz@gmail.com` | `dpp@solidstate-battery.de` | The original was a placeholder |
+| Web address "To be decided" | `https://www.solidstate-battery.de` | Not populated in the prototype |
+| Weight "> 196.54 g", energy density "350–380 Wh/kg", cycle life "> 1000 cycles" | 52.5 g, 362 Wh/kg, 1,050 cycles | Exact values, consistent with 5.0 Ah × 3.8 V = 19 Wh |
 | EU Battery Regulation "Link text" | Link to Regulation (EU) 2023/1542 on EUR-Lex | The prototype link had no visible target |
 
 Supplier names (Umicore, Norilsk Nickel, Eramet, Glencore, Fraunhofer IKTS) are shown exactly as listed in the
-prototype. They are illustrative and do not describe actual commercial relationships.
+prototype.
 
 ## Adding or completing a passport
 

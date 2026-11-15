@@ -3,9 +3,8 @@
 Usage:
     python scripts/new_passport.py <id> "<Product name>" [--uid UID] [--legacy-qr URL]
 
-Every field is created with value null ("pending"). Fill in the values, set
-recordStatus to "documented" (or "illustrative" for sample data, tagging each value
-with "origin": "illustrative"), add the id to data/passports.json and run
+Every field is created with value null ("pending"). Fill in all values, set
+recordStatus to "documented", add the id to data/passports.json and run
 scripts/generate_qr.py.
 """
 

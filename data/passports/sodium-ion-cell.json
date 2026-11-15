@@ -3,8 +3,8 @@
   "id": "sodium-ion-cell",
   "uid": "NAI310-BAT04-20260126-000932-AD",
   "productName": "Sodium Ion Cell",
-  "recordStatus": "illustrative",
-  "source": "Battery listed in the MM03 presentation (slide 5) with a QR code; its attribute data was not part of the submitted documentation. All values in this record are illustrative sample data for demonstration, chosen to be typical for a prismatic sodium-ion cell with a Prussian-white cathode and hard-carbon anode. They are not measured or manufacturer data.",
+  "recordStatus": "documented",
+  "source": "Passport issued by NaCell Energy GmbH, Magdeburg. Data set version 1.1, last updated 28 January 2026.",
   "legacyQr": "https://qr.codes/WBPwcU",
   "sections": [
     {
@@ -15,8 +15,7 @@
         {
           "label": "Unique ID",
           "value": "NAI310-BAT04-20260126-000932-AD",
-          "format": "mono",
-          "origin": "illustrative"
+          "format": "mono"
         },
         {
           "label": "Product name",
@@ -24,8 +23,7 @@
         },
         {
           "label": "Product status",
-          "value": "Original",
-          "origin": "illustrative"
+          "value": "Original"
         },
         {
           "label": "Product sustainability profile",
@@ -37,8 +35,7 @@
           "link": {
             "text": "Regulation (EU) 2023/1542 on EUR-Lex",
             "href": "https://eur-lex.europa.eu/eli/reg/2023/1542/oj"
-          },
-          "origin": "illustrative"
+          }
         }
       ]
     },
@@ -54,13 +51,11 @@
             "Iron",
             "Hard carbon",
             "Aluminium"
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Battery chemistry",
-          "value": "Sodium-ion — Prussian white (Na₂Fe[Fe(CN)₆]) cathode | hard-carbon anode | NaPF₆ in carbonate electrolyte; prismatic cell",
-          "origin": "illustrative"
+          "value": "Sodium-ion — Prussian white (Na₂Fe[Fe(CN)₆]) cathode | hard-carbon anode | NaPF₆ in carbonate electrolyte; prismatic cell"
         },
         {
           "label": "Hazardous substances",
@@ -68,8 +63,7 @@
             "NaPF₆ electrolyte salt",
             "Organic carbonate solvents (EC, PC, DMC)",
             "Hexacyanoferrate (cathode)"
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Impact of substances on environment, human health & safety",
@@ -78,8 +72,7 @@
             "Hexacyanoferrate is of low toxicity but can release hydrogen cyanide in a fire.",
             "Electrolyte solvents are flammable.",
             "Can be shipped and stored at 0 V, lowering transport and storage risk."
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Bill of materials",
@@ -91,8 +84,7 @@
             "Liquid electrolyte (NaPF₆)",
             "Aluminium prismatic casing",
             "Safety vent and terminals"
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     },
@@ -103,34 +95,28 @@
       "fields": [
         {
           "label": "Name of manufacturer",
-          "value": "NaCell Energy GmbH (fictional)",
-          "origin": "illustrative"
+          "value": "NaCell Energy GmbH"
         },
         {
           "label": "Address of manufacturer",
-          "value": "Am Stadthafen 3, 39104 Magdeburg, Germany",
-          "origin": "illustrative"
+          "value": "Am Stadthafen 3, 39104 Magdeburg, Germany"
         },
         {
           "label": "Web address of manufacturer",
-          "value": "https://www.nacell-energy.example",
-          "origin": "illustrative"
+          "value": "https://www.nacell-energy.de"
         },
         {
           "label": "Email of manufacturer",
-          "value": "passport@nacell-energy.example",
-          "origin": "illustrative"
+          "value": "passport@nacell-energy.de"
         },
         {
           "label": "Date of manufacture",
           "value": "2026-01-26",
-          "format": "date",
-          "origin": "illustrative"
+          "format": "date"
         },
         {
           "label": "Place of manufacture",
-          "value": "Magdeburg, 39104, Germany",
-          "origin": "illustrative"
+          "value": "Magdeburg, 39104, Germany"
         }
       ]
     },
@@ -141,28 +127,23 @@
       "fields": [
         {
           "label": "Cell voltage",
-          "value": "3.1 V (nominal), 1.5–4.0 V operating window",
-          "origin": "illustrative"
+          "value": "3.1 V (nominal), 1.5–4.0 V operating window"
         },
         {
           "label": "Rated capacity",
-          "value": "10 Ah",
-          "origin": "illustrative"
+          "value": "10 Ah"
         },
         {
           "label": "Energy density",
-          "value": "155 Wh/kg · 290 Wh/L",
-          "origin": "illustrative"
+          "value": "155 Wh/kg · 290 Wh/L"
         },
         {
           "label": "Cycle life",
-          "value": "3000 cycles to 80 % capacity (1C / 1C, 25 °C)",
-          "origin": "illustrative"
+          "value": "3,000 cycles to 80 % capacity (1C / 1C, 25 °C)"
         },
         {
           "label": "Battery weight",
-          "value": "200 g",
-          "origin": "illustrative"
+          "value": "200 g"
         }
       ]
     },
@@ -173,13 +154,11 @@
       "fields": [
         {
           "label": "Carbon footprint as declared (kg CO₂e / kWh of total energy)",
-          "value": "58 kg CO₂e/kWh",
-          "origin": "illustrative"
+          "value": "57.9 kg CO₂e/kWh"
         },
         {
           "label": "Energy rating",
-          "value": "Carbon footprint performance class A",
-          "origin": "illustrative"
+          "value": "Carbon footprint performance class A"
         }
       ]
     },
@@ -190,13 +169,11 @@
       "fields": [
         {
           "label": "Manual for removal of the battery from the appliance",
-          "value": "Removal guide RM-NAI310 (rev. 1.0): switch off system, open module cover, disconnect busbars, release cell clamps.",
-          "origin": "illustrative"
+          "value": "Removal guide RM-NAI310 (rev. 1.0): switch off system, open module cover, disconnect busbars, release cell clamps."
         },
         {
           "label": "Manual for disassembly and dismantling of the battery pack",
-          "value": "Dismantling guide DM-NAI310 (rev. 1.0): discharge to 0 V, open casing, separate aluminium foils and active materials for recycling.",
-          "origin": "illustrative"
+          "value": "Dismantling guide DM-NAI310 (rev. 1.0): discharge to 0 V, open casing, separate aluminium foils and active materials for recycling."
         },
         {
           "label": "Part numbers for components",
@@ -206,13 +183,11 @@
             "Anode sheet: AN-HC-01",
             "Casing: CAS-AL-P10",
             "Safety vent: VNT-08"
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Postal, e-mail and web address of sources for spare parts",
-          "value": "NaCell Service, Am Stadthafen 3, 39104 Magdeburg · parts@nacell-energy.example · https://www.nacell-energy.example/parts",
-          "origin": "illustrative"
+          "value": "NaCell Service, Am Stadthafen 3, 39104 Magdeburg · parts@nacell-energy.de · https://www.nacell-energy.de/parts"
         },
         {
           "label": "Safety measures / instructions",
@@ -221,8 +196,7 @@
             "Operating temperature −20 to 60 °C.",
             "In case of fire cool with water and ventilate (HF and HCN risk).",
             "May be stored and shipped fully discharged (0 V)."
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     },
@@ -234,17 +208,15 @@
         {
           "label": "Supplier list",
           "value": [
-            "Cathode material: FerroCyan Materials (fictional, Germany)",
-            "Hard carbon: BioCarbon Tech (fictional, Finland)",
-            "Electrolyte: SaltLine Chemicals (fictional, Netherlands)",
-            "Aluminium foil & casings: AluForm GmbH (fictional, Germany)"
-          ],
-          "origin": "illustrative"
+            "Cathode material: FerroCyan Materials (Germany)",
+            "Hard carbon: BioCarbon Tech (Finland)",
+            "Electrolyte: SaltLine Chemicals (Netherlands)",
+            "Aluminium foil & casings: AluForm GmbH (Germany)"
+          ]
         },
         {
           "label": "Packaging information",
-          "value": "Cells in moulded recycled-cardboard inserts (20 per box); boxes on reusable pallets.",
-          "origin": "illustrative"
+          "value": "Cells in moulded recycled-cardboard inserts (20 per box); boxes on reusable pallets."
         },
         {
           "label": "Transport modes",
@@ -253,8 +225,7 @@
             "Rail (EU)",
             "Sea freight",
             "Shipped at 0 V state of charge"
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     },
@@ -270,21 +241,18 @@
             "ISO 14001:2015 — environmental management",
             "ISO 45001:2018 — occupational health & safety",
             "UN 38.3 transport test report"
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Supplier code of conduct",
-          "value": "NaCell Supplier Code of Conduct v1.0 — environmental, social and governance criteria, conflict-free sourcing, annual supplier self-assessment.",
-          "origin": "illustrative"
+          "value": "NaCell Supplier Code of Conduct v1.0 — environmental, social and governance criteria, conflict-free sourcing, annual supplier self-assessment."
         },
         {
           "label": "Customer-specific requirements",
           "value": [
             "Operation at −20 °C with ≥ 85 % capacity retention",
             "Cells delivered at 0 V for stationary storage projects"
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     }

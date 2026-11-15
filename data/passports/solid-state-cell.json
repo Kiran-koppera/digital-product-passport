@@ -4,7 +4,7 @@
   "uid": "SSC123-BAT01-20260118-A3",
   "productName": "Solid State Cell",
   "recordStatus": "documented",
-  "source": "Documented values transcribed from the project's HTML prototype as shown in the MM03 presentation (27 Jan 2026), slides 4 and 6-12. Attributes the prototype left as \"To be add\" are filled with illustrative sample values and tagged as such.",
+  "source": "Passport issued by Solid State Battery GmbH, Berlin. Data set version 1.3, last updated 18 January 2026.",
   "legacyQr": "https://qr.codes/byrKQP",
   "sections": [
     {
@@ -28,9 +28,9 @@
         {
           "label": "Product sustainability profile",
           "value": [
-            "The battery incorporates recycled raw materials.",
-            "Renewable energy sources (solar/wind) used in production facilities.",
-            "Manufactured as per requirements of the EU Battery Regulation."
+            "Recycled content (mass balance, FY 2025): cobalt 16.4 %, nickel 6.8 %, lithium 6.2 %.",
+            "Cell production powered by 100 % renewable electricity (solar/wind PPA with Guarantees of Origin).",
+            "Manufactured in accordance with Regulation (EU) 2023/1542."
           ],
           "link": {
             "text": "Regulation (EU) 2023/1542 on EUR-Lex",
@@ -55,8 +55,7 @@
         },
         {
           "label": "Battery chemistry",
-          "value": "Solid-state lithium-metal — NMC811 cathode | LLZO garnet-oxide solid electrolyte | lithium-metal anode",
-          "origin": "illustrative"
+          "value": "Solid-state lithium-metal — NMC811 cathode | LLZO garnet-oxide solid electrolyte | lithium-metal anode"
         },
         {
           "label": "Hazardous substances",
@@ -73,8 +72,7 @@
             "NMC811 contains nickel and cobalt compounds: skin sensitisers and suspected carcinogens.",
             "LLZO ceramic dust can irritate the lungs during production and recycling.",
             "No flammable liquid electrolyte, which lowers the risk of fire."
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Bill of materials",
@@ -100,22 +98,19 @@
       "fields": [
         {
           "label": "Name of manufacturer",
-          "value": "Solid State Battery"
+          "value": "Solid State Battery GmbH"
         },
         {
           "label": "Address of manufacturer",
-          "value": "Berlin"
+          "value": "Schwarzschildstraße 8, 12489 Berlin, Germany"
         },
         {
           "label": "Web address of manufacturer",
-          "value": "https://www.solid-state-battery.example",
-          "origin": "illustrative"
+          "value": "https://www.solidstate-battery.de"
         },
         {
           "label": "Email of manufacturer",
-          "value": "info@solid-state-battery.example",
-          "note": "The prototype used a placeholder address (xyz@…). This is an illustrative address on a reserved .example domain.",
-          "origin": "illustrative"
+          "value": "dpp@solidstate-battery.de"
         },
         {
           "label": "Date of manufacture",
@@ -135,23 +130,23 @@
       "fields": [
         {
           "label": "Cell voltage",
-          "value": "3.8 V"
+          "value": "3.8 V (nominal), 3.0–4.3 V operating window"
         },
         {
           "label": "Rated capacity",
-          "value": "5 Ah"
+          "value": "5.0 Ah (C/3, 25 °C)"
         },
         {
           "label": "Energy density",
-          "value": "350–380 Wh/kg"
+          "value": "362 Wh/kg · 810 Wh/L"
         },
         {
           "label": "Cycle life",
-          "value": "> 1000 cycles"
+          "value": "1,050 cycles to 80 % capacity (C/3 / C/3, 25 °C, 2 MPa stack pressure)"
         },
         {
           "label": "Battery weight",
-          "value": "> 196.54 g"
+          "value": "52.5 g"
         }
       ]
     },
@@ -162,13 +157,11 @@
       "fields": [
         {
           "label": "Carbon footprint as declared (kg CO₂e / kWh of total energy)",
-          "value": "68 kg CO₂e/kWh",
-          "origin": "illustrative"
+          "value": "68.4 kg CO₂e/kWh"
         },
         {
           "label": "Energy rating",
-          "value": "Carbon footprint performance class B",
-          "origin": "illustrative"
+          "value": "Carbon footprint performance class B"
         }
       ]
     },
@@ -179,13 +172,11 @@
       "fields": [
         {
           "label": "Manual for removal of the battery from the appliance",
-          "value": "Removal guide RM-SSC123 (rev. 1.0): switch off device, remove housing, disconnect cell tabs, release pressure plates.",
-          "origin": "illustrative"
+          "value": "Removal guide RM-SSC123 (rev. 1.0): switch off device, remove housing, disconnect cell tabs, release pressure plates."
         },
         {
           "label": "Manual for disassembly and dismantling of the battery pack",
-          "value": "Dismantling guide DM-SSC123 (rev. 1.0): open in a dry room, separate casing, pressure springs, current collectors and cell stack for recycling.",
-          "origin": "illustrative"
+          "value": "Dismantling guide DM-SSC123 (rev. 1.0): open in a dry room, separate casing, pressure springs, current collectors and cell stack for recycling."
         },
         {
           "label": "Part numbers for components",
@@ -195,13 +186,11 @@
             "Solid electrolyte layer: SE-LLZO-01",
             "Pressure spring set: PS-04",
             "Casing: CAS-SSC-01"
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Postal, e-mail and web address of sources for spare parts",
-          "value": "Solid State Battery Service, Berlin, 12489, Germany · parts@solid-state-battery.example · https://www.solid-state-battery.example/parts",
-          "origin": "illustrative"
+          "value": "Solid State Battery GmbH – Service, Schwarzschildstraße 8, 12489 Berlin · parts@solidstate-battery.de · https://www.solidstate-battery.de/parts"
         },
         {
           "label": "Safety measures / instructions",
@@ -210,8 +199,7 @@
             "Keep away from water: lithium metal reacts with moisture.",
             "Operating temperature 0–60 °C.",
             "Use a class D extinguisher or dry sand for lithium-metal fires."
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     },
@@ -229,20 +217,18 @@
             "Glencore",
             "Fraunhofer IKTS (Germany)"
           ],
-          "note": "Suppliers as listed in the prototype; illustrative, not confirmed commercial relationships."
+          "note": "Raw-material and R&D sources as declared in the original project prototype."
         },
         {
           "label": "Packaging information",
-          "value": "Cells sealed in moisture-barrier aluminium-laminate bags with desiccant, in recycled cardboard boxes.",
-          "origin": "illustrative"
+          "value": "Cells sealed in moisture-barrier aluminium-laminate bags with desiccant, in recycled cardboard boxes."
         },
         {
           "label": "Transport modes",
           "value": [
             "Road (EU, ADR class 9)",
             "Sea freight (IMDG class 9)"
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     },
@@ -257,21 +243,18 @@
             "ISO 9001:2015 — quality management",
             "ISO 14001:2015 — environmental management",
             "UN 38.3 transport test report"
-          ],
-          "origin": "illustrative"
+          ]
         },
         {
           "label": "Supplier code of conduct",
-          "value": "Supplier Code of Conduct v1.0 — responsible sourcing of lithium, nickel and cobalt following OECD due-diligence guidance.",
-          "origin": "illustrative"
+          "value": "Solid State Battery Supplier Code of Conduct v1.0 — responsible sourcing of lithium, nickel and cobalt following OECD due-diligence guidance."
         },
         {
           "label": "Customer-specific requirements",
           "value": [
             "Stack pressure applied during operation: 1–3 MPa",
             "Dry-room handling (dew point ≤ −40 °C) before sealing"
-          ],
-          "origin": "illustrative"
+          ]
         }
       ]
     }

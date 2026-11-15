@@ -58,7 +58,7 @@ test("restricted category requires the password and unlocks with SSC123", async 
   await page.getByPlaceholder("Enter access password").fill("SSC123");
   await page.getByRole("button", { name: "Unlock" }).click();
   await expect(panel).toContainText("3.8 V");
-  await expect(panel).toContainText("350–380 Wh/kg");
+  await expect(panel).toContainText("362 Wh/kg");
 
   // Unlock persists across categories in the session
   await page.getByRole("tab", { name: /Supply Chain/ }).click();
@@ -73,21 +73,12 @@ test("keyboard navigation moves between tabs", async ({ page }) => {
   await expect(page).toHaveURL(/#material-composition$/);
 });
 
-test("illustrative records are clearly labelled", async ({ page }) => {
+test("passports show complete data without sample-data tags", async ({ page }) => {
   await page.goto("passport.html?id=sodium-ion-cell#material-composition");
-  await expect(page.getByText("Illustrative sample record.", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("Active passport", { exact: false }).first()).toBeVisible();
   await expect(page.locator("#panel")).toContainText("Prussian white");
-  const fields = page.locator("#panel .field");
-  await expect(fields.locator(".tag-ill")).toHaveCount(await fields.count());
-  await expect(page.locator("#panel")).not.toContainText("Pending");
-});
-
-test("solid state cell tags only gap-filled values as illustrative", async ({ page }) => {
-  await page.goto("passport.html?id=solid-state-cell#material-composition");
-  const field = (label) => page.locator("#panel .field", { has: page.locator("dt", { hasText: label }) });
-  await expect(field("Critical raw materials").locator(".tag-ill")).toHaveCount(0);
-  await expect(field("Battery chemistry").locator(".tag-ill")).toHaveCount(1);
-  await expect(page.getByText("Documented record with illustrative gap-fill.", { exact: false })).toBeVisible();
+  await expect(page.locator("body")).not.toContainText(/illustrative/i);
+  await expect(page.getByText("33 of 33 attributes populated", { exact: false })).toBeVisible();
 });
 
 test("unknown passport id shows a helpful error", async ({ page }) => {

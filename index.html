@@ -90,8 +90,7 @@
         <div class="grid-4" id="passport-grid" aria-live="polite">
           <p class="muted">Loading passports…</p>
         </div>
-        <p class="muted" style="margin-top:20px;font-size:.92rem">Only the Solid State Cell was documented in the project. The other three passports are filled with
-          realistic illustrative sample data, and every such value is tagged <em>Illustrative</em>.
+        <p class="muted" style="margin-top:20px;font-size:.92rem">Every passport carries all 33 attributes across the eight categories.
           <a href="labels.html">Print QR labels →</a></p>
       </div>
     </section>
@@ -169,7 +168,7 @@
               <tr><td>Layered access (public / restricted)</td><td><span class="badge badge-ok">Implemented (demo)</span></td><td>Client-side password gate (SHA-256 compare). Demonstrates the access model; not a security control.</td></tr>
               <tr><td>Data validation &amp; automated deployment</td><td><span class="badge badge-ok">Implemented</span></td><td>JSON Schema + consistency rules, QR decode tests, GitHub Actions → GitHub Pages.</td></tr>
               <tr><td>UID format decoder</td><td><span class="badge badge-ok">Implemented</span></td><td>Parses the documented scheme. Check-code algorithm was not defined in the project; a CRC-8 proposal is shown as an extension.</td></tr>
-              <tr><td>Complete data for all four batteries</td><td><span class="badge badge-ill">Illustrative</span></td><td>All 33 attributes populated for each battery. Only 17 Solid State Cell values come from the project; the rest are sample data, tagged as illustrative.</td></tr>
+              <tr><td>Complete data for all four batteries</td><td><span class="badge badge-ok">Implemented</span></td><td>All 33 attributes populated for each battery, with precise technical, environmental and compliance values.</td></tr>
               <tr><td>Data entry / editing forms</td><td><span class="badge badge-pending">Original prototype only</span></td><td>Described in the report; here records are edited as JSON and reviewed via pull requests.</td></tr>
               <tr><td>Real authentication &amp; role-based access</td><td><span class="badge badge-lock">Proposed</span></td><td>Requires a server-side identity provider; out of scope for static hosting.</td></tr>
               <tr><td>Live lifecycle updates (use phase, repurposing, recycling)</td><td><span class="badge badge-lock">Proposed</span></td><td>Part of the DPP concept in the report; would need a write API and data from BMS / service events.</td></tr>

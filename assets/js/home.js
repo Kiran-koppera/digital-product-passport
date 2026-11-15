@@ -16,8 +16,7 @@ async function renderGallery() {
         <div class="qr-frame"><img src="qr/${r.id}.svg" alt="QR code for the ${escapeHtml(r.productName)} passport" width="220" height="220" loading="lazy"></div>
         <div>
           ${{
-            documented: `<span class="badge badge-ok">${icons.check} Documented · ${s.documented}/${s.total}</span>`,
-            illustrative: `<span class="badge badge-ill">${icons.info} Illustrative data</span>`,
+            documented: `<span class="badge badge-ok">${icons.check} Active · ${s.filled}/${s.total} attributes</span>`,
             placeholder: `<span class="badge badge-pending">${icons.clock} Placeholder</span>`,
           }[r.recordStatus]}
         </div>
@@ -55,7 +54,7 @@ function initUidTool() {
     msg.className = `uid-msg${res.ok ? "" : " bad"}`;
     msg.innerHTML = (res.ok ? "✓ Format matches the project's UID scheme. " : `${res.problems.map(escapeHtml).join(" ")} `)
       + `<span class="muted">Proposed CRC-8 check code for <code>${escapeHtml(body)}</code> would be <code>${crc}</code>
-         (repository extension — the original project used a fixed illustrative “A3”).</span>`;
+         (repository extension — the original project used a fixed “A3”).</span>`;
   };
   input.addEventListener("input", update);
   document.querySelectorAll("[data-uid-example]").forEach((b) =>

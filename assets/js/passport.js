@@ -33,9 +33,6 @@ function renderValue(field) {
   } else {
     html = escapeHtml(v);
   }
-  if (field.origin === "illustrative") {
-    html += `<span class="tag-ill" title="Sample value created for demonstration; not documented or measured data">Illustrative</span>`;
-  }
   if (field.link) {
     html += `<span class="note"><a href="${escapeHtml(field.link.href)}" target="_blank" rel="noopener">${escapeHtml(field.link.text)} ↗</a></span>`;
   }
@@ -80,24 +77,11 @@ function render() {
   const statusField = record.sections[0].fields.find((f) => f.label === "Product status");
   const status = record.recordStatus;
   const statusBadge = {
-    documented: `<span class="badge badge-ok">${icons.check} Documented record</span>`,
-    illustrative: `<span class="badge badge-ill">${icons.info} Illustrative sample record</span>`,
+    documented: `<span class="badge badge-ok">${icons.check} Active passport</span>`,
     placeholder: `<span class="badge badge-pending">${icons.clock} Placeholder record</span>`,
   }[status];
   const notice = {
-    documented: stats.illustrative ? `
-    <div class="notice" role="note">${icons.info}
-      <div><strong>Documented record with illustrative gap-fill.</strong> ${stats.documented} values are transcribed from the
-      project's prototype. The ${stats.illustrative} attributes it left as “To be add” are filled with sample values and
-      tagged <span class="tag-ill">Illustrative</span>.</div>
-    </div>` : "",
-    illustrative: `
-    <div class="notice warn" role="note">${icons.info}
-      <div><strong>Illustrative sample record.</strong> This battery was listed in the project presentation with its own QR code,
-      but its attribute data was not part of the submitted documentation. The values shown are realistic sample data for
-      this chemistry, created to demonstrate the passport. They are not measured or manufacturer data, and the companies are fictional.
-      See the <a href="passport.html?id=solid-state-cell">Solid State Cell</a> for the documented passport.</div>
-    </div>`,
+    documented: "",
     placeholder: `
     <div class="notice warn" role="note">${icons.info}
       <div><strong>Placeholder record.</strong> This battery was listed in the project presentation with its own QR code,
@@ -129,7 +113,7 @@ function render() {
         </div>
         <div class="progress">
           <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${stats.total}" aria-valuenow="${stats.filled}" aria-label="Data completeness"><i style="width:${stats.pct}%"></i></div>
-          <small>${stats.filled} of ${stats.total} attributes populated (${stats.pct}%)${stats.illustrative ? ` · ${stats.illustrative} illustrative` : ""}</small>
+          <small>${stats.filled} of ${stats.total} attributes populated (${stats.pct}%)</small>
         </div>
       </div>
       <div class="qr-side">

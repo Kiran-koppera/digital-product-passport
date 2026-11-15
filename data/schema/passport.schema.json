@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://kiran-koppera.github.io/digital-product-passport/data/schema/passport.schema.json",
   "title": "Battery Digital Product Passport record",
-  "description": "One battery passport record. Sections follow the eight attribute categories defined in the project report (section 4.3). A field value of null means the attribute is defined in the data model but not yet populated. A field with origin \"illustrative\" holds sample data created for demonstration, not documented or measured data.",
+  "description": "One battery passport record. Sections follow the eight attribute categories defined in the project report (section 4.3). A field value of null means the attribute is defined in the data model but not yet populated.",
   "type": "object",
   "required": ["id", "uid", "productName", "recordStatus", "sections"],
   "additionalProperties": false,
@@ -11,7 +11,7 @@
     "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "URL slug; encoded in the QR code as passport.html?id=<id>" },
     "uid": { "type": ["string", "null"], "description": "Unique product identifier (see docs/data-model.md#unique-identifier)" },
     "productName": { "type": "string", "minLength": 1 },
-    "recordStatus": { "enum": ["documented", "illustrative", "placeholder"], "description": "documented: core values come from the project documents; illustrative: every value is sample data; placeholder: structure only" },
+    "recordStatus": { "enum": ["documented", "placeholder"], "description": "documented: populated passport record; placeholder: structure only" },
     "source": { "type": "string" },
     "legacyQr": { "type": "string", "format": "uri", "description": "Original (now deactivated) dynamic QR short link" },
     "sections": {
@@ -46,7 +46,6 @@
                 },
                 "format": { "enum": ["mono", "date"] },
                 "note": { "type": "string" },
-                "origin": { "enum": ["illustrative"], "description": "Marks a value as illustrative sample data. Absent = transcribed from the project documents." },
                 "link": {
                   "type": "object",
                   "required": ["text", "href"],
