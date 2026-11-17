@@ -55,7 +55,8 @@ April 2026), the passport uses the most recent value and records the discrepancy
 | | Feature | Details |
 |---|---|---|
 | 🇪🇺 | **Annex XIII structure** | 10 sections and 86 attributes, each with its legal reference (Annex VI, Art. 7, 8, 52, 74, Annex IV, Annex VII). |
-| 🔐 | **Access groups** | Public · Legitimate interest (repairers, second-life operators, recyclers) · Authorities (notified bodies, market surveillance). The role switch shows what each group sees; locked sections name who may read them. |
+| 🔐 | **Encrypted restricted data** | Legitimate-interest and authority sections are published only as AES-256-GCM ciphertext (key from PBKDF2-SHA256, 600,000 iterations). The access password decrypts them in the browser. **Demo password: `1234`.** |
+| 👥 | **Access groups** | Public · Legitimate interest (repairers, second-life operators, recyclers) · Authorities (notified bodies, market surveillance). The role switch shows what each group sees; locked sections name who may read them. |
 | 🏷️ | **Provenance on every value** | Official · Derived · Regulation · Literature · Estimated · Simulated · Not disclosed, with numbered sources. |
 | 🕳️ | **Gap report** | 22 attributes Volkswagen has not published, such as the Article 7 carbon footprint, cycle life, voltage limits, cell maker, part numbers and test reports. |
 | 📈 | **Dynamic data** | A simulated BMS feed: state of health, full equivalent cycles and status, with a chart (Art. 14, Annex VII). |
@@ -74,7 +75,7 @@ April 2026), the passport uses the most recent value and records the discrepancy
 
 | Scan with your phone | Passport |
 |:-:|---|
-| <img src="qr/vw-id-polo-lfp-37.svg" width="130" alt="QR code: ID. Polo 37 kWh LFP battery passport"> | **[ID. Polo 37 kWh LFP Battery](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=vw-id-polo-lfp-37)**<br>`VWAG-LFP37-20260914-004217-33`<br>[As a recycler](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=vw-id-polo-lfp-37&role=legitimate-interest#composition) · [As an authority](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=vw-id-polo-lfp-37&role=authority#conformity) · [Gap report](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=vw-id-polo-lfp-37#gaps) |
+| <img src="qr/vw-id-polo-lfp-37.svg" width="130" alt="QR code: ID. Polo 37 kWh LFP battery passport"> | Restricted sections: password **`1234`**<br>**[ID. Polo 37 kWh LFP Battery](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=vw-id-polo-lfp-37)**<br>`VWAG-LFP37-20260914-004217-33`<br>[As a recycler](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=vw-id-polo-lfp-37&role=legitimate-interest#composition) · [As an authority](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=vw-id-polo-lfp-37&role=authority#conformity) · [Gap report](https://kiran-koppera.github.io/digital-product-passport/passport.html?id=vw-id-polo-lfp-37#gaps) |
 
 ## Data model
 
@@ -117,6 +118,7 @@ Development tooling:
 ```bash
 pip install -r requirements-dev.txt
 python scripts/validate_data.py --gaps   # schema + Annex XIII rules + gap report
+python scripts/seal_passport.py          # encrypt restricted sections -> data/sealed/ (run after editing a record)
 python scripts/generate_qr.py            # regenerate QR codes from the registry
 python scripts/verify_qr.py              # decode-test every QR code (add --online for the live site)
 python -m unittest discover -s tests
@@ -134,7 +136,8 @@ Scaffold another battery with `python scripts/new_passport.py <id> "<Name>" --ui
 ├── assets/{css,js,img}/                               # styles, ES modules, icon
 ├── data/
 │   ├── passports.json                                 # registry + Annex XIII access groups
-│   ├── passports/vw-id-polo-lfp-37.json               # the passport record
+│   ├── passports/vw-id-polo-lfp-37.json               # the passport record (plain-text source)
+│   ├── sealed/vw-id-polo-lfp-37.json                  # published record, restricted sections encrypted
 │   └── schema/passport.schema.json
 ├── qr/                                                # generated QR code (SVG + PNG)
 ├── scripts/                                           # scaffold, validate, generate & verify QR, screenshots
@@ -150,7 +153,7 @@ Scaffold another battery with `python scripts/new_passport.py <id> "<Name>" --ui
 | Annex XIII data model with provenance and sources | ✅ Implemented |
 | Public data from Volkswagen Group publications | ✅ Implemented, with sources |
 | Gap report against Annex XIII | ✅ Implemented |
-| Access groups | ✅ Client-side demo. Static hosting cannot protect data; production needs server-side identity. |
+| Encrypted restricted sections | ✅ AES-256-GCM in the published site, password `1234`. A 4-digit demo password can be brute-forced offline, and the plain-text source is in this public repo; production needs server-side identity and per-role keys. |
 | Dynamic state-of-health data | ⚠️ Simulated |
 | Article 7 carbon footprint declaration | ❌ Not published by Volkswagen. An indicative literature value is shown and labelled. |
 | Legal compliance with Regulation (EU) 2023/1542 | ❌ Not claimed. Only the economic operator can issue a passport. |

@@ -235,6 +235,16 @@ svg { flex-shrink: 0; }
 .locked > svg { width: 22px; height: 22px; color: var(--warn); margin-top: 1px; }
 .locked p { margin-bottom: 10px; font-size: .92rem; }
 
+.badge-enc { background: var(--surface); color: var(--muted); }
+.lock-body { flex: 1; min-width: 0; }
+.lock-form { display: flex; gap: 8px; flex-wrap: wrap; max-width: 420px; }
+.lock-form input { flex: 1; min-width: 160px; font: inherit; padding: 8px 12px; border-radius: 9px; border: 1px solid var(--line-2); background: var(--surface-2); color: var(--ink); }
+.lock-form input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.locked .err { color: var(--bad); font-size: .85rem; margin: 6px 0 0; min-height: 1.2em; }
+.locked .hint { font-size: .8rem; color: var(--muted); margin: 0; }
+.linklike { font: inherit; color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.gap-more { display: flex; gap: 6px; align-items: center; padding-bottom: 18px; padding-top: 0; }
+.gap-more svg { width: 14px; height: 14px; }
 .soh-chart { margin: 14px 22px 0; padding: 14px 16px 8px; background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-sm); }
 .soh-chart figcaption { display: flex; gap: 8px; align-items: center; font-size: .84rem; font-weight: 600; margin-bottom: 6px; }
 .soh-chart svg { width: 100%; height: auto; display: block; }

@@ -1,0 +1,815 @@
+{
+  "id": "vw-id-polo-lfp-37",
+  "uid": "VWAG-LFP37-20260914-004217-33",
+  "productName": "ID. Polo 37 kWh LFP Battery",
+  "batteryCategory": "Electric vehicle battery",
+  "chemistry": "LFP",
+  "vehicle": "Volkswagen ID. Polo · 85 kW and 99 kW versions",
+  "status": "original",
+  "dataVersion": "1.0.0",
+  "lastUpdated": "2026-11-17",
+  "caseStudy": "Independent case study built only from public Volkswagen Group publications, the regulation text and cited literature. It is not issued, endorsed or verified by Volkswagen AG. The serial number, date of manufacture and state-of-health data are illustrative.",
+  "sources": [
+    {
+      "id": "vw-world-premiere",
+      "title": "The all-new electric ID. Polo – World premiere",
+      "publisher": "Volkswagen Newsroom",
+      "date": "2026-04-29",
+      "url": "https://www.volkswagen-newsroom.com/en/the-all-new-electric-id-polo-world-premiere-20343"
+    },
+    {
+      "id": "vw-drive-data",
+      "title": "ID. Polo international media drive – Drive system versions and performance data",
+      "publisher": "Volkswagen Newsroom",
+      "date": "2026-09-09",
+      "url": "https://www.volkswagen-newsroom.com/en/the-all-new-electric-id-polo-international-media-drive-20668/drive-system-versions-and-performance-data-20669"
+    },
+    {
+      "id": "vw-bestseller",
+      "title": "Reinventing a bestseller: ID. Polo on the road to series production",
+      "publisher": "Volkswagen Newsroom",
+      "date": "2025-12-15",
+      "url": "https://www.volkswagen-newsroom.com/en/press-releases/reinventing-a-bestseller-id-polo-on-the-road-to-series-production-20032"
+    },
+    {
+      "id": "vwg-battery-journey",
+      "title": "A battery's journey (Martorell battery system assembly)",
+      "publisher": "Volkswagen Group",
+      "date": "2026-05-07",
+      "url": "https://www.volkswagen-group.com/en/articles/a-batterys-journey-20368"
+    },
+    {
+      "id": "vwg-battery-tech",
+      "title": "Electric car battery technology (FAQ)",
+      "publisher": "Volkswagen Group",
+      "url": "https://www.volkswagen-group.com/en/electric-car-battery-technology-19028"
+    },
+    {
+      "id": "vwg-supply-chain",
+      "title": "Sustainability in the supply chain",
+      "publisher": "Volkswagen Group",
+      "url": "https://www.volkswagen-group.com/en/sustainability-in-the-supply-chain-16113"
+    },
+    {
+      "id": "vwg-salzgitter",
+      "title": "Start of European battery cell production: PowerCo commissions Salzgitter gigafactory",
+      "publisher": "Volkswagen Group",
+      "date": "2025-12-17",
+      "url": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045"
+    },
+    {
+      "id": "powerco-unified-cell",
+      "title": "The PowerCo Unified Cell",
+      "publisher": "PowerCo SE",
+      "url": "https://www.powerco.de/en/product/unified-cell.html"
+    },
+    {
+      "id": "eu-2023-1542",
+      "title": "Regulation (EU) 2023/1542 concerning batteries and waste batteries",
+      "publisher": "Official Journal of the European Union",
+      "date": "2023-07-28",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/1542/oj"
+    },
+    {
+      "id": "eu-crma",
+      "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex II",
+      "publisher": "Official Journal of the European Union",
+      "date": "2024-05-03",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1252/oj"
+    },
+    {
+      "id": "battery-pass-guidance",
+      "title": "Battery Passport Content Guidance",
+      "publisher": "Battery Pass consortium",
+      "date": "2023",
+      "url": "https://thebatterypass.eu/assets/images/content-guidance/pdf/2023_Battery_Pass_Content_Guidance.pdf"
+    },
+    {
+      "id": "lit-lfp-sib-2026",
+      "title": "Sodium-ion packs 25 % less carbon-intensive than LFP, say researchers",
+      "publisher": "ESS News",
+      "date": "2026-09-28",
+      "url": "https://www.ess-news.com/2026/09/28/sodium-ion-packs-25-less-carbon-intensive-than-lfp-say-researchers/"
+    },
+    {
+      "id": "lit-lfp-lca-2024",
+      "title": "Life cycle assessment of an LFP battery pack (literature review of 1 kWh production values)",
+      "publisher": "Green Manufacturing Open, OAE Publishing",
+      "date": "2024",
+      "url": "https://oaepublish.com/articles/gmo.2024.092201"
+    }
+  ],
+  "sections": [
+    {
+      "key": "identification",
+      "title": "Identification & labelling",
+      "annex": "Annex XIII 1(a) · Annex VI Part A",
+      "access": "public",
+      "summary": "Labelling information that every scan of the QR code shows.",
+      "fields": [
+        {
+          "key": "uid",
+          "label": "Unique battery identifier",
+          "annex": "Art. 77(3)",
+          "value": "VWAG-LFP37-20260914-004217-33",
+          "format": "mono",
+          "provenance": "simulated",
+          "sources": [],
+          "note": "Illustrative serial in the project's UID scheme. A real passport uses the identifier the economic operator assigns."
+        },
+        {
+          "key": "category",
+          "label": "Battery category",
+          "annex": "Art. 3(1)(14)",
+          "value": "Electric vehicle battery",
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "operator",
+          "label": "Economic operator placing the battery on the market",
+          "annex": "Annex VI A(1)",
+          "value": "Volkswagen AG, Berliner Ring 2, 38440 Wolfsburg, Germany",
+          "provenance": "official",
+          "sources": [
+            "vw-world-premiere"
+          ],
+          "note": "Vehicle manufacturer. The cells are a unified cell design developed with Volkswagen subsidiary PowerCo."
+        },
+        {
+          "key": "application",
+          "label": "Vehicle application",
+          "value": "Volkswagen ID. Polo, 85 kW (116 PS) and 99 kW (135 PS) versions · MEB+ platform · front-wheel drive",
+          "provenance": "official",
+          "sources": [
+            "vw-world-premiere",
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "place",
+          "label": "Place of manufacture (battery system)",
+          "annex": "Annex VI A(4)",
+          "value": "Battery system assembly, Workshop 20, SEAT & CUPRA plant, Martorell (Barcelona), Spain",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-journey",
+            "vw-bestseller"
+          ]
+        },
+        {
+          "key": "date",
+          "label": "Date of manufacture",
+          "annex": "Annex VI A(5)",
+          "value": "2026-09-14",
+          "format": "date",
+          "provenance": "simulated",
+          "sources": []
+        },
+        {
+          "key": "weight",
+          "label": "Battery weight",
+          "annex": "Annex VI A(6)",
+          "value": null,
+          "unit": "kg",
+          "provenance": "not-disclosed",
+          "sources": [],
+          "note": "Not published. For context: the vehicle's EU kerb weight starts at 1,568 kg."
+        },
+        {
+          "key": "capacity-label",
+          "label": "Energy content (net, usable)",
+          "annex": "Annex VI A(7)",
+          "value": "37",
+          "unit": "kWh",
+          "provenance": "official",
+          "sources": [
+            "vw-world-premiere",
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "chemistry",
+          "label": "Battery chemistry",
+          "annex": "Annex VI A(8)",
+          "value": "Lithium iron phosphate (LiFePO₄, LFP)",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "hazardous",
+          "label": "Hazardous substances (other than Hg, Cd, Pb)",
+          "annex": "Annex VI A(9)",
+          "value": [
+            "Lithium hexafluorophosphate (LiPF₆) electrolyte salt",
+            "Flammable organic carbonate solvents"
+          ],
+          "provenance": "estimated",
+          "sources": [
+            "battery-pass-guidance"
+          ],
+          "note": "Typical of LFP cells with liquid electrolyte. The cell safety data sheet is not public."
+        },
+        {
+          "key": "extinguishing",
+          "label": "Usable extinguishing agent",
+          "annex": "Annex VI A(10)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "crm",
+          "label": "Critical raw materials present (> 0.1 % w/w)",
+          "annex": "Annex VI A(11)",
+          "value": [
+            "Lithium",
+            "Natural graphite",
+            "Phosphorus (phosphate)",
+            "Copper",
+            "Aluminium"
+          ],
+          "provenance": "estimated",
+          "sources": [
+            "eu-crma"
+          ],
+          "note": "Inferred from LFP chemistry and the EU critical raw materials list. No cobalt, no nickel, no manganese."
+        }
+      ]
+    },
+    {
+      "key": "carbon-footprint",
+      "title": "Carbon footprint",
+      "annex": "Annex XIII 1(c) · Art. 7",
+      "access": "public",
+      "summary": "Volkswagen has not published an Article 7 declaration yet. The indicative values below come from peer-reviewed literature and are labelled as such.",
+      "fields": [
+        {
+          "key": "cf-declared",
+          "label": "Declared carbon footprint (per kWh of total energy over service life)",
+          "annex": "Art. 7(1)",
+          "value": null,
+          "unit": "kg CO₂e/kWh",
+          "provenance": "not-disclosed",
+          "sources": [
+            "eu-2023-1542"
+          ],
+          "note": "The declaration becomes mandatory for EV batteries once the Commission's delegated act on the calculation method applies."
+        },
+        {
+          "key": "cf-class",
+          "label": "Carbon footprint performance class",
+          "annex": "Art. 7(2)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": [
+            "eu-2023-1542"
+          ],
+          "note": "Classes will be defined by a later delegated act."
+        },
+        {
+          "key": "cf-lit",
+          "label": "Indicative cradle-to-gate footprint, LFP pack (literature)",
+          "value": "75.5",
+          "unit": "kg CO₂e/kWh",
+          "provenance": "literature",
+          "sources": [
+            "lit-lfp-sib-2026"
+          ],
+          "note": "Factory-data LCA of a 1 kWh LFP pack (2026)."
+        },
+        {
+          "key": "cf-range",
+          "label": "Published range for LFP pack production",
+          "value": "46 – 109",
+          "unit": "kg CO₂e/kWh",
+          "provenance": "literature",
+          "sources": [
+            "lit-lfp-lca-2024"
+          ]
+        },
+        {
+          "key": "cf-pack",
+          "label": "Indicative footprint of this pack",
+          "value": "≈ 2.9",
+          "unit": "t CO₂e",
+          "provenance": "derived",
+          "sources": [
+            "lit-lfp-sib-2026",
+            "vwg-battery-journey"
+          ],
+          "note": "75.5 kg CO₂e/kWh × 38.5 kWh installed energy. Not an Article 7 value."
+        },
+        {
+          "key": "cf-cells-energy",
+          "label": "Electricity in Group cell production",
+          "value": "PowerCo Salzgitter gigafactory runs entirely on wind and solar power",
+          "provenance": "official",
+          "sources": [
+            "vwg-salzgitter"
+          ],
+          "note": "Salzgitter started with NMC unified cells; the LFP variant was announced to follow. The production site of this pack's LFP cells is not published."
+        },
+        {
+          "key": "cf-use",
+          "label": "Use-phase energy consumption (WLTP, combined)",
+          "value": "13.6 – 13.8",
+          "unit": "kWh/100 km",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "due-diligence",
+      "title": "Supply chain due diligence",
+      "annex": "Annex XIII 1(d) · Art. 52",
+      "access": "public",
+      "summary": "Information from the economic operator's public due diligence reporting.",
+      "fields": [
+        {
+          "key": "dd-system",
+          "label": "Due diligence management system",
+          "value": "Raw Materials Due Diligence Management System, introduced 2020, based on the OECD Due Diligence Guidance",
+          "provenance": "official",
+          "sources": [
+            "vwg-supply-chain"
+          ]
+        },
+        {
+          "key": "dd-resc",
+          "label": "Supplier risk management",
+          "value": "Responsible Supply Chain System (ReSC)",
+          "provenance": "official",
+          "sources": [
+            "vwg-supply-chain"
+          ]
+        },
+        {
+          "key": "dd-irma",
+          "label": "Mining standards",
+          "value": "Cooperation with the Initiative for Responsible Mining Assurance (IRMA)",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-tech"
+          ]
+        },
+        {
+          "key": "dd-report",
+          "label": "Public reporting",
+          "value": "Annual Responsible Raw Materials Report (latest edition: 2025)",
+          "provenance": "official",
+          "sources": [
+            "vwg-supply-chain"
+          ]
+        },
+        {
+          "key": "dd-verified",
+          "label": "Third-party verified battery due diligence report",
+          "annex": "Art. 52(3)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "content",
+      "title": "Recycled & renewable content",
+      "annex": "Annex XIII 1(e)(f) · Art. 8",
+      "access": "public",
+      "summary": "LFP contains no cobalt or nickel, so only lithium recycled content is relevant for this battery.",
+      "fields": [
+        {
+          "key": "rc-li",
+          "label": "Recycled lithium share",
+          "value": null,
+          "unit": "%",
+          "provenance": "not-disclosed",
+          "sources": [],
+          "note": "Legal minimum: 6 % from 18 August 2031, 12 % from 18 August 2036."
+        },
+        {
+          "key": "rc-co",
+          "label": "Recycled cobalt share",
+          "value": "Not applicable: no cobalt in LFP",
+          "provenance": "derived",
+          "sources": [
+            "vw-drive-data"
+          ],
+          "note": "LFP cathodes (LiFePO₄) contain no cobalt; Article 8 shares only apply to metals present."
+        },
+        {
+          "key": "rc-ni",
+          "label": "Recycled nickel share",
+          "value": "Not applicable: no nickel in LFP",
+          "provenance": "derived",
+          "sources": [
+            "vw-drive-data"
+          ],
+          "note": "LFP cathodes (LiFePO₄) contain no nickel."
+        },
+        {
+          "key": "rc-pb",
+          "label": "Recycled lead share",
+          "value": "Not applicable: no lead in the traction battery",
+          "provenance": "derived",
+          "sources": [],
+          "note": "Lithium-ion traction batteries contain no lead; the lead target applies to lead-acid batteries."
+        },
+        {
+          "key": "renewable",
+          "label": "Share of renewable content",
+          "annex": "Annex XIII 1(f)",
+          "value": null,
+          "unit": "%",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "rc-targets",
+          "label": "Minimum recycled content (Art. 8)",
+          "value": [
+            "2031: cobalt 16 %, lithium 6 %, nickel 6 %, lead 85 %",
+            "2036: cobalt 26 %, lithium 12 %, nickel 15 %, lead 85 %"
+          ],
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "performance",
+      "title": "Performance & durability",
+      "annex": "Annex XIII 1(g)–(p) · Annex IV",
+      "access": "public",
+      "summary": "Electrochemical performance and durability parameters. Values Volkswagen has not published are shown as gaps or as estimates with their method.",
+      "fields": [
+        {
+          "key": "e-net",
+          "label": "Usable energy (net)",
+          "value": "37",
+          "unit": "kWh",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "e-gross",
+          "label": "Installed energy (gross)",
+          "value": "38.5",
+          "unit": "kWh",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-journey"
+          ],
+          "note": "Martorell assembly reports a 38.5 kWh version with 102 cells for the ID. Polo and CUPRA Raval."
+        },
+        {
+          "key": "architecture",
+          "label": "Pack architecture",
+          "value": "Cell-to-pack: cells go straight into the pack with no module housings. Three packs form the energy storage unit. The housing is load-bearing in the body structure, flat in the underbody.",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data",
+            "vw-bestseller"
+          ]
+        },
+        {
+          "key": "cells",
+          "label": "Number of cells",
+          "value": "102",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-journey"
+          ]
+        },
+        {
+          "key": "cell-format",
+          "label": "Cell format",
+          "value": "Prismatic Unified Cell, co-developed with PowerCo",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data",
+            "powerco-unified-cell"
+          ]
+        },
+        {
+          "key": "density-gain",
+          "label": "Energy density gain from cell-to-pack",
+          "value": "≈ +10",
+          "unit": "%",
+          "provenance": "official",
+          "sources": [
+            "vw-bestseller"
+          ]
+        },
+        {
+          "key": "cell-energy",
+          "label": "Energy per cell",
+          "value": "≈ 377",
+          "unit": "Wh",
+          "provenance": "derived",
+          "sources": [
+            "vwg-battery-journey"
+          ],
+          "note": "38.5 kWh ÷ 102 cells."
+        },
+        {
+          "key": "v-nom",
+          "label": "Nominal voltage",
+          "value": "≈ 326",
+          "unit": "V",
+          "provenance": "estimated",
+          "sources": [
+            "battery-pass-guidance"
+          ],
+          "note": "Assumes all 102 cells in series at 3.2 V, typical for LFP. Volkswagen has not published the pack voltage."
+        },
+        {
+          "key": "v-range",
+          "label": "Minimum and maximum voltage",
+          "annex": "Annex XIII 1(h)",
+          "value": null,
+          "unit": "V",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "rated-capacity",
+          "label": "Rated capacity",
+          "annex": "Annex XIII 1(g)",
+          "value": "≈ 118",
+          "unit": "Ah",
+          "provenance": "estimated",
+          "sources": [],
+          "note": "38.5 kWh ÷ 326 V. To be replaced by the declared value."
+        },
+        {
+          "key": "power",
+          "label": "Original power capability",
+          "annex": "Annex XIII 1(i)",
+          "value": "≥ 99",
+          "unit": "kW",
+          "provenance": "derived",
+          "sources": [
+            "vw-drive-data"
+          ],
+          "note": "Lower bound implied by the 99 kW drive. Peak battery power is not published."
+        },
+        {
+          "key": "dc",
+          "label": "DC charging power (max.)",
+          "value": "88",
+          "unit": "kW",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ],
+          "note": "Media-drive data, September 2026. The world-premiere release (April 2026) states 90 kW."
+        },
+        {
+          "key": "dc-time",
+          "label": "DC charging 10 – 80 %",
+          "value": "≈ 23",
+          "unit": "min",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "ac",
+          "label": "AC charging power (max.)",
+          "value": "11",
+          "unit": "kW",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "v2l",
+          "label": "Bidirectional charging",
+          "value": "Vehicle-to-Load as standard, up to 3.6 kW",
+          "provenance": "official",
+          "sources": [
+            "vw-world-premiere"
+          ]
+        },
+        {
+          "key": "range",
+          "label": "WLTP range",
+          "value": "323 – 331",
+          "unit": "km",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "warranty",
+          "label": "Commercial warranty",
+          "annex": "Annex XIII 1(m)",
+          "value": "8 years or 160,000 km, at least 70 % state of health",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-tech"
+          ]
+        },
+        {
+          "key": "cycles",
+          "label": "Expected lifetime in cycles (and reference test)",
+          "annex": "Annex XIII 1(j)",
+          "value": null,
+          "unit": "cycles",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "exhaustion",
+          "label": "Capacity threshold for exhaustion",
+          "annex": "Annex XIII 1(k)",
+          "value": null,
+          "unit": "%",
+          "provenance": "not-disclosed",
+          "sources": [],
+          "note": "The warranty floor is 70 % state of health."
+        },
+        {
+          "key": "temp",
+          "label": "Temperature range when not in use",
+          "annex": "Annex XIII 1(l)",
+          "value": null,
+          "unit": "°C",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "rte",
+          "label": "Round-trip energy efficiency (initial and at 50 % cycle life)",
+          "annex": "Annex XIII 1(n)",
+          "value": null,
+          "unit": "%",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "resistance",
+          "label": "Internal resistance (cell and pack)",
+          "annex": "Annex XIII 1(o)",
+          "value": null,
+          "unit": "mΩ",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "c-rate",
+          "label": "C-rate of cycle-life test",
+          "annex": "Annex XIII 1(p)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "key": "end-of-life",
+      "title": "End of life & collection",
+      "annex": "Annex XIII 1 · Art. 74",
+      "access": "public",
+      "summary": "Information for end users and waste operators on take-back, collection and recycling.",
+      "fields": [
+        {
+          "key": "takeback",
+          "label": "Take-back",
+          "value": "Producers must take back waste EV batteries free of charge (extended producer responsibility).",
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "symbol",
+          "label": "Separate collection",
+          "value": "Crossed-out wheeled bin symbol: do not dispose of with household or mixed waste.",
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "recovery",
+          "label": "Group raw material recovery",
+          "value": "Valuable raw materials are recovered from old batteries and used for new batteries.",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-tech"
+          ]
+        },
+        {
+          "key": "efficiency",
+          "label": "Recycling efficiency target, lithium-based batteries",
+          "value": [
+            "65 % by mass by 31 December 2025",
+            "70 % by mass by 31 December 2030"
+          ],
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "li-recovery",
+          "label": "Lithium material recovery target",
+          "value": [
+            "50 % by 31 December 2027",
+            "80 % by 31 December 2031"
+          ],
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "second-life",
+          "label": "Second-life and repurposing programme",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "key": "composition",
+      "title": "Detailed composition",
+      "annex": "Annex XIII 2(a)",
+      "access": "legitimate-interest",
+      "summary": "Materials used in the cathode, anode and electrolyte, for repairers, recyclers and second-life operators.",
+      "fieldCount": 7,
+      "sealed": true
+    },
+    {
+      "key": "dismantling",
+      "title": "Repair & dismantling",
+      "annex": "Annex XIII 2(b)–(d)",
+      "access": "legitimate-interest",
+      "summary": "Part numbers, spare part sources, dismantling information and safety measures.",
+      "fieldCount": 6,
+      "sealed": true
+    },
+    {
+      "key": "conformity",
+      "title": "Conformity & test reports",
+      "annex": "Annex XIII 3",
+      "access": "authority",
+      "summary": "Test reports proving compliance, for notified bodies, market surveillance authorities and the Commission.",
+      "fieldCount": 5,
+      "sealed": true
+    },
+    {
+      "key": "state-of-health",
+      "title": "State of health & battery status",
+      "annex": "Annex XIII 4 · Art. 14 · Annex VII",
+      "access": "legitimate-interest",
+      "dynamic": true,
+      "summary": "Dynamic data from the battery management system. All values in this section are simulated to show how a live passport updates.",
+      "fieldCount": 9,
+      "sealed": true
+    }
+  ],
+  "stats": {
+    "total": 86,
+    "filled": 64,
+    "gaps": 22,
+    "byProvenance": {
+      "official": 27,
+      "derived": 7,
+      "regulation": 8,
+      "literature": 2,
+      "estimated": 9,
+      "simulated": 11,
+      "not-disclosed": 22
+    }
+  },
+  "sealed": {
+    "alg": "AES-256-GCM",
+    "kdf": "PBKDF2-SHA256",
+    "iterations": 600000,
+    "salt": "OTKH1Mfolr5aXfAg/8w9BA==",
+    "iv": "/L1AkDad9zT9uuaQ",
+    "aad": "passport id",
+    "ciphertext": "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"
+  }
+}

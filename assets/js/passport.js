@@ -1,7 +1,8 @@
 // Passport viewer: passport.html?id=<passport-id>[&role=<access level>][#section-key]
+// Loads data/sealed/<id>.json. Restricted sections are encrypted and need the access password.
 import {
-  LEVELS, PROVENANCE, allFields, canSee, coverage, escapeHtml, fetchJSON, formatDate, getRole, icons,
-  initBrand, initThemeToggle, provenanceBar, setRole,
+  LEVELS, PROVENANCE, canSee, coverage, escapeHtml, fetchJSON, formatDate, getRole, icons, initBrand,
+  initThemeToggle, lockSealed, provenanceBar, setRole, unlockFromSession, unlockSealed,
 } from "./common.js";
 
 initThemeToggle();
@@ -12,10 +13,20 @@ const roleBar = document.getElementById("role-switch");
 const id = (new URLSearchParams(location.search).get("id") || "").trim().toLowerCase();
 
 let registry, record, role = getRole();
+let unlocked = null; // decrypted payload: { sections, sohHistory }
 let srcIndex = {};
 
 const level = (key) => registry.accessLevels.find((a) => a.key === key);
-const field = (key) => allFields(record).find((f) => f.key === key);
+
+/** Sections in display order, with encrypted stubs replaced by decrypted sections when unlocked. */
+function sections() {
+  if (!unlocked) return record.sections;
+  const byKey = Object.fromEntries(unlocked.sections.map((s) => [s.key, s]));
+  return record.sections.map((s) => (s.sealed && byKey[s.key]) || s);
+}
+const fieldsOf = (secs) => secs.flatMap((s) => s.fields || []);
+const field = (key) => fieldsOf(sections()).find((f) => f.key === key);
+const isOpen = (s) => canSee(role, s.access) && !s.sealed;
 
 function sourceRefs(f) {
   if (!f.sources.length) return "";
@@ -74,70 +85,99 @@ function sohChart(points) {
 
 function sectionCard(s) {
   const lv = level(s.access);
-  const visible = canSee(role, s.access);
+  const roleOk = canSee(role, s.access);
+  const open = roleOk && !s.sealed;
+  const count = s.fields ? s.fields.length : s.fieldCount;
   const badge = s.access === "public"
     ? `<span class="badge badge-public">Public</span>`
-    : `<span class="badge badge-restricted">${visible ? icons.unlock : icons.lock} ${escapeHtml(lv.label)}</span>`;
+    : `<span class="badge badge-restricted">${open ? icons.unlock : icons.lock} ${escapeHtml(lv.label)}</span>`;
   const head = `
     <header class="sec-head">
-      <div><h2>${escapeHtml(s.title)}</h2><span class="annex">${escapeHtml(s.annex)}</span></div>
-      <div class="sec-badges">${s.dynamic ? `<span class="badge badge-live">${icons.pulse} Dynamic data</span>` : ""}${badge}</div>
+      <div><h2 id="h-${s.key}">${escapeHtml(s.title)}</h2><span class="annex">${escapeHtml(s.annex)}</span></div>
+      <div class="sec-badges">${s.dynamic ? `<span class="badge badge-live">${icons.pulse} Dynamic data</span>` : ""}${s.access !== "public" ? `<span class="badge badge-enc">${icons.shield} ${open ? "Decrypted" : "Encrypted"}</span>` : ""}${badge}</div>
     </header>`;
-  if (!visible) {
-    const target = s.access;
+
+  if (!roleOk) {
     return `
       <section class="card sec sec-locked" id="${s.key}" aria-labelledby="h-${s.key}">
-        ${head.replace("<h2>", `<h2 id="h-${s.key}">`)}
+        ${head}
         <div class="locked">
           ${icons.lock}
           <div>
             <p><strong>Restricted to ${escapeHtml(lv.label.toLowerCase())}.</strong> ${escapeHtml(lv.who)} (${escapeHtml(lv.annex)}).
-              ${s.fields.length} attributes.</p>
-            <button class="btn btn-ghost btn-sm" type="button" data-role="${target}">View as ${escapeHtml(lv.label.toLowerCase())} (demo)</button>
+              ${count} attributes, encrypted.</p>
+            <button class="btn btn-ghost btn-sm" type="button" data-role="${s.access}">View as ${escapeHtml(lv.label.toLowerCase())}</button>
+          </div>
+        </div>
+      </section>`;
+  }
+  if (s.sealed) {
+    return `
+      <section class="card sec sec-locked" id="${s.key}" aria-labelledby="h-${s.key}">
+        ${head}
+        <div class="locked">
+          ${icons.lock}
+          <div class="lock-body">
+            <p><strong>Encrypted.</strong> ${count} attributes are stored as AES-256-GCM ciphertext. Enter the access password to decrypt them in your browser.</p>
+            <form class="lock-form" novalidate>
+              <label class="sr-only" for="pw-${s.key}">Access password</label>
+              <input id="pw-${s.key}" name="pw" type="password" inputmode="numeric" autocomplete="off" placeholder="Access password" required>
+              <button class="btn btn-primary btn-sm" type="submit">${icons.unlock} Unlock</button>
+            </form>
+            <p class="err" role="alert" aria-live="polite"></p>
+            <p class="hint">Demo password: <code>1234</code>. Published for this case study.</p>
           </div>
         </div>
       </section>`;
   }
   return `
     <section class="card sec" id="${s.key}" aria-labelledby="h-${s.key}">
-      ${head.replace("<h2>", `<h2 id="h-${s.key}">`)}
+      ${head}
       ${s.summary ? `<p class="sec-summary">${escapeHtml(s.summary)}</p>` : ""}
-      ${s.key === "state-of-health" ? sohChart(record.sohHistory) : ""}
+      ${s.key === "state-of-health" ? sohChart(unlocked?.sohHistory) : ""}
       <dl class="fields">${s.fields.map(fieldRow).join("")}</dl>
     </section>`;
 }
 
 function kpi(icon, label, value, sub, access = "public", cls = "") {
-  const locked = !canSee(role, access);
+  const locked = !canSee(role, access) || (access !== "public" && !unlocked);
   return `
     <div class="kpi ${cls}">
       <span class="kpi-ico">${locked ? icons.lock : icon}</span>
       <span class="kpi-label">${label}</span>
-      <b class="kpi-value">${locked ? "Restricted" : value}</b>
-      <span class="kpi-sub">${locked ? escapeHtml(level(access).label) : sub}</span>
+      <b class="kpi-value">${locked ? (canSee(role, access) ? "Encrypted" : "Restricted") : value}</b>
+      <span class="kpi-sub">${locked ? (canSee(role, access) ? "Enter the access password" : escapeHtml(level(access).label)) : sub}</span>
     </div>`;
 }
 
 function render() {
   const c = coverage(record);
-  const v = (k) => field(k)?.value;
-  const visibleSections = record.sections.filter((s) => canSee(role, s.access));
-  const gaps = record.sections.flatMap((s) => s.fields.filter((f) => f.value === null).map((f) => ({ s, f })));
+  const secs = sections();
+  const v = (k) => field(k)?.value ?? "";
+  const visible = secs.filter(isOpen);
+  const knownGaps = secs.flatMap((s) => (s.fields || []).filter((f) => f.value === null).map((f) => ({ s, f })));
+  const hiddenGaps = c.gaps - knownGaps.length;
 
   const nav = LEVELS.map((lk) => {
-    const secs = record.sections.filter((s) => s.access === lk);
-    if (!secs.length) return "";
-    const open = canSee(role, lk);
+    const group = secs.filter((s) => s.access === lk);
+    if (!group.length) return "";
+    const open = canSee(role, lk) && (lk === "public" || unlocked);
     return `
       <div class="nav-group">
         <span class="nav-level">${open ? "" : icons.lock}${escapeHtml(level(lk).label)}</span>
-        ${secs.map((s) => `<a href="#${s.key}" class="${open ? "" : "is-locked"}">${escapeHtml(s.title)}</a>`).join("")}
+        ${group.map((s) => `<a href="#${s.key}" class="${isOpen(s) ? "" : "is-locked"}">${escapeHtml(s.title)}</a>`).join("")}
       </div>`;
   }).join("") + `
       <div class="nav-group">
         <span class="nav-level">Evidence</span>
         <a href="#gaps">Data gaps</a><a href="#sources">Sources</a>
       </div>`;
+
+  const accessNote = unlocked
+    ? `${icons.unlock}<span>Viewing as <strong>${escapeHtml(level(role).label)}</strong>: ${visible.length} of ${secs.length} sections visible.
+        Restricted data is decrypted in this browser for this session. <button class="linklike" type="button" data-lock>Lock again</button></span>`
+    : `${icons.lock}<span>Viewing as <strong>${escapeHtml(level(role).label)}</strong>: ${visible.length} of ${secs.length} sections visible.
+        Restricted sections are encrypted (AES-256-GCM). Choose an access group at the top, then enter the access password.</span>`;
 
   app.innerHTML = `
     <section class="pp-hero card" aria-labelledby="pp-title">
@@ -168,7 +208,7 @@ function render() {
     <section class="kpis" aria-label="Key facts">
       ${kpi(icons.cell, "Chemistry", "LFP", "LiFePO₄ · cobalt- and nickel-free")}
       ${kpi(icons.bolt, "Usable energy", `${v("e-net")} <small>kWh</small>`, `${v("e-gross")} kWh installed · ${v("cells")} cells`)}
-      ${kpi(icons.bolt, "DC charging", `${v("dc")} <small>kW</small>`, `10–80 % in ≈ ${v("dc-time").replace("≈ ", "")} min`)}
+      ${kpi(icons.bolt, "DC charging", `${v("dc")} <small>kW</small>`, `10–80 % in ≈ ${String(v("dc-time")).replace("≈ ", "")} min`)}
       ${kpi(icons.shield, "Warranty", `8 <small>years</small>`, "or 160,000 km · ≥ 70 % SoH")}
       ${kpi(icons.leaf, "Carbon footprint", `≈ ${v("cf-lit")} <small>kg/kWh</small>`, "CO₂e, indicative (literature) · Art. 7 value not yet declared", "public", "kpi-warn")}
       ${kpi(icons.pulse, "State of health", `${v("soh")} <small>%</small>`, `${v("efc")} full cycles · simulated`, "legitimate-interest")}
@@ -186,19 +226,19 @@ function render() {
             <div class="quality-score"><b>${c.pct}%</b><span>coverage</span></div>
           </div>
           ${provenanceBar(record)}
-          <p class="role-note">${icons.info}<span>Viewing as <strong>${escapeHtml(level(role).label)}</strong>: ${visibleSections.length} of ${record.sections.length} sections visible.
-            Use the access switch at the top to see what each group in Annex XIII can read.</span></p>
+          <p class="role-note">${accessNote}</p>
         </section>
 
-        ${record.sections.map(sectionCard).join("")}
+        ${secs.map(sectionCard).join("")}
 
         <section class="card sec" id="gaps" aria-labelledby="h-gaps">
           <header class="sec-head"><div><h2 id="h-gaps">Data gaps</h2><span class="annex">Gap report against Annex XIII</span></div>
-            <div class="sec-badges"><span class="badge badge-gap">${gaps.length} open</span></div></header>
+            <div class="sec-badges"><span class="badge badge-gap">${c.gaps} open</span></div></header>
           <p class="sec-summary">Attributes the regulation requires or the Battery Pass guidance recommends, which Volkswagen has not published. A manufacturer-issued passport must fill these before 18 February 2027.</p>
-          <ol class="gap-list">${gaps.map(({ s, f }) => `
-            <li><a href="#${canSee(role, s.access) ? `f-${f.key}` : s.key}">${escapeHtml(f.label)}</a>
+          <ol class="gap-list">${knownGaps.map(({ s, f }) => `
+            <li><a href="#${isOpen(s) ? `f-${f.key}` : s.key}">${escapeHtml(f.label)}</a>
               <span>${escapeHtml(s.title)}${f.annex ? ` · ${escapeHtml(f.annex)}` : ""}</span></li>`).join("")}</ol>
+          ${hiddenGaps > 0 ? `<p class="sec-summary gap-more">${icons.lock} ${hiddenGaps} more ${hiddenGaps === 1 ? "gap is" : "gaps are"} inside the encrypted sections.</p>` : ""}
         </section>
 
         <section class="card sec" id="sources" aria-labelledby="h-src">
@@ -232,20 +272,52 @@ function renderRoleBar() {
     </div>`;
 }
 
+function rerender(anchor = location.hash) {
+  render();
+  if (anchor) document.querySelector(anchor)?.scrollIntoView({ block: "start" });
+}
+
 function switchRole(next) {
   if (!LEVELS.includes(next) || next === role) return;
-  const anchor = location.hash;
   role = next;
   setRole(role);
   const url = new URL(location.href);
   url.searchParams.delete("role");
   history.replaceState(null, "", url);
-  render();
-  if (anchor) document.querySelector(anchor)?.scrollIntoView({ block: "start" });
+  rerender();
+  if (role !== "public" && !unlocked) app.querySelector(".lock-form input")?.focus({ preventScroll: true });
 }
 
 function wire() {
   document.querySelectorAll("[data-role]").forEach((b) => b.addEventListener("click", () => switchRole(b.dataset.role)));
+
+  app.querySelectorAll(".lock-form").forEach((form) => form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const err = form.parentElement.querySelector(".err");
+    const btn = form.querySelector("button");
+    const pw = form.pw.value;
+    if (!pw) { err.textContent = "Please enter the access password."; return; }
+    const sectionId = form.closest("section").id;
+    btn.disabled = true;
+    btn.textContent = "Decrypting…";
+    try {
+      unlocked = await unlockSealed(record, pw);
+      rerender(`#${sectionId}`);
+    } catch (ex) {
+      btn.disabled = false;
+      btn.innerHTML = `${icons.unlock} Unlock`;
+      err.textContent = ex.message === "insecure-context"
+        ? "Decryption needs a secure context: open the site over https or localhost."
+        : "Incorrect password.";
+      form.pw.select();
+    }
+  }));
+
+  app.querySelector("[data-lock]")?.addEventListener("click", () => {
+    lockSealed(record);
+    unlocked = null;
+    rerender("");
+  });
 
   app.querySelector("[data-copy]")?.addEventListener("click", async (e) => {
     const btn = e.currentTarget;
@@ -256,11 +328,11 @@ function wire() {
   app.querySelector("[data-print]")?.addEventListener("click", () => window.print());
 
   app.querySelector("[data-export]")?.addEventListener("click", () => {
-    const out = structuredClone(record);
-    delete out.$schema;
-    out.sections = out.sections.map((s) => canSee(role, s.access)
+    const out = structuredClone({ ...record, sections: sections() });
+    delete out.sealed;
+    out.sections = out.sections.map((s) => isOpen(s)
       ? s : { key: s.key, title: s.title, annex: s.annex, access: s.access, redacted: true });
-    if (!canSee(role, "legitimate-interest")) delete out.sohHistory;
+    if (unlocked && canSee(role, "legitimate-interest")) out.sohHistory = unlocked.sohHistory;
     out.exportedFor = role;
     out.exportedAt = new Date().toISOString();
     const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
@@ -294,14 +366,14 @@ async function main() {
     return;
   }
   try {
-    record = await fetchJSON(`data/passports/${id}.json`);
+    record = await fetchJSON(`data/sealed/${id}.json`);
   } catch {
     showError("Could not load passport", "The passport record could not be retrieved.");
     return;
   }
   srcIndex = Object.fromEntries(record.sources.map((s, i) => [s.id, i + 1]));
-  render();
-  if (location.hash) document.querySelector(location.hash)?.scrollIntoView({ block: "start" });
+  unlocked = await unlockFromSession(record);
+  rerender();
 }
 
 main();

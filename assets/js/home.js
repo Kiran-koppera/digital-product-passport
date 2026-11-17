@@ -9,7 +9,7 @@ async function renderData() {
   try {
     const registry = await fetchJSON("data/passports.json");
     const pid = registry.passports[0].id;
-    const r = await fetchJSON(`data/passports/${pid}.json`);
+    const r = await fetchJSON(`data/sealed/${pid}.json`);
     const v = (k) => allFields(r).find((f) => f.key === k)?.value;
     const c = coverage(r);
 
@@ -45,7 +45,7 @@ async function renderData() {
           <span class="badge ${a.key === "public" ? "badge-public" : "badge-restricted"}">${escapeHtml(a.annex)}</span>
           <h3 style="margin-top:12px">${a.key === "public" ? "" : icons.lock}${escapeHtml(a.label)}</h3>
           <p class="who">${escapeHtml(a.who)}</p>
-          <ul>${secs.map((s) => `<li><a href="${href(s)}"><span>${escapeHtml(s.title)}</span><small>${s.fields.length} attributes</small></a></li>`).join("")}</ul>
+          <ul>${secs.map((s) => `<li><a href="${href(s)}"><span>${escapeHtml(s.title)}</span><small>${s.fields ? s.fields.length : s.fieldCount} attributes${s.sealed ? " · encrypted" : ""}</small></a></li>`).join("")}</ul>
         </article>`;
     }).join("");
 

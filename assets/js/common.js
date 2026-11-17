@@ -50,9 +50,10 @@ export function formatDate(iso) {
   return d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 }
 
-export const allFields = (record) => record.sections.flatMap((s) => s.fields);
+export const allFields = (record) => record.sections.flatMap((s) => s.fields || []);
 
 export function coverage(record) {
+  if (record.stats) return { ...record.stats, pct: Math.round((record.stats.filled / record.stats.total) * 100) };
   const fields = allFields(record);
   const byProvenance = Object.fromEntries(Object.keys(PROVENANCE).map((k) => [k, 0]));
   fields.forEach((f) => { byProvenance[f.provenance] += 1; });
@@ -71,6 +72,48 @@ export function provenanceBar(record) {
     <ul class="prov-legend">
       ${segs.map(([k, n]) => `<li><span class="dot pv-${k}"></span><b>${n}</b> ${escapeHtml(PROVENANCE[k].label)}</li>`).join("")}
     </ul>`;
+}
+
+// ----- sealed (encrypted) restricted sections -----
+// data/sealed/<id>.json carries the restricted sections as one AES-256-GCM ciphertext.
+// The key is derived from the access password with PBKDF2-SHA256 (see scripts/seal_passport.py).
+const te = new TextEncoder();
+const fromB64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+const toB64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));
+const KEY_PREFIX = "dpp-key:";
+
+async function decryptWith(key, record) {
+  const s = record.sealed;
+  const pt = await crypto.subtle.decrypt(
+    { name: "AES-GCM", iv: fromB64(s.iv), additionalData: te.encode(record.id) }, key, fromB64(s.ciphertext));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+
+/** Derive the key from a password and decrypt. Throws on a wrong password. Caches the key for the session. */
+export async function unlockSealed(record, password) {
+  if (!crypto?.subtle) throw new Error("insecure-context");
+  const s = record.sealed;
+  const base = await crypto.subtle.importKey("raw", te.encode(password), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey(
+    { name: "PBKDF2", salt: fromB64(s.salt), iterations: s.iterations, hash: "SHA-256" },
+    base, { name: "AES-GCM", length: 256 }, true, ["decrypt"]);
+  const payload = await decryptWith(key, record);
+  try { sessionStorage.setItem(KEY_PREFIX + record.id, toB64(await crypto.subtle.exportKey("raw", key))); } catch { /* storage unavailable */ }
+  return payload;
+}
+
+/** Decrypt with a key cached earlier in this browser session, or return null. */
+export async function unlockFromSession(record) {
+  try {
+    const raw = sessionStorage.getItem(KEY_PREFIX + record.id);
+    if (!raw || !crypto?.subtle) return null;
+    const key = await crypto.subtle.importKey("raw", fromB64(raw), "AES-GCM", false, ["decrypt"]);
+    return await decryptWith(key, record);
+  } catch { return null; }
+}
+
+export function lockSealed(record) {
+  try { sessionStorage.removeItem(KEY_PREFIX + record.id); } catch { /* storage unavailable */ }
 }
 
 // ----- roles (demo access model) -----

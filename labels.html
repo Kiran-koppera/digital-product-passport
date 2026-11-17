@@ -16,7 +16,7 @@
     const box = document.getElementById("labels");
     try {
       const reg = await fetchJSON("data/passports.json");
-      const recs = await Promise.all(reg.passports.map((p) => fetchJSON(`data/passports/${p.id}.json`)));
+      const recs = await Promise.all(reg.passports.map((p) => fetchJSON(`data/sealed/${p.id}.json`)));
       box.innerHTML = recs.map((r) => `
         <div class="label">
           <img src="qr/${r.id}.svg" width="120" height="120" alt="QR code for ${escapeHtml(r.productName)}">

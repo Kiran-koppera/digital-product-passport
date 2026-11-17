@@ -23,7 +23,8 @@ assets/js/passport.js Viewer: hero, key facts, provenance bar, sections, gap rep
 assets/js/home.js     Landing page content rendered from data/, UID decoder
 assets/js/uid.js      UID parser and CRC-8 check code
 data/passports.json   Registry: access groups and passport ids
-data/passports/*.json One record per battery
+data/passports/*.json One record per battery (plain-text source, not deployed)
+data/sealed/*.json    Published records: restricted sections encrypted (AES-256-GCM)
 data/schema/          JSON Schema for records
 qr/                   Generated QR codes (SVG + PNG), committed so they can be printed without tooling
 scripts/              Python tooling: scaffold, validate (+ gap report), generate QR, verify QR, screenshots
@@ -47,12 +48,17 @@ tests/                Python unit tests and Playwright end-to-end tests
 | Legitimate interest | Detailed composition, repair & dismantling, state of health | Repairers, remanufacturers, second-life operators, recyclers, the Commission |
 | Authorities | Conformity & test reports | Notified bodies, market surveillance authorities, the Commission |
 
-**How it works in this demo.** The access switch in the header sets a role, kept in `sessionStorage`. A passport
-URL can also carry `&role=legitimate-interest` or `&role=authority`. The JSON export contains only the sections
-the current role can see.
+**How it works.** `scripts/seal_passport.py` writes `data/sealed/<id>.json`: public sections in plain text, and
+all restricted sections plus the state-of-health history as one AES-256-GCM ciphertext. The key is derived from the
+access password with PBKDF2-SHA256 (600,000 iterations, random 16-byte salt), and the passport id is bound in as
+additional authenticated data. Only the sealed file is deployed. The viewer decrypts it with the Web Crypto API when
+the password is entered (demo password **`1234`**) and caches the derived key, not the password, in
+`sessionStorage` for the session. The access switch in the header picks a role; a URL can carry
+`&role=legitimate-interest` or `&role=authority`. The JSON export contains only what the current role can see.
 
-**What it is not.** GitHub Pages serves static files, so every record is publicly downloadable from
-`data/passports/*.json`. The switch shows the access model; it is not a security control.
+**Limits.** One password unlocks every restricted section, so the role switch is still a view filter once the
+data is decrypted. A 4-digit password can be brute-forced offline in a short time despite PBKDF2. The plain-text
+source `data/passports/*.json` stays in this public repository so it can be reviewed and validated.
 
 **What production would need.** Restricted sections would sit behind an API that checks the caller's identity
 and role, for example OpenID Connect or eIDAS credentials mapped to the Annex XIII groups. Only the public layer
@@ -73,6 +79,7 @@ id can change without reprinting the label. See [qr-codes.md](qr-codes.md).
 
 | Level | Tool | What it proves |
 |-------|------|----------------|
+| Sealing | `seal_passport.py --check` | The sealed file decrypts with the password to exactly the current restricted sections, and leaks no restricted text |
 | Data | `validate_data.py` (JSON Schema + rules) | Section order and access groups, provenance rules, every cited source exists and every source is cited, uid and status consistent |
 | Unit | `python -m unittest` | The rules reject bad records; key published values stay as cited |
 | QR | `verify_qr.py` | Every PNG decodes to exactly the right URL, also at 240 px and 160 px; every SVG references it |

@@ -15,6 +15,7 @@ DATA_DIR = ROOT / "data"
 PASSPORT_DIR = DATA_DIR / "passports"
 REGISTRY_FILE = DATA_DIR / "passports.json"
 SCHEMA_FILE = DATA_DIR / "schema" / "passport.schema.json"
+SEALED_DIR = DATA_DIR / "sealed"  # published records: restricted sections encrypted
 QR_DIR = ROOT / "qr"
 
 # Public base URL of the GitHub Pages deployment. QR codes encode

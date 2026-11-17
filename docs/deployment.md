@@ -11,7 +11,7 @@ python -m http.server 8000
 # open http://localhost:8000/
 ```
 
-The access switch keeps the selected role in `sessionStorage`; add `&role=legitimate-interest` or `&role=authority` to a passport URL to deep-link a role.
+Restricted sections are encrypted; the demo access password is `1234`. Decryption needs a secure context, and `localhost` counts as one. After editing a record, run `python scripts/seal_passport.py` and commit `data/sealed/`. To use another password, set `DPP_ACCESS_PASSWORD` when sealing and as a CI secret for the check step. The access switch keeps the selected role in `sessionStorage`; add `&role=legitimate-interest` or `&role=authority` to a passport URL to deep-link a role.
 
 ## Tooling (optional)
 

@@ -29,6 +29,8 @@ jobs:
 
       - name: Validate passport data (JSON Schema + rules)
         run: python scripts/validate_data.py
+      - name: Sealed records decrypt to the current data (restricted sections encrypted)
+        run: python scripts/seal_passport.py --check
       - name: Unit tests
         run: python -m unittest discover -s tests -v
       - name: QR codes are up to date with the data
@@ -63,7 +65,9 @@ jobs:
       - name: Assemble site
         run: |
           mkdir _site
-          cp -r index.html passport.html labels.html 404.html .nojekyll assets data qr legacy _site/
+          cp -r index.html passport.html labels.html 404.html .nojekyll assets qr legacy _site/
+          # Publish only the sealed records: restricted sections are encrypted, plain-text records stay out of the site.
+          mkdir -p _site/data && cp -r data/passports.json data/sealed data/schema _site/data/
           mkdir -p _site/docs && cp -r docs/images docs/original _site/docs/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

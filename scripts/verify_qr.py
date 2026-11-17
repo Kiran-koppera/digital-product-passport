@@ -4,7 +4,7 @@ Checks, per passport in data/passports.json:
   1. qr/<id>.png exists and decodes (OpenCV) to exactly passport_url(id)
      - also at reduced size (simulates a small printed label / phone camera)
   2. qr/<id>.svg exists and embeds the same URL
-  3. the id resolves to data/passports/<id>.json
+  3. the id resolves to data/sealed/<id>.json (the published record)
   4. with --online: the URL and its JSON record return HTTP 200 on the live site
 
 Usage:
@@ -21,7 +21,7 @@ import urllib.request
 import cv2
 import numpy as np
 
-from dpp_model import BASE_URL, PASSPORT_DIR, QR_DIR, REGISTRY_FILE, load_json, passport_url
+from dpp_model import BASE_URL, QR_DIR, REGISTRY_FILE, SEALED_DIR, load_json, passport_url
 
 
 def decode(img: np.ndarray) -> str:
@@ -68,10 +68,10 @@ def main() -> int:
             errs.append(f"{svg.name}: missing")
         elif url not in svg.read_text(encoding="utf-8"):
             errs.append(f"{svg.name}: does not reference {url}")
-        if not (PASSPORT_DIR / f"{pid}.json").exists():
-            errs.append(f"data/passports/{pid}.json: missing")
+        if not (SEALED_DIR / f"{pid}.json").exists():
+            errs.append(f"data/sealed/{pid}.json: missing")
         if args.online and not errs:
-            for target in (url, f"{BASE_URL}data/passports/{pid}.json"):
+            for target in (url, f"{BASE_URL}data/sealed/{pid}.json"):
                 status = http_status(target)
                 if status != 200:
                     errs.append(f"{target} -> HTTP {status}")
