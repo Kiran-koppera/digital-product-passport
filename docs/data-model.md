@@ -1,121 +1,86 @@
 # Data model
 
-![Attribute model](images/data-model.svg)
+![Data model](images/data-model.svg)
 
-The attribute model follows section 4.3 of the project report. The project derived it from the
-[Battery Pass consortium content guidance](https://thebatterypass.eu/assets/images/content-guidance/pdf/2023_Battery_Pass_Content_Guidance.pdf)
-and the battery passport concept in Regulation (EU) 2023/1542.
+Each passport is one JSON file in `data/passports/`, validated against
+[`data/schema/passport.schema.json`](../data/schema/passport.schema.json) and the consistency rules in
+[`scripts/validate_data.py`](../scripts/validate_data.py).
 
-## Categories
+## Sections and access groups
 
-| # | Key | Category | Access | Attributes |
-|---|-----|----------|--------|------------|
-| 1 | `product-identification` | Product Identification | Public | Unique ID, product name, product (battery) status: original / repurposed / reused / remanufactured, sustainability profile |
-| 2 | `material-composition` | Material Composition | Public | Critical raw materials, battery chemistry, hazardous substances, impact of substances on environment / health / safety, bill of materials |
-| 3 | `manufacturing-data` | Manufacturing Data | Public | Manufacturer name, postal address, web address, e-mail, date of manufacture, place of manufacture |
-| 4 | `technical-data` | Technical Data | **Restricted** | Cell voltage, rated capacity, energy density, cycle life, battery weight |
-| 5 | `environmental-impact` | Environmental Impact | Public | Carbon footprint (kg CO₂e / kWh), energy rating |
-| 6 | `circularity` | Circularity & Resource Efficiency | Public | Removal manual, disassembly manual, component part numbers, spare-part sources, safety instructions |
-| 7 | `supply-chain` | Supply Chain & Logistics | **Restricted** | Supplier list, packaging information, transport modes |
-| 8 | `compliance` | Compliance & Certification | **Restricted** | ISO / IATF certificates, supplier code of conduct, customer-specific requirements |
+The sections follow Annex XIII of [Regulation (EU) 2023/1542](https://eur-lex.europa.eu/eli/reg/2023/1542/oj).
+The order and access group of each section are fixed in `SECTION_MODEL` (`scripts/dpp_model.py`) and checked in CI.
 
-## Record format
+| # | Key | Section | Access group | Legal basis |
+|---|-----|---------|--------------|-------------|
+| 1 | `identification` | Identification & labelling | Public | Annex XIII 1(a), Annex VI Part A |
+| 2 | `carbon-footprint` | Carbon footprint | Public | Annex XIII 1(c), Art. 7 |
+| 3 | `due-diligence` | Supply chain due diligence | Public | Annex XIII 1(d), Art. 52 |
+| 4 | `content` | Recycled & renewable content | Public | Annex XIII 1(e)(f), Art. 8 |
+| 5 | `performance` | Performance & durability | Public | Annex XIII 1(g)–(p), Annex IV |
+| 6 | `end-of-life` | End of life & collection | Public | Annex XIII 1, Art. 74 |
+| 7 | `composition` | Detailed composition | Legitimate interest | Annex XIII 2(a) |
+| 8 | `dismantling` | Repair & dismantling | Legitimate interest | Annex XIII 2(b)–(d) |
+| 9 | `conformity` | Conformity & test reports | Authorities | Annex XIII 3 |
+| 10 | `state-of-health` | State of health & battery status (dynamic) | Legitimate interest | Annex XIII 4, Art. 14, Annex VII |
 
-Each record (`data/passports/<id>.json`) is validated against
-[`data/schema/passport.schema.json`](../data/schema/passport.schema.json):
+Access groups are ordered `public` < `legitimate-interest` < `authority`. A role sees its own group and every lower one.
+
+## Field format
 
 ```jsonc
 {
-  "id": "solid-state-cell",              // URL slug, encoded in the QR code
-  "uid": "SSC123-BAT01-20260118-A3",     // unique product identifier (null if not assigned)
-  "productName": "Solid State Cell",
-  "recordStatus": "documented",          // or "placeholder"
-  "source": "Where the values come from",
-  "legacyQr": "https://qr.codes/byrKQP", // the deactivated QR link this record replaces
-  "sections": [                          // exactly 8, in the order above
-    {
-      "key": "technical-data",
-      "title": "Technical Data",
-      "access": "restricted",
-      "fields": [
-        { "label": "Cell voltage", "value": "3.8 V" },
-        { "label": "Battery chemistry", "value": null },          // null = pending
-        { "label": "Hazardous substances", "value": ["Li metal", "NMC811 cathode"] },
-        { "label": "Date of manufacture", "value": "2025-12-01", "format": "date" },
-        { "label": "Energy rating", "value": "Carbon footprint performance class B" }
-      ]
-    }
-  ]
+  "key": "e-gross",                       // unique within the record, used for deep links (#f-e-gross)
+  "label": "Installed energy (gross)",
+  "annex": "Annex VI A(7)",               // optional legal reference
+  "value": "38.5",                        // string, list of strings, or null (= data gap)
+  "unit": "kWh",                          // optional
+  "provenance": "official",               // see below
+  "sources": ["vwg-battery-journey"],     // ids from the record's sources list
+  "note": "Martorell assembly reports …"  // optional; required for derived and estimated values
 }
 ```
 
-Values are a string, a list of strings, or `null`. `null` means the attribute is part of the model but has
-not been populated yet. The original prototype showed these as "To be add". The viewer shows them as
-*Pending* and counts them in the completeness bar.
+## Provenance tags
 
-### Record status
+| Tag | Meaning | Rule enforced in CI |
+|-----|---------|---------------------|
+| `official` | Published by the manufacturer or its group | At least one source |
+| `derived` | Arithmetic on official values | Note explains the method |
+| `regulation` | Value set by law | none |
+| `literature` | Published study, not manufacturer data | none |
+| `estimated` | Engineering assumption | Note explains the method |
+| `simulated` | Illustrative demo data (serial, date, BMS values) | none |
+| `not-disclosed` | Required data the manufacturer has not published | Value must be `null` |
 
-| `recordStatus` | Meaning |
-|---|---|
-| `documented` | Fully populated passport. Validation requires every attribute to have a value. |
-| `placeholder` | Structure only; all values `null`. Created by `scripts/new_passport.py`. |
+A `null` value is only allowed with `not-disclosed`, and `not-disclosed` only with `null`. Gaps therefore cannot
+be filled with guesses by accident. Every source in the record must be cited at least once.
 
-The UIDs of the Lithium Ion, Sodium Ion and Sodium Chloride records follow the 5-part scheme with the CRC-8
-check code proposed in this repository.
+## The ID. Polo LFP record
 
-| Record | UID | Chemistry |
-|---|---|---|
-| Lithium Ion Battery | `LIC204-BAT02-20260112-000418-4C` | NMC622 / graphite, 21700 cylindrical cell |
-| Sodium Ion Cell | `NAI310-BAT04-20260126-000932-AD` | Prussian white / hard carbon, prismatic cell |
-| Sodium Chloride Battery | `ZNC075-BAT05-20260109-000057-76` | Sodium–nickel chloride (ZEBRA), β″-alumina electrolyte |
+`data/passports/vw-id-polo-lfp-37.json` has 86 attributes. Run `python scripts/validate_data.py --gaps` for
+the current counts and the gap list.
+
+What the public sources settle:
+
+- **Chemistry and energy.** LFP, 37 kWh net, 38.5 kWh installed, 102 prismatic Unified Cells co-developed
+  with PowerCo, cell-to-pack with three packs, a load-bearing housing.
+- **Charging and use.** DC charging up to 88 kW (10–80 % in about 23 min), AC charging at 11 kW, Vehicle-to-Load up to 3.6 kW, WLTP 323–331 km.
+- **Warranty.** 8 years or 160,000 km, at least 70 % state of health.
+- **Production.** Battery system assembly in Workshop 20 of the SEAT & CUPRA plant in Martorell.
+- **Due diligence.** The Raw Materials Due Diligence Management System (since 2020, OECD-based), ReSC, IRMA, and the annual Responsible Raw Materials Report.
+
+Where the public sources disagree, the record uses the most recent source and says so in a note. Example: DC
+power is 88 kW in the September 2026 media-drive data and 90 kW in the April 2026 world-premiere release.
+
+What they do not settle (the gap report): the Article 7 carbon footprint declaration and class, battery weight,
+voltage limits, cycle life, efficiency, internal resistance, recycled lithium share, the cell maker, part numbers,
+dismantling information and test reports.
 
 ## Unique identifier
 
-From presentation slide 3 and report §4.1:
+`VWAG-LFP37-20260914-004217-33` = economic operator · product type · production date · serial number · CRC-8 check code.
 
-![UID scheme slide](images/original-prototype/uid-scheme-slide.png)
-
-```
-MECH123 - BAT03 - 20251031 - 000765 - A3
-   │        │        │         │       └─ checksum / data code
-   │        │        │         └───────── serial number
-   │        │        └─────────────────── production lot (date, YYYYMMDD)
-   │        └──────────────────────────── product category / type (batch) code
-   └───────────────────────────────────── manufacturer ID
-```
-
-Notes:
-
-- The slide labels the second segment "Batch No.", while the circle diagram on the same slide lists
-  "Product Category / Type Code". The decoder shows both meanings.
-- The documented Solid State Cell UID `SSC123-BAT01-20260118-A3` has four segments, with no serial number.
-  It is kept as documented, and the decoder flags the missing segment.
-- The checksum algorithm was not specified. All documented examples end in `A3`. As a clearly labelled
-  extension, the decoder shows a CRC-8 (polynomial 0x07) check code computed over the UID body.
-
-## Data provenance for the Solid State Cell
-
-All values were transcribed from the interface screenshots in the presentation, slides 4 and 6–12
-([original screenshots](images/original-prototype/)). Normalisations:
-
-| Original | In this repo | Reason |
-|----------|--------------|--------|
-| `01-12-2025` | `2025-12-01` | ISO 8601 date |
-| "To be add" | Completed with a value for the chemistry | Full 33-attribute passport |
-| E-mail `xyz@gmail.com` | `dpp@solidstate-battery.de` | The original was a placeholder |
-| Web address "To be decided" | `https://www.solidstate-battery.de` | Not populated in the prototype |
-| Weight "> 196.54 g", energy density "350–380 Wh/kg", cycle life "> 1000 cycles" | 52.5 g, 362 Wh/kg, 1,050 cycles | Exact values, consistent with 5.0 Ah × 3.8 V = 19 Wh |
-| EU Battery Regulation "Link text" | Link to Regulation (EU) 2023/1542 on EUR-Lex | The prototype link had no visible target |
-
-Supplier names (Umicore, Norilsk Nickel, Eramet, Glencore, Fraunhofer IKTS) are shown exactly as listed in the
-prototype.
-
-## Adding or completing a passport
-
-```bash
-python scripts/new_passport.py nmc-pack-01 "NMC Pack 01" --uid MECH123-BAT03-20260201-000001-A3
-# edit data/passports/nmc-pack-01.json, set "recordStatus": "documented"
-# add {"id": "nmc-pack-01", "productName": "NMC Pack 01"} to data/passports.json
-python scripts/validate_data.py
-python scripts/generate_qr.py && python scripts/verify_qr.py
-```
+The scheme comes from the original HTW project (presentation slide 3, report section 4.1). This repository
+adds the CRC-8 check code (polynomial 0x07, over the first four segments, as two hex digits), and the
+landing page decoder verifies it. The serial number and date in the case study are illustrative.

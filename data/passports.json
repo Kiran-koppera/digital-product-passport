@@ -1,14 +1,26 @@
 {
-  "description": "Registry of battery passport records served by this demo. Each id resolves to data/passports/<id>.json and to passport.html?id=<id>.",
-  "demoAccess": {
-    "algorithm": "SHA-256",
-    "restrictedHash": "196daaa7444c90f40cd654b32c6fd3afcc523698d276ea073835c3c4a3bbb122",
-    "note": "Client-side gate only. The demo password (SSC123) is published in the project presentation; see docs/architecture.md#layered-access."
-  },
+  "description": "Registry of battery passport records served by this site. Each id resolves to data/passports/<id>.json and to passport.html?id=<id>.",
+  "accessLevels": [
+    {
+      "key": "public",
+      "label": "Public",
+      "who": "Anyone who scans the QR code",
+      "annex": "Annex XIII 1"
+    },
+    {
+      "key": "legitimate-interest",
+      "label": "Legitimate interest",
+      "who": "Repairers, remanufacturers, second-life operators, recyclers and the Commission",
+      "annex": "Annex XIII 2 and 4"
+    },
+    {
+      "key": "authority",
+      "label": "Authorities",
+      "who": "Notified bodies, market surveillance authorities and the Commission",
+      "annex": "Annex XIII 3"
+    }
+  ],
   "passports": [
-    { "id": "solid-state-cell", "productName": "Solid State Cell" },
-    { "id": "lithium-ion-battery", "productName": "Lithium Ion Battery" },
-    { "id": "sodium-ion-cell", "productName": "Sodium Ion Cell" },
-    { "id": "sodium-chloride-battery", "productName": "Sodium Chloride Battery" }
+    { "id": "vw-id-polo-lfp-37", "productName": "ID. Polo 37 kWh LFP Battery" }
   ]
 }

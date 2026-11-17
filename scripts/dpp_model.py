@@ -1,7 +1,8 @@
-"""Shared constants for the Battery DPP tooling.
+"""Shared constants for the battery passport tooling.
 
-The attribute model mirrors section 4.3 of the project report: eight categories,
-each either public or restricted (password-protected in the prototype).
+The data model follows Annex XIII of Regulation (EU) 2023/1542: every section
+belongs to one access group, and every field carries its legal reference,
+provenance and sources.
 """
 
 from __future__ import annotations
@@ -20,35 +21,46 @@ QR_DIR = ROOT / "qr"
 # f"{BASE_URL}passport.html?id=<id>", so changing this requires regenerating them.
 BASE_URL = "https://kiran-koppera.github.io/digital-product-passport/"
 
-# (key, title, access, [field labels]) -- order matters, it is the display order.
-ATTRIBUTE_MODEL: list[tuple[str, str, str, list[str]]] = [
-    ("product-identification", "Product Identification", "public",
-     ["Unique ID", "Product name", "Product status", "Product sustainability profile"]),
-    ("material-composition", "Material Composition", "public",
-     ["Critical raw materials", "Battery chemistry", "Hazardous substances",
-      "Impact of substances on environment, human health & safety", "Bill of materials"]),
-    ("manufacturing-data", "Manufacturing Data", "public",
-     ["Name of manufacturer", "Address of manufacturer", "Web address of manufacturer",
-      "Email of manufacturer", "Date of manufacture", "Place of manufacture"]),
-    ("technical-data", "Technical Data", "restricted",
-     ["Cell voltage", "Rated capacity", "Energy density", "Cycle life", "Battery weight"]),
-    ("environmental-impact", "Environmental Impact", "public",
-     ["Carbon footprint as declared (kg CO₂e / kWh of total energy)", "Energy rating"]),
-    ("circularity", "Circularity & Resource Efficiency", "public",
-     ["Manual for removal of the battery from the appliance",
-      "Manual for disassembly and dismantling of the battery pack",
-      "Part numbers for components",
-      "Postal, e-mail and web address of sources for spare parts",
-      "Safety measures / instructions"]),
-    ("supply-chain", "Supply Chain & Logistics", "restricted",
-     ["Supplier list", "Packaging information", "Transport modes"]),
-    ("compliance", "Compliance & Certification", "restricted",
-     ["ISO / IATF certificates", "Supplier code of conduct", "Customer-specific requirements"]),
+# Access groups in ascending order of privilege. A role sees its own group and every lower one.
+ACCESS_LEVELS = ["public", "legitimate-interest", "authority"]
+
+# Provenance tags. "Evidenced" values come from a publication or the law itself.
+PROVENANCE = ["official", "derived", "regulation", "literature", "estimated", "simulated", "not-disclosed"]
+EVIDENCED = {"official", "derived", "regulation", "literature"}
+# Provenance tags that must explain their method in a note.
+NEEDS_NOTE = {"derived", "estimated"}
+
+# (key, title, access, annex) of the Annex XIII sections every battery passport must carry, in display order.
+SECTION_MODEL: list[tuple[str, str, str, str]] = [
+    ("identification", "Identification & labelling", "public", "Annex XIII 1(a) · Annex VI Part A"),
+    ("carbon-footprint", "Carbon footprint", "public", "Annex XIII 1(c) · Art. 7"),
+    ("due-diligence", "Supply chain due diligence", "public", "Annex XIII 1(d) · Art. 52"),
+    ("content", "Recycled & renewable content", "public", "Annex XIII 1(e)(f) · Art. 8"),
+    ("performance", "Performance & durability", "public", "Annex XIII 1(g)–(p) · Annex IV"),
+    ("end-of-life", "End of life & collection", "public", "Annex XIII 1 · Art. 74"),
+    ("composition", "Detailed composition", "legitimate-interest", "Annex XIII 2(a)"),
+    ("dismantling", "Repair & dismantling", "legitimate-interest", "Annex XIII 2(b)–(d)"),
+    ("conformity", "Conformity & test reports", "authority", "Annex XIII 3"),
+    ("state-of-health", "State of health & battery status", "legitimate-interest", "Annex XIII 4 · Art. 14 · Annex VII"),
 ]
 
 
 def passport_url(passport_id: str) -> str:
     return f"{BASE_URL}passport.html?id={passport_id}"
+
+
+def all_fields(record: dict) -> list[dict]:
+    return [f for s in record["sections"] for f in s["fields"]]
+
+
+def coverage(record: dict) -> dict:
+    """Counts by provenance plus the share of fields with a value."""
+    fields = all_fields(record)
+    by_prov = {p: 0 for p in PROVENANCE}
+    for f in fields:
+        by_prov[f["provenance"]] += 1
+    filled = sum(f["value"] is not None for f in fields)
+    return {"total": len(fields), "filled": filled, "gaps": len(fields) - filled, "byProvenance": by_prov}
 
 
 def load_json(path: Path):

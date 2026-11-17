@@ -1,60 +1,91 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://kiran-koppera.github.io/digital-product-passport/data/schema/passport.schema.json",
-  "title": "Battery Digital Product Passport record",
-  "description": "One battery passport record. Sections follow the eight attribute categories defined in the project report (section 4.3). A field value of null means the attribute is defined in the data model but not yet populated.",
+  "title": "Battery passport record (Regulation (EU) 2023/1542, Annex XIII)",
+  "description": "One battery passport. Sections follow the four access groups of Annex XIII. Every field carries its legal reference, provenance and sources. A value of null is a data gap: the attribute is required or recommended but has not been published.",
   "type": "object",
-  "required": ["id", "uid", "productName", "recordStatus", "sections"],
+  "required": ["id", "uid", "productName", "batteryCategory", "chemistry", "status", "dataVersion", "lastUpdated", "caseStudy", "sections", "sources"],
   "additionalProperties": false,
+  "$defs": {
+    "provenance": {
+      "enum": ["official", "derived", "regulation", "literature", "estimated", "simulated", "not-disclosed"],
+      "description": "official: published by the manufacturer or its group. derived: arithmetic on official values, method in note. regulation: set by law. literature: published study. estimated: engineering assumption, method in note. simulated: illustrative demo data. not-disclosed: data gap."
+    },
+    "field": {
+      "type": "object",
+      "required": ["key", "label", "value", "provenance", "sources"],
+      "additionalProperties": false,
+      "properties": {
+        "key": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "label": { "type": "string", "minLength": 1 },
+        "annex": { "type": "string", "description": "Legal reference in Regulation (EU) 2023/1542" },
+        "value": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "minLength": 1 },
+            { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+          ]
+        },
+        "unit": { "type": "string" },
+        "format": { "enum": ["mono", "date"] },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "sources": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "note": { "type": "string" }
+      }
+    }
+  },
   "properties": {
     "$schema": { "type": "string" },
     "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "URL slug; encoded in the QR code as passport.html?id=<id>" },
-    "uid": { "type": ["string", "null"], "description": "Unique product identifier (see docs/data-model.md#unique-identifier)" },
+    "uid": { "type": "string", "minLength": 1 },
     "productName": { "type": "string", "minLength": 1 },
-    "recordStatus": { "enum": ["documented", "placeholder"], "description": "documented: populated passport record; placeholder: structure only" },
-    "source": { "type": "string" },
-    "legacyQr": { "type": "string", "format": "uri", "description": "Original (now deactivated) dynamic QR short link" },
+    "batteryCategory": { "enum": ["Electric vehicle battery", "LMT battery", "Industrial battery", "SLI battery", "Portable battery"] },
+    "chemistry": { "type": "string" },
+    "vehicle": { "type": "string" },
+    "status": { "enum": ["original", "repurposed", "re-used", "remanufactured", "waste"] },
+    "dataVersion": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "lastUpdated": { "type": "string", "format": "date" },
+    "caseStudy": { "type": "string", "minLength": 1 },
     "sections": {
       "type": "array",
-      "minItems": 8,
-      "maxItems": 8,
+      "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["key", "title", "access", "fields"],
+        "required": ["key", "title", "annex", "access", "fields"],
         "additionalProperties": false,
         "properties": {
-          "key": {
-            "enum": ["product-identification", "material-composition", "manufacturing-data", "technical-data", "environmental-impact", "circularity", "supply-chain", "compliance"]
-          },
+          "key": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
           "title": { "type": "string" },
-          "access": { "enum": ["public", "restricted"] },
-          "fields": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "object",
-              "required": ["label", "value"],
-              "additionalProperties": false,
-              "properties": {
-                "label": { "type": "string" },
-                "value": {
-                  "oneOf": [
-                    { "type": "null" },
-                    { "type": "string", "minLength": 1 },
-                    { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
-                  ]
-                },
-                "format": { "enum": ["mono", "date"] },
-                "note": { "type": "string" },
-                "link": {
-                  "type": "object",
-                  "required": ["text", "href"],
-                  "additionalProperties": false,
-                  "properties": { "text": { "type": "string" }, "href": { "type": "string", "format": "uri" } }
-                }
-              }
-            }
-          }
+          "annex": { "type": "string" },
+          "access": { "enum": ["public", "legitimate-interest", "authority"] },
+          "dynamic": { "type": "boolean" },
+          "summary": { "type": "string" },
+          "fields": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/field" } }
+        }
+      }
+    },
+    "sohHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "soh"],
+        "additionalProperties": false,
+        "properties": { "date": { "type": "string", "format": "date" }, "soh": { "type": "number", "minimum": 0, "maximum": 100 } }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "publisher", "url"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "publisher": { "type": "string" },
+          "date": { "type": "string" },
+          "url": { "type": "string", "format": "uri" }
         }
       }
     }

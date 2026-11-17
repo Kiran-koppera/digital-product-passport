@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Battery Digital Product Passport</title>
-  <meta name="description" content="QR-linked Digital Product Passport (DPP) prototype for batteries: eight attribute categories, layered public/restricted access, permanent self-hosted QR codes. Structured after the EU Battery Regulation passport concept.">
-  <meta name="theme-color" content="#0b8a5a">
-  <meta property="og:title" content="Battery Digital Product Passport">
-  <meta property="og:description" content="Scan a QR code, open a battery's passport: materials, manufacturing, environmental and circularity data with layered access.">
+  <title>Battery Passport · ID. Polo LFP</title>
+  <meta name="description" content="Digital battery passport for the Volkswagen ID. Polo 37 kWh LFP battery, aligned with Annex XIII of Regulation (EU) 2023/1542 and built only from public, cited sources. Independent case study.">
+  <meta name="theme-color" content="#0b1220">
+  <meta property="og:title" content="Battery Passport · ID. Polo 37 kWh LFP">
+  <meta property="og:description" content="An Annex XIII-aligned digital battery passport: public and restricted access groups, cited sources, provenance tags and a gap report.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://kiran-koppera.github.io/digital-product-passport/docs/images/screenshots/social-preview.png">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -18,112 +18,104 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="./" aria-label="Battery DPP home">
-        <img src="assets/img/favicon.svg" width="28" height="28" alt="">
-        <span>Battery DPP</span>
+      <a class="brand" href="./" aria-label="Battery Passport home">
+        <span data-brand-mark></span>
+        <span class="brand-text"><b>Battery Passport</b><small>EU 2023/1542 · Annex XIII</small></span>
       </a>
       <nav class="nav" aria-label="Main">
-        <a href="#passports">Passports</a>
-        <a class="hide-sm" href="#how">How it works</a>
-        <a class="hide-sm" href="#model">Data model</a>
-        <a class="hide-sm" href="#uid">UID</a>
-        <a class="hide-sm" href="#scope">Scope</a>
+        <a href="passport.html?id=vw-id-polo-lfp-37">Passport</a>
+        <a href="#access">Access</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#timeline">Timeline</a>
         <a href="https://github.com/Kiran-koppera/digital-product-passport" target="_blank" rel="noopener">GitHub</a>
         <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme"></button>
       </nav>
     </div>
   </header>
+  <div class="case-banner"><div class="wrap">Independent case study based on public sources · not issued or endorsed by Volkswagen AG</div></div>
 
   <main id="main">
     <section class="hero">
       <div class="wrap">
         <div>
-          <span class="eyebrow">Digitalisation · Battery traceability · Circular economy</span>
-          <h1>Battery <span>Digital Product Passport</span></h1>
-          <p class="lead">A QR-linked passport that connects a physical battery to structured lifecycle data —
-            materials, manufacturing, technical parameters, environmental impact and circularity —
-            with a public layer for everyone and a restricted layer for authorised stakeholders.</p>
+          <span class="eyebrow">Digital Product Passport · Regulation (EU) 2023/1542</span>
+          <h1>The battery passport for the <span>ID. Polo LFP</span> battery</h1>
+          <p class="lead">From 18 February 2027 every EV battery sold in the EU needs a digital passport behind a QR code.
+            This one covers the Volkswagen ID. Polo's 37 kWh lithium iron phosphate pack, maps every attribute to
+            Annex XIII, cites a source for each value and shows plainly what the manufacturer has not yet published.</p>
           <div class="cta">
-            <a class="btn btn-primary" href="passport.html?id=solid-state-cell">Open a live passport
+            <a class="btn btn-light" href="passport.html?id=vw-id-polo-lfp-37">Open the passport
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5l5 5-5 5"/></svg></a>
-            <a class="btn btn-ghost" href="https://github.com/Kiran-koppera/digital-product-passport" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
-              Source on GitHub</a>
+            <a class="btn btn-outline-light" href="passport.html?id=vw-id-polo-lfp-37&amp;role=legitimate-interest#composition">View as a recycler</a>
           </div>
-          <div class="stats">
-            <div class="stat"><b>8</b><span>attribute categories</span></div>
-            <div class="stat"><b>2</b><span>access layers</span></div>
-            <div class="stat"><b>4</b><span>QR-linked battery records</span></div>
-            <div class="stat"><b>0</b><span>runtime dependencies</span></div>
+          <div class="stats" id="hero-stats">
+            <div class="stat"><b>86</b><span>Annex XIII attributes</span></div>
+            <div class="stat"><b>13</b><span>cited public sources</span></div>
+            <div class="stat"><b>3</b><span>access groups</span></div>
+            <div class="stat"><b>18.02.27</b><span>passport mandatory</span></div>
           </div>
         </div>
-
-        <a class="card passport-mock" href="passport.html?id=solid-state-cell" style="color:inherit;text-decoration:none" aria-label="Open the Solid State Cell passport">
-          <div class="mock-top">
-            <span class="mock-title">Solid State Cell</span>
-            <span class="badge badge-ok">Documented</span>
-          </div>
-          <div class="mock-body">
-            <div class="qr-frame"><img src="qr/solid-state-cell.svg" width="140" height="140" alt="QR code for the Solid State Cell passport"></div>
-            <div class="mock-rows">
-              <div><span>UID</span><span class="mono" style="font-size:.78rem">SSC123-BAT01-20260118-A3</span></div>
-              <div><span>Cathode</span><span>NMC811</span></div>
-              <div><span>Electrolyte</span><span>LLZO (solid)</span></div>
-              <div><span>Anode</span><span>Lithium metal</span></div>
-              <div><span>Made in</span><span>Berlin, DE</span></div>
-            </div>
-          </div>
-          <p class="mock-foot">Scan with any phone camera — the code links straight to this site, no app or short-link service involved.</p>
+        <a class="card preview" id="preview" href="passport.html?id=vw-id-polo-lfp-37" aria-label="Open the ID. Polo 37 kWh LFP battery passport">
+          <p class="muted">Loading passport…</p>
         </a>
       </div>
     </section>
 
-    <section class="section" id="passports" aria-labelledby="passports-h">
+    <section class="section" id="access" aria-labelledby="access-h">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Live demo</span>
-          <h2 id="passports-h">Scan or open a battery passport</h2>
-          <p class="lead">Each QR code permanently encodes this site's URL for one battery. The original project's
-            codes were generated with a subscription QR service and stopped working when the plan lapsed; these are
-            static, self-hosted, and verified automatically on every build.</p>
+          <span class="eyebrow">Access model</span>
+          <h2 id="access-h">Who sees what</h2>
+          <p class="lead">Annex XIII splits passport data by audience. Anyone scanning the code sees the public layer.
+            Detailed composition, dismantling and state of health are for repairers, recyclers and second-life
+            operators. Test reports are for notified bodies and market surveillance authorities.</p>
         </div>
-        <div class="grid-4" id="passport-grid" aria-live="polite">
-          <p class="muted">Loading passports…</p>
-        </div>
-        <p class="muted" style="margin-top:20px;font-size:.92rem">Every passport carries all 33 attributes across the eight categories.
-          <a href="labels.html">Print QR labels →</a></p>
+        <div class="grid-3" id="access-grid"><p class="muted">Loading…</p></div>
       </div>
     </section>
 
-    <section class="section" id="how" aria-labelledby="how-h">
+    <section class="section" id="evidence" aria-labelledby="evidence-h">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Architecture</span>
-          <h2 id="how-h">From a label on the battery to its data</h2>
-          <p class="lead">A unique identifier links the physical product to its dataset. The identifier is carried by a
-            QR code; scanning it opens the passport, where public data is shown immediately and sensitive categories
-            require an access password.</p>
+          <span class="eyebrow">Methodology</span>
+          <h2 id="evidence-h">Evidence, not claims</h2>
+          <p class="lead">Each value carries a provenance tag and numbered sources. Official Volkswagen figures are kept apart
+            from arithmetic on them, from literature values, from engineering estimates and from simulated demo data.
+            Missing data is shown as a gap and is never filled with a guess.</p>
         </div>
-        <div class="card diagram"><img src="docs/images/architecture.svg" alt="Architecture: battery QR label, phone scan, GitHub Pages, passport viewer loading a JSON record, public and restricted layers; build pipeline validates data, generates and verifies QR codes, then deploys." width="960" height="440" loading="lazy"></div>
-        <div class="steps">
-          <div class="card step"><h3>Scan</h3><p>The QR code on the battery encodes a permanent URL containing the passport id — no redirect service, nothing to renew.</p></div>
-          <div class="card step"><h3>Browse public data</h3><p>Identification, material composition, manufacturing, environmental impact and circularity are open to consumers, repairers and recyclers.</p></div>
-          <div class="card step"><h3>Unlock restricted data</h3><p>Technical data, supply chain &amp; logistics and compliance documents sit behind a password layer for authorised stakeholders.</p></div>
+        <div class="evidence">
+          <div class="card">
+            <h3>Provenance of the 86 attributes</h3>
+            <div id="evidence-bar"></div>
+          </div>
+          <div class="card">
+            <h3>Provenance tags</h3>
+            <table class="prov-table" id="prov-table"><tbody></tbody></table>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="model" aria-labelledby="model-h">
+    <section class="section" id="timeline" aria-labelledby="timeline-h">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Data model</span>
-          <h2 id="model-h">Eight categories, two access layers</h2>
-          <p class="lead">Attributes were derived from the Battery Pass consortium's content guidance and the EU Battery
-            Regulation passport concept, then grouped by who needs to see them.</p>
+          <span class="eyebrow">Regulation (EU) 2023/1542</span>
+          <h2 id="timeline-h">The dates that shape this passport</h2>
+          <p class="lead">The obligations that apply to an EV battery placed on the EU market, in order.</p>
         </div>
-        <div class="card diagram"><img src="docs/images/data-model.svg" alt="Eight attribute categories: five public (product identification, material composition, manufacturing data, environmental impact, circularity) and three restricted (technical data, supply chain and logistics, compliance and certification)." width="960" height="430" loading="lazy"></div>
-        <p class="muted" style="margin-top:16px;font-size:.92rem">Every record is validated against a
-          <a href="data/schema/passport.schema.json">JSON Schema</a> in CI before deployment.</p>
+        <div class="card" style="padding:26px 22px 8px">
+          <ol class="timeline">
+            <li class="done"><time>17 Aug 2023</time><span class="node"></span><div><h3>Regulation enters into force</h3><p>Replaces Directive 2006/66/EC and covers the battery's whole life cycle.</p><span class="ref">Art. 96</span></div></li>
+            <li class="done"><time>18 Feb 2024</time><span class="node"></span><div><h3>General application</h3><p>Most provisions start to apply, in stages.</p><span class="ref">Art. 96</span></div></li>
+            <li class="done"><time>31 Dec 2025</time><span class="node"></span><div><h3>Recycling efficiency 65 %</h3><p>Minimum recycling efficiency for lithium-based batteries, by average weight.</p><span class="ref">Annex XII Part B</span></div></li>
+            <li class="key"><time>18 Feb 2027</time><span class="node"></span><div><h3>Battery passport mandatory</h3><p>Every EV, LMT and industrial battery over 2 kWh needs an electronic passport, reachable by QR code.</p><span class="ref">Art. 77</span></div></li>
+            <li><time>31 Dec 2027</time><span class="node"></span><div><h3>Lithium recovery 50 %</h3><p>Material recovery targets: lithium 50 %, cobalt, nickel and copper 90 %.</p><span class="ref">Annex XII Part C</span></div></li>
+            <li><time>31 Dec 2030</time><span class="node"></span><div><h3>Recycling efficiency 70 %</h3><p>The minimum for lithium-based batteries rises.</p><span class="ref">Annex XII Part B</span></div></li>
+            <li><time>18 Aug 2031</time><span class="node"></span><div><h3>Recycled content minimums</h3><p>Cobalt 16 %, lithium 6 %, nickel 6 %, lead 85 %. For LFP, only lithium applies.</p><span class="ref">Art. 8(2)</span></div></li>
+            <li><time>31 Dec 2031</time><span class="node"></span><div><h3>Lithium recovery 80 %</h3><p>Cobalt, nickel and copper rise to 95 %.</p><span class="ref">Annex XII Part C</span></div></li>
+            <li><time>18 Aug 2036</time><span class="node"></span><div><h3>Higher recycled content</h3><p>Cobalt 26 %, lithium 12 %, nickel 15 %, lead 85 %.</p><span class="ref">Art. 8(3)</span></div></li>
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -131,19 +123,18 @@
       <div class="wrap">
         <div class="section-head">
           <span class="eyebrow">Unique identifier</span>
-          <h2 id="uid-h">Decode a battery UID</h2>
-          <p class="lead">Each battery gets an alphanumeric identifier built from manufacturer, product type/batch,
-            production lot, serial number and a check code. Try the examples from the project documentation.</p>
+          <h2 id="uid-h">Decode a battery identifier</h2>
+          <p class="lead">Article 77(3) requires a unique identifier per battery. This project's scheme packs economic operator,
+            product type, production date, serial number and a CRC-8 check code into one string.</p>
         </div>
         <div class="card uid-tool">
           <div class="uid-input">
-            <label class="sr-only" for="uid-input">Battery UID</label>
-            <input id="uid-input" value="MECH123-BAT03-20251031-000765-A3" spellcheck="false" autocomplete="off">
+            <label class="sr-only" for="uid-input">Battery identifier</label>
+            <input id="uid-input" value="VWAG-LFP37-20260914-004217-33" spellcheck="false" autocomplete="off">
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <button class="btn btn-ghost btn-sm" type="button" data-uid-example="MECH123-BAT03-20251031-000765-A3">Presentation example</button>
-            <button class="btn btn-ghost btn-sm" type="button" data-uid-example="MECH123-BAT03-20251125-000001-A3">Report example</button>
-            <button class="btn btn-ghost btn-sm" type="button" data-uid-example="SSC123-BAT01-20260118-A3">Solid State Cell</button>
+            <button class="btn btn-ghost btn-sm" type="button" data-uid-example="VWAG-LFP37-20260914-004217-33">ID. Polo LFP pack</button>
+            <button class="btn btn-ghost btn-sm" type="button" data-uid-example="MECH123-BAT03-20251031-000765-A3">Original project example</button>
           </div>
           <div class="segments" id="uid-segments" aria-live="polite"></div>
           <p class="uid-msg" id="uid-msg" aria-live="polite"></p>
@@ -154,25 +145,23 @@
     <section class="section" id="scope" aria-labelledby="scope-h">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Scope &amp; honesty</span>
-          <h2 id="scope-h">What is implemented — and what is not</h2>
-          <p class="lead">This is an academic prototype rebuilt as a working portfolio demo. It mirrors the structure of a
-            regulatory battery passport; it is not a certified or legally compliant implementation.</p>
+          <span class="eyebrow">Scope</span>
+          <h2 id="scope-h">What this passport is, and what it is not</h2>
+          <p class="lead">An independent case study of what a manufacturer-issued passport would contain. It follows the structure
+            of Annex XIII. It is not a legal passport and it does not claim compliance.</p>
         </div>
         <div class="card scope">
           <table>
             <thead><tr><th>Capability</th><th>Status</th><th>Notes</th></tr></thead>
             <tbody>
-              <tr><td>Passport viewer, 8 categories, 4 battery records</td><td><span class="badge badge-ok">Implemented</span></td><td>Static HTML/CSS/JS, data in versioned JSON, deep links per category.</td></tr>
-              <tr><td>Permanent QR codes</td><td><span class="badge badge-ok">Implemented</span></td><td>Generated with an open-source library, encode the final URL directly, decoded and checked in CI.</td></tr>
-              <tr><td>Layered access (public / restricted)</td><td><span class="badge badge-ok">Implemented (demo)</span></td><td>Client-side password gate (SHA-256 compare). Demonstrates the access model; not a security control.</td></tr>
-              <tr><td>Data validation &amp; automated deployment</td><td><span class="badge badge-ok">Implemented</span></td><td>JSON Schema + consistency rules, QR decode tests, GitHub Actions → GitHub Pages.</td></tr>
-              <tr><td>UID format decoder</td><td><span class="badge badge-ok">Implemented</span></td><td>Parses the documented scheme. Check-code algorithm was not defined in the project; a CRC-8 proposal is shown as an extension.</td></tr>
-              <tr><td>Complete data for all four batteries</td><td><span class="badge badge-ok">Implemented</span></td><td>All 33 attributes populated for each battery, with precise technical, environmental and compliance values.</td></tr>
-              <tr><td>Data entry / editing forms</td><td><span class="badge badge-pending">Original prototype only</span></td><td>Described in the report; here records are edited as JSON and reviewed via pull requests.</td></tr>
-              <tr><td>Real authentication &amp; role-based access</td><td><span class="badge badge-lock">Proposed</span></td><td>Requires a server-side identity provider; out of scope for static hosting.</td></tr>
-              <tr><td>Live lifecycle updates (use phase, repurposing, recycling)</td><td><span class="badge badge-lock">Proposed</span></td><td>Part of the DPP concept in the report; would need a write API and data from BMS / service events.</td></tr>
-              <tr><td>Regulatory compliance (EU 2023/1542, Annex XIII)</td><td><span class="badge badge-lock">Not claimed</span></td><td>Categories follow the regulation's intent; full mandatory data set and verification are not covered.</td></tr>
+              <tr><td>Annex XIII data model, 10 sections, 86 attributes</td><td><span class="badge badge-ok">Implemented</span></td><td>Every field carries its legal reference, provenance tag and sources. Validated by JSON Schema and consistency rules in CI.</td></tr>
+              <tr><td>Public data from Volkswagen publications</td><td><span class="badge badge-ok">Implemented</span></td><td>Chemistry, energy, cell count, architecture, charging, WLTP, warranty, plant and due diligence, each linked to its source.</td></tr>
+              <tr><td>Gap report</td><td><span class="badge badge-ok">Implemented</span></td><td>Lists every attribute the manufacturer has not published, such as the Article 7 carbon footprint declaration.</td></tr>
+              <tr><td>Access groups (public, legitimate interest, authorities)</td><td><span class="badge badge-ok">Implemented (demo)</span></td><td>A client-side role switch shows what each group sees. Static hosting cannot protect data; production needs server-side identity.</td></tr>
+              <tr><td>Permanent QR code</td><td><span class="badge badge-ok">Implemented</span></td><td>Encodes the final URL directly. Decoded and checked on every build.</td></tr>
+              <tr><td>Dynamic state-of-health data</td><td><span class="badge badge-restricted">Simulated</span></td><td>Shows how BMS data would update the passport. Values are illustrative.</td></tr>
+              <tr><td>Article 7 carbon footprint</td><td><span class="badge badge-gap">Not declared</span></td><td>Volkswagen has not published one yet. An indicative literature value is shown and labelled.</td></tr>
+              <tr><td>Legal compliance with Regulation (EU) 2023/1542</td><td><span class="badge badge-gap">Not claimed</span></td><td>Only the economic operator can issue a passport. Values here are not verified by a notified body.</td></tr>
             </tbody>
           </table>
         </div>
@@ -182,30 +171,24 @@
     <section class="section" id="about" aria-labelledby="about-h">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Context</span>
-          <h2 id="about-h">Why battery passports matter</h2>
+          <span class="eyebrow">About</span>
+          <h2 id="about-h">Background</h2>
         </div>
         <div class="two-col">
           <div class="card panel">
-            <h3>Regulatory driver</h3>
-            <p class="muted">Under <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj" target="_blank" rel="noopener">Regulation (EU) 2023/1542</a>,
-              EV batteries, light-means-of-transport batteries and industrial batteries above 2 kWh placed on the EU market
-              need an electronic battery passport, accessible via a QR code, from 18 February 2027.</p>
-            <ul>
-              <li>Traceability of materials and supply chain</li>
-              <li>Carbon footprint and recycled-content disclosure</li>
-              <li>Repair, reuse, second-life and recycling information</li>
-            </ul>
+            <h3>Why LFP</h3>
+            <p class="muted">Lithium iron phosphate is cheaper, cobalt- and nickel-free and long-lived. Volkswagen uses a 38.5 kWh
+              LFP pack in the entry versions of the ID. Polo and the CUPRA Raval, both assembled in Martorell. The chemistry
+              also changes the passport: of the four recycled-content metals, only lithium applies.</p>
           </div>
           <div class="card panel">
-            <h3>About the project</h3>
-            <p class="muted">Developed as a four-person team project in the module “M7 Manufacturing Technology and Business
-              Technology” at HTW Berlin (milestone report, January 2026), supervised by Prof. Dr. Christoph Sprung.</p>
+            <h3>The project</h3>
+            <p class="muted">Started as a four-person team project in the module “M7 Manufacturing Technology and Business Technology”
+              at HTW Berlin (January 2026), supervised by Prof. Dr. Christoph Sprung, and rebuilt as an Annex XIII case study.</p>
             <ul>
               <li>Team: Shubham Kanawade, Sanchay Narain, Varad Shinde, Kiran Koppera</li>
               <li><a href="docs/original/DPP_MM03_Milestone-Report_2026-01-22.pdf">Milestone report (PDF)</a> ·
                 <a href="docs/original/DPP_MM03_Presentation_2026-01-27.pdf">Presentation (PDF)</a></li>
-              <li><a href="legacy/prototype-v0.html">Earliest single-page prototype</a> (kept for reference)</li>
             </ul>
           </div>
         </div>
@@ -215,9 +198,9 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <span>Battery Digital Product Passport — academic prototype, rebuilt as an open-source demo.</span>
+      <span>Independent case study. Not issued or endorsed by Volkswagen AG. Product names belong to their owners.</span>
       <span><a href="https://github.com/Kiran-koppera/digital-product-passport" target="_blank" rel="noopener">GitHub</a> ·
-        <a href="labels.html">QR labels</a> · Code MIT</span>
+        <a href="labels.html">QR label</a> · Code MIT</span>
     </div>
   </footer>
 </body>

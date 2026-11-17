@@ -21,20 +21,20 @@ redirects to the real page. When the subscription ends, the redirect stops and t
 | Property | Value |
 |----------|-------|
 | Generator | [segno](https://github.com/heuer/segno) 1.6.6 (pure Python, BSD-3-Clause, no network) |
-| Encoded content | Final URL, e.g. `https://kiran-koppera.github.io/digital-product-passport/passport.html?id=solid-state-cell` |
+| Encoded content | Final URL, e.g. `https://kiran-koppera.github.io/digital-product-passport/passport.html?id=vw-id-polo-lfp-37` |
 | Symbol | QR Code Model 2, version 8, error correction **Q** (~25 % damage tolerance), 4-module quiet zone |
 | Formats | `qr/<id>.svg` (vector, for web and print) and `qr/<id>.png` (912 × 912 px) |
 | Expiry / cost | None. No third party is involved at scan time. |
 
-| Solid State Cell | Lithium Ion Battery | Sodium Ion Cell | Sodium Chloride Battery |
-|:-:|:-:|:-:|:-:|
-| <img src="../qr/solid-state-cell.svg" width="150" alt="QR Solid State Cell"> | <img src="../qr/lithium-ion-battery.svg" width="150" alt="QR Lithium Ion Battery"> | <img src="../qr/sodium-ion-cell.svg" width="150" alt="QR Sodium Ion Cell"> | <img src="../qr/sodium-chloride-battery.svg" width="150" alt="QR Sodium Chloride Battery"> |
+| ID. Polo 37 kWh LFP Battery |
+|:-:|
+| <img src="../qr/vw-id-polo-lfp-37.svg" width="150" alt="QR code for the ID. Polo 37 kWh LFP battery passport"> |
 
 ## Keeping the codes permanent
 
 A static QR code is only as permanent as the URL it encodes. Three rules keep these codes working:
 
-1. **Stable ids.** `?id=solid-state-cell` must keep resolving. Content can change freely; the id must not.
+1. **Stable ids.** `?id=vw-id-polo-lfp-37` must keep resolving. Content can change freely; the id must not.
 2. **Stable host.** The codes depend on the repository name `digital-product-passport` and the account
    `Kiran-koppera`. Renaming either breaks the codes. GitHub redirects renamed repositories, but not Pages URLs.
    If you need to move, deploy a redirect page at the old location or use a custom domain (see below).

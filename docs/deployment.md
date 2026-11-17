@@ -11,13 +11,13 @@ python -m http.server 8000
 # open http://localhost:8000/
 ```
 
-`localhost` counts as a secure context, so the Web Crypto password gate works locally.
+The access switch keeps the selected role in `sessionStorage`; add `&role=legitimate-interest` or `&role=authority` to a passport URL to deep-link a role.
 
 ## Tooling (optional)
 
 ```bash
 python -m pip install -r requirements-dev.txt   # segno, OpenCV, jsonschema
-python scripts/validate_data.py                 # schema + rules
+python scripts/validate_data.py --gaps          # schema + Annex XIII rules + gap report
 python -m unittest discover -s tests            # Python unit tests
 python scripts/generate_qr.py                   # regenerate qr/*.svg|png
 python scripts/verify_qr.py                     # decode-test every QR code

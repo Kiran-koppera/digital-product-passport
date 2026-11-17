@@ -1,18 +1,17 @@
-// Unique Identifier (UID) scheme from the project (presentation slide 3, report §4.1):
-//   MECH123 - BAT03 - 20251031 - 000765 - A3
-//   manufacturer | product type / batch | production lot (date) | serial no. | checksum
+// Unique identifier scheme (Art. 77(3) requires one per battery). From the original project
+// (presentation slide 3, report section 4.1), with a CRC-8 check code added in this repository:
+//   VWAG - LFP37 - 20260914 - 004217 - 33
+//   economic operator | product type | production date | serial no. | check code
 //
-// The project did not specify how the 2-character checksum is computed (all documented
-// examples use "A3"). parseUid() therefore only checks the *format*. proposeChecksum()
-// is an extension added in this repository (CRC-8, rendered as 2 hex digits) and is
-// clearly labelled as such in the UI.
+// parseUid() checks the format. proposeChecksum() computes the CRC-8 check code over the
+// first four segments. The original project's examples used a fixed "A3".
 
 export const SEGMENTS = [
-  { key: "manufacturer", label: "Manufacturer ID", color: "#e8772e", re: /^[A-Z]{2,6}\d{0,4}$/ },
-  { key: "type", label: "Product type / batch code", color: "#8a96a8", re: /^[A-Z]{2,4}\d{1,3}$/ },
-  { key: "lot", label: "Production lot (YYYYMMDD)", color: "#f2b705", re: /^\d{8}$/ },
+  { key: "manufacturer", label: "Economic operator", color: "#e8772e", re: /^[A-Z]{2,6}\d{0,4}$/ },
+  { key: "type", label: "Product type", color: "#8a96a8", re: /^[A-Z]{2,4}\d{1,3}$/ },
+  { key: "lot", label: "Production date (YYYYMMDD)", color: "#f2b705", re: /^\d{8}$/ },
   { key: "serial", label: "Serial number", color: "#4a9ad8", re: /^\d{6}$/ },
-  { key: "checksum", label: "Checksum / data code", color: "#5aa846", re: /^[A-Z0-9]{2}$/ },
+  { key: "checksum", label: "Check code (CRC-8)", color: "#5aa846", re: /^[A-Z0-9]{2}$/ },
 ];
 
 function validDate(yyyymmdd) {
@@ -21,8 +20,7 @@ function validDate(yyyymmdd) {
   return dt.getUTCFullYear() === y && dt.getUTCMonth() === m - 1 && dt.getUTCDate() === d;
 }
 
-/** Split a UID into labelled segments. Accepts the 5-part scheme and the 4-part form
- *  used by the Solid State Cell record (no serial number). */
+/** Split a UID into labelled segments. Accepts the 5-part scheme and a 4-part form without serial number. */
 export function parseUid(input) {
   const uid = String(input || "").trim().toUpperCase();
   const parts = uid.split("-").filter(Boolean);
@@ -37,14 +35,14 @@ export function parseUid(input) {
     const value = mapped[i];
     if (value === null) return { ...seg, value, missing: true };
     if (!seg.re.test(value)) problems.push(`${seg.label}: "${value}" does not match the expected format.`);
-    if (seg.key === "lot" && seg.re.test(value) && !validDate(value)) problems.push(`Production lot "${value}" is not a valid calendar date.`);
+    if (seg.key === "lot" && seg.re.test(value) && !validDate(value)) problems.push(`Production date "${value}" is not a valid calendar date.`);
     return { ...seg, value };
   });
-  if (parts.length === 4) problems.push("Serial-number segment is absent (as in the documented Solid State Cell UID).");
+  if (parts.length === 4) problems.push("Serial-number segment is absent.");
   return { uid, ok: problems.length === 0, segments, problems };
 }
 
-/** CRC-8 (poly 0x07) over the UID body, as 2 uppercase hex chars. Repository extension. */
+/** CRC-8 (poly 0x07) over the UID body, as 2 uppercase hex chars. */
 export function proposeChecksum(body) {
   let crc = 0;
   for (const byte of new TextEncoder().encode(String(body).toUpperCase())) {

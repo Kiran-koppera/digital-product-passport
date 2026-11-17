@@ -1,17 +1,39 @@
-// Shared helpers: theme toggle, data loading, small DOM utilities. No dependencies.
+// Shared helpers: theme, roles, data loading, provenance metadata. No dependencies.
 
 export const REPO_URL = "https://github.com/Kiran-koppera/digital-product-passport";
+export const LEVELS = ["public", "legitimate-interest", "authority"];
 
-export const icons = {
-  lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
-  unlock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-1.9"/></svg>',
-  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
-  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-  info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>',
-  download: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>',
-  copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg>',
-  arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5l5 5-5 5"/></svg>',
+export const PROVENANCE = {
+  official: { label: "Official", desc: "Published by the manufacturer or its group" },
+  derived: { label: "Derived", desc: "Calculated from official values; method in the note" },
+  regulation: { label: "Regulation", desc: "Set by Regulation (EU) 2023/1542 or other law" },
+  literature: { label: "Literature", desc: "Published study, not manufacturer data" },
+  estimated: { label: "Estimated", desc: "Engineering assumption; method in the note" },
+  simulated: { label: "Simulated", desc: "Illustrative demo data" },
+  "not-disclosed": { label: "Not disclosed", desc: "Required data the manufacturer has not published" },
 };
+
+const svg = (d, extra = "") => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${d}</svg>`;
+export const icons = {
+  lock: svg('<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'),
+  unlock: svg('<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-1.9"/>'),
+  check: svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>', 'stroke-width="2.4"'),
+  info: svg('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>'),
+  download: svg('<path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/>'),
+  print: svg('<path d="M7 9V3h10v6M7 17H4v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6h-3"/><rect x="7" y="14" width="10" height="7"/>'),
+  copy: svg('<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/>'),
+  arrow: svg('<path d="M5 12h14m-5-5l5 5-5 5"/>'),
+  ext: svg('<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>'),
+  shield: svg('<path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>'),
+  bolt: svg('<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'),
+  leaf: svg('<path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15"/><path d="M5 19l7-7"/>'),
+  cycle: svg('<path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 4v5h-5M20 12a8 8 0 0 1-14 5.3L4 15M4 20v-5h5"/>'),
+  pulse: svg('<path d="M3 12h4l3-7 4 14 3-7h4"/>'),
+  cell: svg('<rect x="6" y="4" width="12" height="17" rx="2"/><path d="M10 2h4M9 12h6M12 9v6"/>'),
+  clock: svg('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
+};
+
+export const BRAND_MARK = `<svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="8" width="23" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="26" y="13" width="3" height="6" rx="1" fill="currentColor"/><path d="M15.5 11l-4.5 6h4l-1 4 4.5-6h-4z" fill="currentColor"/></svg>`;
 
 export function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -23,16 +45,46 @@ export async function fetchJSON(path) {
   return res.json();
 }
 
-export async function sha256Hex(text) {
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
-  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+export function formatDate(iso) {
+  const d = new Date(iso + "T00:00:00Z");
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 }
 
-export function fieldStats(record) {
-  const fields = record.sections.flatMap((s) => s.fields);
+export const allFields = (record) => record.sections.flatMap((s) => s.fields);
+
+export function coverage(record) {
+  const fields = allFields(record);
+  const byProvenance = Object.fromEntries(Object.keys(PROVENANCE).map((k) => [k, 0]));
+  fields.forEach((f) => { byProvenance[f.provenance] += 1; });
   const filled = fields.filter((f) => f.value !== null).length;
-  return { filled, total: fields.length, pct: Math.round((filled / fields.length) * 100) };
+  return { total: fields.length, filled, gaps: fields.length - filled, pct: Math.round((filled / fields.length) * 100), byProvenance };
 }
+
+/** Stacked bar of field counts per provenance, with a legend. */
+export function provenanceBar(record) {
+  const c = coverage(record);
+  const segs = Object.entries(c.byProvenance).filter(([, n]) => n > 0);
+  return `
+    <div class="prov-bar" role="img" aria-label="${segs.map(([k, n]) => `${n} ${PROVENANCE[k].label.toLowerCase()}`).join(", ")}">
+      ${segs.map(([k, n]) => `<i class="pv-${k}" style="flex:${n}" title="${PROVENANCE[k].label}: ${n}"></i>`).join("")}
+    </div>
+    <ul class="prov-legend">
+      ${segs.map(([k, n]) => `<li><span class="dot pv-${k}"></span><b>${n}</b> ${escapeHtml(PROVENANCE[k].label)}</li>`).join("")}
+    </ul>`;
+}
+
+// ----- roles (demo access model) -----
+const ROLE_KEY = "dpp-role";
+export function getRole() {
+  const fromUrl = new URLSearchParams(location.search).get("role");
+  if (LEVELS.includes(fromUrl)) return fromUrl;
+  try { const r = sessionStorage.getItem(ROLE_KEY); if (LEVELS.includes(r)) return r; } catch { /* storage unavailable */ }
+  return "public";
+}
+export function setRole(role) {
+  try { sessionStorage.setItem(ROLE_KEY, role); } catch { /* storage unavailable */ }
+}
+export const canSee = (role, access) => LEVELS.indexOf(role) >= LEVELS.indexOf(access);
 
 // ----- theme -----
 const THEME_KEY = "dpp-theme";
@@ -52,8 +104,8 @@ applyTheme(storedTheme());
 export function initThemeToggle() {
   const btn = document.querySelector("[data-theme-toggle]");
   if (!btn) return;
-  const sun = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
-  const moon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>';
+  const sun = svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>');
+  const moon = svg('<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>');
   const render = () => {
     const dark = currentTheme() === "dark";
     btn.innerHTML = dark ? sun : moon;
@@ -66,4 +118,8 @@ export function initThemeToggle() {
     render();
   });
   render();
+}
+
+export function initBrand() {
+  document.querySelectorAll("[data-brand-mark]").forEach((el) => { el.innerHTML = BRAND_MARK; });
 }

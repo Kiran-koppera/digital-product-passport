@@ -1,0 +1,1053 @@
+{
+  "$schema": "../schema/passport.schema.json",
+  "id": "vw-id-polo-lfp-37",
+  "uid": "VWAG-LFP37-20260914-004217-33",
+  "productName": "ID. Polo 37 kWh LFP Battery",
+  "batteryCategory": "Electric vehicle battery",
+  "chemistry": "LFP",
+  "vehicle": "Volkswagen ID. Polo · 85 kW and 99 kW versions",
+  "status": "original",
+  "dataVersion": "1.0.0",
+  "lastUpdated": "2026-11-17",
+  "caseStudy": "Independent case study built only from public Volkswagen Group publications, the regulation text and cited literature. It is not issued, endorsed or verified by Volkswagen AG. The serial number, date of manufacture and state-of-health data are illustrative.",
+  "sections": [
+    {
+      "key": "identification",
+      "title": "Identification & labelling",
+      "annex": "Annex XIII 1(a) · Annex VI Part A",
+      "access": "public",
+      "summary": "Labelling information that every scan of the QR code shows.",
+      "fields": [
+        {
+          "key": "uid",
+          "label": "Unique battery identifier",
+          "annex": "Art. 77(3)",
+          "value": "VWAG-LFP37-20260914-004217-33",
+          "format": "mono",
+          "provenance": "simulated",
+          "sources": [],
+          "note": "Illustrative serial in the project's UID scheme. A real passport uses the identifier the economic operator assigns."
+        },
+        {
+          "key": "category",
+          "label": "Battery category",
+          "annex": "Art. 3(1)(14)",
+          "value": "Electric vehicle battery",
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "operator",
+          "label": "Economic operator placing the battery on the market",
+          "annex": "Annex VI A(1)",
+          "value": "Volkswagen AG, Berliner Ring 2, 38440 Wolfsburg, Germany",
+          "provenance": "official",
+          "sources": [
+            "vw-world-premiere"
+          ],
+          "note": "Vehicle manufacturer. The cells are a unified cell design developed with Volkswagen subsidiary PowerCo."
+        },
+        {
+          "key": "application",
+          "label": "Vehicle application",
+          "value": "Volkswagen ID. Polo, 85 kW (116 PS) and 99 kW (135 PS) versions · MEB+ platform · front-wheel drive",
+          "provenance": "official",
+          "sources": [
+            "vw-world-premiere",
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "place",
+          "label": "Place of manufacture (battery system)",
+          "annex": "Annex VI A(4)",
+          "value": "Battery system assembly, Workshop 20, SEAT & CUPRA plant, Martorell (Barcelona), Spain",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-journey",
+            "vw-bestseller"
+          ]
+        },
+        {
+          "key": "date",
+          "label": "Date of manufacture",
+          "annex": "Annex VI A(5)",
+          "value": "2026-09-14",
+          "format": "date",
+          "provenance": "simulated",
+          "sources": []
+        },
+        {
+          "key": "weight",
+          "label": "Battery weight",
+          "annex": "Annex VI A(6)",
+          "value": null,
+          "unit": "kg",
+          "provenance": "not-disclosed",
+          "sources": [],
+          "note": "Not published. For context: the vehicle's EU kerb weight starts at 1,568 kg."
+        },
+        {
+          "key": "capacity-label",
+          "label": "Energy content (net, usable)",
+          "annex": "Annex VI A(7)",
+          "value": "37",
+          "unit": "kWh",
+          "provenance": "official",
+          "sources": [
+            "vw-world-premiere",
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "chemistry",
+          "label": "Battery chemistry",
+          "annex": "Annex VI A(8)",
+          "value": "Lithium iron phosphate (LiFePO₄, LFP)",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "hazardous",
+          "label": "Hazardous substances (other than Hg, Cd, Pb)",
+          "annex": "Annex VI A(9)",
+          "value": [
+            "Lithium hexafluorophosphate (LiPF₆) electrolyte salt",
+            "Flammable organic carbonate solvents"
+          ],
+          "provenance": "estimated",
+          "sources": [
+            "battery-pass-guidance"
+          ],
+          "note": "Typical of LFP cells with liquid electrolyte. The cell safety data sheet is not public."
+        },
+        {
+          "key": "extinguishing",
+          "label": "Usable extinguishing agent",
+          "annex": "Annex VI A(10)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "crm",
+          "label": "Critical raw materials present (> 0.1 % w/w)",
+          "annex": "Annex VI A(11)",
+          "value": [
+            "Lithium",
+            "Natural graphite",
+            "Phosphorus (phosphate)",
+            "Copper",
+            "Aluminium"
+          ],
+          "provenance": "estimated",
+          "sources": [
+            "eu-crma"
+          ],
+          "note": "Inferred from LFP chemistry and the EU critical raw materials list. No cobalt, no nickel, no manganese."
+        }
+      ]
+    },
+    {
+      "key": "carbon-footprint",
+      "title": "Carbon footprint",
+      "annex": "Annex XIII 1(c) · Art. 7",
+      "access": "public",
+      "summary": "Volkswagen has not published an Article 7 declaration yet. The indicative values below come from peer-reviewed literature and are labelled as such.",
+      "fields": [
+        {
+          "key": "cf-declared",
+          "label": "Declared carbon footprint (per kWh of total energy over service life)",
+          "annex": "Art. 7(1)",
+          "value": null,
+          "unit": "kg CO₂e/kWh",
+          "provenance": "not-disclosed",
+          "sources": [
+            "eu-2023-1542"
+          ],
+          "note": "The declaration becomes mandatory for EV batteries once the Commission's delegated act on the calculation method applies."
+        },
+        {
+          "key": "cf-class",
+          "label": "Carbon footprint performance class",
+          "annex": "Art. 7(2)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": [
+            "eu-2023-1542"
+          ],
+          "note": "Classes will be defined by a later delegated act."
+        },
+        {
+          "key": "cf-lit",
+          "label": "Indicative cradle-to-gate footprint, LFP pack (literature)",
+          "value": "75.5",
+          "unit": "kg CO₂e/kWh",
+          "provenance": "literature",
+          "sources": [
+            "lit-lfp-sib-2026"
+          ],
+          "note": "Factory-data LCA of a 1 kWh LFP pack (2026)."
+        },
+        {
+          "key": "cf-range",
+          "label": "Published range for LFP pack production",
+          "value": "46 – 109",
+          "unit": "kg CO₂e/kWh",
+          "provenance": "literature",
+          "sources": [
+            "lit-lfp-lca-2024"
+          ]
+        },
+        {
+          "key": "cf-pack",
+          "label": "Indicative footprint of this pack",
+          "value": "≈ 2.9",
+          "unit": "t CO₂e",
+          "provenance": "derived",
+          "sources": [
+            "lit-lfp-sib-2026",
+            "vwg-battery-journey"
+          ],
+          "note": "75.5 kg CO₂e/kWh × 38.5 kWh installed energy. Not an Article 7 value."
+        },
+        {
+          "key": "cf-cells-energy",
+          "label": "Electricity in Group cell production",
+          "value": "PowerCo Salzgitter gigafactory runs entirely on wind and solar power",
+          "provenance": "official",
+          "sources": [
+            "vwg-salzgitter"
+          ],
+          "note": "Salzgitter started with NMC unified cells; the LFP variant was announced to follow. The production site of this pack's LFP cells is not published."
+        },
+        {
+          "key": "cf-use",
+          "label": "Use-phase energy consumption (WLTP, combined)",
+          "value": "13.6 – 13.8",
+          "unit": "kWh/100 km",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "due-diligence",
+      "title": "Supply chain due diligence",
+      "annex": "Annex XIII 1(d) · Art. 52",
+      "access": "public",
+      "summary": "Information from the economic operator's public due diligence reporting.",
+      "fields": [
+        {
+          "key": "dd-system",
+          "label": "Due diligence management system",
+          "value": "Raw Materials Due Diligence Management System, introduced 2020, based on the OECD Due Diligence Guidance",
+          "provenance": "official",
+          "sources": [
+            "vwg-supply-chain"
+          ]
+        },
+        {
+          "key": "dd-resc",
+          "label": "Supplier risk management",
+          "value": "Responsible Supply Chain System (ReSC)",
+          "provenance": "official",
+          "sources": [
+            "vwg-supply-chain"
+          ]
+        },
+        {
+          "key": "dd-irma",
+          "label": "Mining standards",
+          "value": "Cooperation with the Initiative for Responsible Mining Assurance (IRMA)",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-tech"
+          ]
+        },
+        {
+          "key": "dd-report",
+          "label": "Public reporting",
+          "value": "Annual Responsible Raw Materials Report (latest edition: 2025)",
+          "provenance": "official",
+          "sources": [
+            "vwg-supply-chain"
+          ]
+        },
+        {
+          "key": "dd-verified",
+          "label": "Third-party verified battery due diligence report",
+          "annex": "Art. 52(3)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "content",
+      "title": "Recycled & renewable content",
+      "annex": "Annex XIII 1(e)(f) · Art. 8",
+      "access": "public",
+      "summary": "LFP contains no cobalt or nickel, so only lithium recycled content is relevant for this battery.",
+      "fields": [
+        {
+          "key": "rc-li",
+          "label": "Recycled lithium share",
+          "value": null,
+          "unit": "%",
+          "provenance": "not-disclosed",
+          "sources": [],
+          "note": "Legal minimum: 6 % from 18 August 2031, 12 % from 18 August 2036."
+        },
+        {
+          "key": "rc-co",
+          "label": "Recycled cobalt share",
+          "value": "Not applicable: no cobalt in LFP",
+          "provenance": "derived",
+          "sources": [
+            "vw-drive-data"
+          ],
+          "note": "LFP cathodes (LiFePO₄) contain no cobalt; Article 8 shares only apply to metals present."
+        },
+        {
+          "key": "rc-ni",
+          "label": "Recycled nickel share",
+          "value": "Not applicable: no nickel in LFP",
+          "provenance": "derived",
+          "sources": [
+            "vw-drive-data"
+          ],
+          "note": "LFP cathodes (LiFePO₄) contain no nickel."
+        },
+        {
+          "key": "rc-pb",
+          "label": "Recycled lead share",
+          "value": "Not applicable: no lead in the traction battery",
+          "provenance": "derived",
+          "sources": [],
+          "note": "Lithium-ion traction batteries contain no lead; the lead target applies to lead-acid batteries."
+        },
+        {
+          "key": "renewable",
+          "label": "Share of renewable content",
+          "annex": "Annex XIII 1(f)",
+          "value": null,
+          "unit": "%",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "rc-targets",
+          "label": "Minimum recycled content (Art. 8)",
+          "value": [
+            "2031: cobalt 16 %, lithium 6 %, nickel 6 %, lead 85 %",
+            "2036: cobalt 26 %, lithium 12 %, nickel 15 %, lead 85 %"
+          ],
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "performance",
+      "title": "Performance & durability",
+      "annex": "Annex XIII 1(g)–(p) · Annex IV",
+      "access": "public",
+      "summary": "Electrochemical performance and durability parameters. Values Volkswagen has not published are shown as gaps or as estimates with their method.",
+      "fields": [
+        {
+          "key": "e-net",
+          "label": "Usable energy (net)",
+          "value": "37",
+          "unit": "kWh",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "e-gross",
+          "label": "Installed energy (gross)",
+          "value": "38.5",
+          "unit": "kWh",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-journey"
+          ],
+          "note": "Martorell assembly reports a 38.5 kWh version with 102 cells for the ID. Polo and CUPRA Raval."
+        },
+        {
+          "key": "architecture",
+          "label": "Pack architecture",
+          "value": "Cell-to-pack: cells go straight into the pack with no module housings. Three packs form the energy storage unit. The housing is load-bearing in the body structure, flat in the underbody.",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data",
+            "vw-bestseller"
+          ]
+        },
+        {
+          "key": "cells",
+          "label": "Number of cells",
+          "value": "102",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-journey"
+          ]
+        },
+        {
+          "key": "cell-format",
+          "label": "Cell format",
+          "value": "Prismatic Unified Cell, co-developed with PowerCo",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data",
+            "powerco-unified-cell"
+          ]
+        },
+        {
+          "key": "density-gain",
+          "label": "Energy density gain from cell-to-pack",
+          "value": "≈ +10",
+          "unit": "%",
+          "provenance": "official",
+          "sources": [
+            "vw-bestseller"
+          ]
+        },
+        {
+          "key": "cell-energy",
+          "label": "Energy per cell",
+          "value": "≈ 377",
+          "unit": "Wh",
+          "provenance": "derived",
+          "sources": [
+            "vwg-battery-journey"
+          ],
+          "note": "38.5 kWh ÷ 102 cells."
+        },
+        {
+          "key": "v-nom",
+          "label": "Nominal voltage",
+          "value": "≈ 326",
+          "unit": "V",
+          "provenance": "estimated",
+          "sources": [
+            "battery-pass-guidance"
+          ],
+          "note": "Assumes all 102 cells in series at 3.2 V, typical for LFP. Volkswagen has not published the pack voltage."
+        },
+        {
+          "key": "v-range",
+          "label": "Minimum and maximum voltage",
+          "annex": "Annex XIII 1(h)",
+          "value": null,
+          "unit": "V",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "rated-capacity",
+          "label": "Rated capacity",
+          "annex": "Annex XIII 1(g)",
+          "value": "≈ 118",
+          "unit": "Ah",
+          "provenance": "estimated",
+          "sources": [],
+          "note": "38.5 kWh ÷ 326 V. To be replaced by the declared value."
+        },
+        {
+          "key": "power",
+          "label": "Original power capability",
+          "annex": "Annex XIII 1(i)",
+          "value": "≥ 99",
+          "unit": "kW",
+          "provenance": "derived",
+          "sources": [
+            "vw-drive-data"
+          ],
+          "note": "Lower bound implied by the 99 kW drive. Peak battery power is not published."
+        },
+        {
+          "key": "dc",
+          "label": "DC charging power (max.)",
+          "value": "88",
+          "unit": "kW",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ],
+          "note": "Media-drive data, September 2026. The world-premiere release (April 2026) states 90 kW."
+        },
+        {
+          "key": "dc-time",
+          "label": "DC charging 10 – 80 %",
+          "value": "≈ 23",
+          "unit": "min",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "ac",
+          "label": "AC charging power (max.)",
+          "value": "11",
+          "unit": "kW",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "v2l",
+          "label": "Bidirectional charging",
+          "value": "Vehicle-to-Load as standard, up to 3.6 kW",
+          "provenance": "official",
+          "sources": [
+            "vw-world-premiere"
+          ]
+        },
+        {
+          "key": "range",
+          "label": "WLTP range",
+          "value": "323 – 331",
+          "unit": "km",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "warranty",
+          "label": "Commercial warranty",
+          "annex": "Annex XIII 1(m)",
+          "value": "8 years or 160,000 km, at least 70 % state of health",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-tech"
+          ]
+        },
+        {
+          "key": "cycles",
+          "label": "Expected lifetime in cycles (and reference test)",
+          "annex": "Annex XIII 1(j)",
+          "value": null,
+          "unit": "cycles",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "exhaustion",
+          "label": "Capacity threshold for exhaustion",
+          "annex": "Annex XIII 1(k)",
+          "value": null,
+          "unit": "%",
+          "provenance": "not-disclosed",
+          "sources": [],
+          "note": "The warranty floor is 70 % state of health."
+        },
+        {
+          "key": "temp",
+          "label": "Temperature range when not in use",
+          "annex": "Annex XIII 1(l)",
+          "value": null,
+          "unit": "°C",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "rte",
+          "label": "Round-trip energy efficiency (initial and at 50 % cycle life)",
+          "annex": "Annex XIII 1(n)",
+          "value": null,
+          "unit": "%",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "resistance",
+          "label": "Internal resistance (cell and pack)",
+          "annex": "Annex XIII 1(o)",
+          "value": null,
+          "unit": "mΩ",
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "c-rate",
+          "label": "C-rate of cycle-life test",
+          "annex": "Annex XIII 1(p)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "key": "end-of-life",
+      "title": "End of life & collection",
+      "annex": "Annex XIII 1 · Art. 74",
+      "access": "public",
+      "summary": "Information for end users and waste operators on take-back, collection and recycling.",
+      "fields": [
+        {
+          "key": "takeback",
+          "label": "Take-back",
+          "value": "Producers must take back waste EV batteries free of charge (extended producer responsibility).",
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "symbol",
+          "label": "Separate collection",
+          "value": "Crossed-out wheeled bin symbol: do not dispose of with household or mixed waste.",
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "recovery",
+          "label": "Group raw material recovery",
+          "value": "Valuable raw materials are recovered from old batteries and used for new batteries.",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-tech"
+          ]
+        },
+        {
+          "key": "efficiency",
+          "label": "Recycling efficiency target, lithium-based batteries",
+          "value": [
+            "65 % by mass by 31 December 2025",
+            "70 % by mass by 31 December 2030"
+          ],
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "li-recovery",
+          "label": "Lithium material recovery target",
+          "value": [
+            "50 % by 31 December 2027",
+            "80 % by 31 December 2031"
+          ],
+          "provenance": "regulation",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "second-life",
+          "label": "Second-life and repurposing programme",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "key": "composition",
+      "title": "Detailed composition",
+      "annex": "Annex XIII 2(a)",
+      "access": "legitimate-interest",
+      "summary": "Materials used in the cathode, anode and electrolyte, for repairers, recyclers and second-life operators.",
+      "fields": [
+        {
+          "key": "cathode",
+          "label": "Cathode",
+          "value": "LiFePO₄ active material on aluminium current collector",
+          "provenance": "estimated",
+          "sources": [
+            "vw-drive-data"
+          ],
+          "note": "Chemistry confirmed by Volkswagen. Collector material is standard for LFP."
+        },
+        {
+          "key": "anode",
+          "label": "Anode",
+          "value": "Graphite on copper current collector",
+          "provenance": "estimated",
+          "sources": [],
+          "note": "Typical LFP cell construction; not published for this cell."
+        },
+        {
+          "key": "electrolyte",
+          "label": "Electrolyte",
+          "value": "LiPF₆ in organic carbonate solvents",
+          "provenance": "estimated",
+          "sources": [],
+          "note": "Typical LFP cell construction; not published for this cell."
+        },
+        {
+          "key": "separator",
+          "label": "Separator",
+          "value": "Polyolefin (PE/PP) microporous film",
+          "provenance": "estimated",
+          "sources": [],
+          "note": "Typical LFP cell construction; not published for this cell."
+        },
+        {
+          "key": "cell-housing",
+          "label": "Cell housing",
+          "value": "Prismatic hard case",
+          "provenance": "official",
+          "sources": [
+            "powerco-unified-cell"
+          ]
+        },
+        {
+          "key": "pack-housing",
+          "label": "Pack housing",
+          "value": "Load-bearing battery housing, part of the body structure",
+          "provenance": "official",
+          "sources": [
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "cell-supplier",
+          "label": "Cell manufacturer and plant",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": [],
+          "note": "Volkswagen states the cell was co-developed with PowerCo but has not named the producer of the LFP cells."
+        }
+      ]
+    },
+    {
+      "key": "dismantling",
+      "title": "Repair & dismantling",
+      "annex": "Annex XIII 2(b)–(d)",
+      "access": "legitimate-interest",
+      "summary": "Part numbers, spare part sources, dismantling information and safety measures.",
+      "fields": [
+        {
+          "key": "layout",
+          "label": "Number of cells and layout",
+          "annex": "Annex XIII 2(c)",
+          "value": "102 cells in three cell-to-pack packs forming one energy storage unit",
+          "provenance": "official",
+          "sources": [
+            "vwg-battery-journey",
+            "vw-drive-data"
+          ]
+        },
+        {
+          "key": "granularity",
+          "label": "Smallest replaceable unit",
+          "value": "Pack (one of three). With no module housings, cells cannot be swapped individually.",
+          "provenance": "derived",
+          "sources": [
+            "vw-bestseller"
+          ],
+          "note": "Follows from the cell-to-pack design, which removes module housings."
+        },
+        {
+          "key": "parts",
+          "label": "Part numbers for components",
+          "annex": "Annex XIII 2(b)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "spares",
+          "label": "Sources for replacement spare parts",
+          "annex": "Annex XIII 2(b)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "diagrams",
+          "label": "Exploded diagrams, disassembly sequence, fastenings and tools",
+          "annex": "Annex XIII 2(c)",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": []
+        },
+        {
+          "key": "safety",
+          "label": "Safety measures",
+          "annex": "Annex XIII 2(d)",
+          "value": [
+            "High-voltage system: work only by qualified high-voltage technicians",
+            "Isolate and verify absence of voltage before opening the housing",
+            "Do not puncture, crush or heat damaged cells; risk of toxic and flammable gas"
+          ],
+          "provenance": "estimated",
+          "sources": [
+            "battery-pass-guidance"
+          ],
+          "note": "Generic high-voltage safety practice. The manufacturer's repair manual is not public."
+        }
+      ]
+    },
+    {
+      "key": "conformity",
+      "title": "Conformity & test reports",
+      "annex": "Annex XIII 3",
+      "access": "authority",
+      "summary": "Test reports proving compliance, for notified bodies, market surveillance authorities and the Commission.",
+      "fields": [
+        {
+          "key": "doc",
+          "label": "EU declaration of conformity",
+          "annex": "Art. 18 · Annex IX",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "safety-tests",
+          "label": "Test reports proving compliance with the regulation's requirements",
+          "annex": "Annex XIII 3",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "perf-tests",
+          "label": "Performance and durability test reports",
+          "annex": "Art. 10 · Annex IV",
+          "value": null,
+          "provenance": "not-disclosed",
+          "sources": [
+            "eu-2023-1542"
+          ]
+        },
+        {
+          "key": "un383",
+          "label": "Transport testing",
+          "value": "UN Manual of Tests and Criteria, section 38.3, required for lithium batteries in transport",
+          "provenance": "regulation",
+          "sources": []
+        },
+        {
+          "key": "r100",
+          "label": "Vehicle electrical safety approval",
+          "value": "UN Regulation No. 100 (REESS), required for EU type approval",
+          "provenance": "regulation",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "key": "state-of-health",
+      "title": "State of health & battery status",
+      "annex": "Annex XIII 4 · Art. 14 · Annex VII",
+      "access": "legitimate-interest",
+      "dynamic": true,
+      "summary": "Dynamic data from the battery management system. All values in this section are simulated to show how a live passport updates.",
+      "fields": [
+        {
+          "key": "status",
+          "label": "Battery status",
+          "annex": "Art. 77(6)",
+          "value": "Original",
+          "provenance": "simulated",
+          "sources": []
+        },
+        {
+          "key": "soh",
+          "label": "State of health (capacity)",
+          "value": "99.1",
+          "unit": "%",
+          "provenance": "simulated",
+          "sources": []
+        },
+        {
+          "key": "remaining",
+          "label": "Remaining usable energy",
+          "value": "36.7",
+          "unit": "kWh",
+          "provenance": "simulated",
+          "sources": []
+        },
+        {
+          "key": "efc",
+          "label": "Full equivalent cycles",
+          "value": "18",
+          "provenance": "simulated",
+          "sources": []
+        },
+        {
+          "key": "odometer",
+          "label": "Vehicle odometer",
+          "value": "5,240",
+          "unit": "km",
+          "provenance": "simulated",
+          "sources": []
+        },
+        {
+          "key": "energy-throughput",
+          "label": "Energy throughput",
+          "value": "712",
+          "unit": "kWh",
+          "provenance": "simulated",
+          "sources": []
+        },
+        {
+          "key": "dc-share",
+          "label": "Share of DC fast charging",
+          "value": "24",
+          "unit": "%",
+          "provenance": "simulated",
+          "sources": []
+        },
+        {
+          "key": "events",
+          "label": "Negative events (deep discharge, over-temperature, accidents)",
+          "value": "None recorded",
+          "provenance": "simulated",
+          "sources": []
+        },
+        {
+          "key": "updated",
+          "label": "Last BMS update",
+          "value": "2026-11-16",
+          "format": "date",
+          "provenance": "simulated",
+          "sources": []
+        }
+      ]
+    }
+  ],
+  "sohHistory": [
+    {
+      "date": "2026-09-14",
+      "soh": 100.0
+    },
+    {
+      "date": "2026-09-28",
+      "soh": 99.9
+    },
+    {
+      "date": "2026-10-12",
+      "soh": 99.7
+    },
+    {
+      "date": "2026-10-26",
+      "soh": 99.5
+    },
+    {
+      "date": "2026-11-09",
+      "soh": 99.2
+    },
+    {
+      "date": "2026-11-16",
+      "soh": 99.1
+    }
+  ],
+  "sources": [
+    {
+      "id": "vw-world-premiere",
+      "title": "The all-new electric ID. Polo – World premiere",
+      "publisher": "Volkswagen Newsroom",
+      "date": "2026-04-29",
+      "url": "https://www.volkswagen-newsroom.com/en/the-all-new-electric-id-polo-world-premiere-20343"
+    },
+    {
+      "id": "vw-drive-data",
+      "title": "ID. Polo international media drive – Drive system versions and performance data",
+      "publisher": "Volkswagen Newsroom",
+      "date": "2026-09-09",
+      "url": "https://www.volkswagen-newsroom.com/en/the-all-new-electric-id-polo-international-media-drive-20668/drive-system-versions-and-performance-data-20669"
+    },
+    {
+      "id": "vw-bestseller",
+      "title": "Reinventing a bestseller: ID. Polo on the road to series production",
+      "publisher": "Volkswagen Newsroom",
+      "date": "2025-12-15",
+      "url": "https://www.volkswagen-newsroom.com/en/press-releases/reinventing-a-bestseller-id-polo-on-the-road-to-series-production-20032"
+    },
+    {
+      "id": "vwg-battery-journey",
+      "title": "A battery's journey (Martorell battery system assembly)",
+      "publisher": "Volkswagen Group",
+      "date": "2026-05-07",
+      "url": "https://www.volkswagen-group.com/en/articles/a-batterys-journey-20368"
+    },
+    {
+      "id": "vwg-battery-tech",
+      "title": "Electric car battery technology (FAQ)",
+      "publisher": "Volkswagen Group",
+      "url": "https://www.volkswagen-group.com/en/electric-car-battery-technology-19028"
+    },
+    {
+      "id": "vwg-supply-chain",
+      "title": "Sustainability in the supply chain",
+      "publisher": "Volkswagen Group",
+      "url": "https://www.volkswagen-group.com/en/sustainability-in-the-supply-chain-16113"
+    },
+    {
+      "id": "vwg-salzgitter",
+      "title": "Start of European battery cell production: PowerCo commissions Salzgitter gigafactory",
+      "publisher": "Volkswagen Group",
+      "date": "2025-12-17",
+      "url": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045"
+    },
+    {
+      "id": "powerco-unified-cell",
+      "title": "The PowerCo Unified Cell",
+      "publisher": "PowerCo SE",
+      "url": "https://www.powerco.de/en/product/unified-cell.html"
+    },
+    {
+      "id": "eu-2023-1542",
+      "title": "Regulation (EU) 2023/1542 concerning batteries and waste batteries",
+      "publisher": "Official Journal of the European Union",
+      "date": "2023-07-28",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/1542/oj"
+    },
+    {
+      "id": "eu-crma",
+      "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex II",
+      "publisher": "Official Journal of the European Union",
+      "date": "2024-05-03",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1252/oj"
+    },
+    {
+      "id": "battery-pass-guidance",
+      "title": "Battery Passport Content Guidance",
+      "publisher": "Battery Pass consortium",
+      "date": "2023",
+      "url": "https://thebatterypass.eu/assets/images/content-guidance/pdf/2023_Battery_Pass_Content_Guidance.pdf"
+    },
+    {
+      "id": "lit-lfp-sib-2026",
+      "title": "Sodium-ion packs 25 % less carbon-intensive than LFP, say researchers",
+      "publisher": "ESS News",
+      "date": "2026-09-28",
+      "url": "https://www.ess-news.com/2026/09/28/sodium-ion-packs-25-less-carbon-intensive-than-lfp-say-researchers/"
+    },
+    {
+      "id": "lit-lfp-lca-2024",
+      "title": "Life cycle assessment of an LFP battery pack (literature review of 1 kWh production values)",
+      "publisher": "Green Manufacturing Open, OAE Publishing",
+      "date": "2024",
+      "url": "https://oaepublish.com/articles/gmo.2024.092201"
+    }
+  ]
+}

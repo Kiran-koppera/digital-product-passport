@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QR Labels · Battery Digital Product Passport</title>
-  <meta name="description" content="Printable QR labels linking each battery to its Digital Product Passport.">
+  <title>QR Label · Battery Passport</title>
+  <meta name="description" content="Printable QR label linking the battery to its digital battery passport.">
+  <meta name="theme-color" content="#0b1220">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script type="module">
-    import { escapeHtml, fetchJSON, initThemeToggle } from "./assets/js/common.js";
+    import { escapeHtml, fetchJSON, initBrand, initThemeToggle } from "./assets/js/common.js";
     initThemeToggle();
+    initBrand();
     const BASE = "https://kiran-koppera.github.io/digital-product-passport/";
     const box = document.getElementById("labels");
     try {
@@ -19,9 +21,10 @@
         <div class="label">
           <img src="qr/${r.id}.svg" width="120" height="120" alt="QR code for ${escapeHtml(r.productName)}">
           <div>
-            <span class="tag">DIGITAL PRODUCT PASSPORT</span>
+            <span class="tag">EU BATTERY PASSPORT</span>
             <h3>${escapeHtml(r.productName)}</h3>
-            <p>${r.uid ? `UID ${escapeHtml(r.uid)}<br>` : ""}${BASE}passport.html?id=${r.id}</p>
+            <p>ID ${escapeHtml(r.uid)}<br>${escapeHtml(r.batteryCategory)} · ${escapeHtml(r.chemistry)}<br>${BASE}passport.html?id=${r.id}</p>
+            <div class="ce"><span>Reg. (EU) 2023/1542</span><span>Art. 13 · Art. 77</span></div>
           </div>
         </div>`).join("");
     } catch (e) {
@@ -32,12 +35,12 @@
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="./" aria-label="Battery DPP home">
-        <img src="assets/img/favicon.svg" width="28" height="28" alt="">
-        <span>Battery DPP</span>
+      <a class="brand" href="./" aria-label="Battery Passport home">
+        <span data-brand-mark></span>
+        <span class="brand-text"><b>Battery Passport</b><small>EU 2023/1542 · Annex XIII</small></span>
       </a>
       <nav class="nav" aria-label="Main">
-        <a href="./#passports">All passports</a>
+        <a href="passport.html?id=vw-id-polo-lfp-37">Passport</a>
         <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme"></button>
       </nav>
     </div>
@@ -46,11 +49,12 @@
     <div class="no-print" style="display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap">
       <div>
         <span class="eyebrow">Print</span>
-        <h1 style="font-size:2rem">Battery QR labels</h1>
-        <p class="muted" style="max-width:60ch">Print and attach to the battery or its packaging. Codes use error-correction level Q (~25 % damage tolerance);
-          print at 20 mm or larger for reliable scanning.</p>
+        <h1 style="font-size:2rem">Battery QR label</h1>
+        <p class="muted" style="max-width:62ch">Article 13 requires the QR code giving access to the passport to be printed or engraved
+          visibly, legibly and indelibly on the battery. This label uses error-correction level Q (about 25 % damage tolerance);
+          print it at 20 mm or larger.</p>
       </div>
-      <button class="btn btn-primary" type="button" onclick="window.print()">Print labels</button>
+      <button class="btn btn-primary" type="button" onclick="window.print()">Print label</button>
     </div>
     <div class="labels" id="labels"><p class="muted">Loading…</p></div>
   </main>
