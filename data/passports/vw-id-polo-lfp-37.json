@@ -213,7 +213,7 @@
             "lit-lfp-sib-2026",
             "vwg-battery-journey"
           ],
-          "note": "75.5 kg CO₂e/kWh × 38.5 kWh installed energy. Not an Article 7 value."
+          "note": "75.5 kg CO₂e/kWh × 38.5 kWh (VW pack size label). Not an Article 7 value."
         },
         {
           "key": "cf-cells-energy",
@@ -378,14 +378,14 @@
         },
         {
           "key": "e-gross",
-          "label": "Installed energy (gross)",
+          "label": "Pack energy (VW size label)",
           "value": "38.5",
           "unit": "kWh",
           "provenance": "official",
           "sources": [
             "vwg-battery-journey"
           ],
-          "note": "Martorell assembly reports a 38.5 kWh version with 102 cells for the ID. Polo and CUPRA Raval."
+          "note": "VW Group's Martorell article refers to \"the 38.5 kWh one\" with 102 cells for the ID. Polo and CUPRA Raval; it does not say whether this is gross or installed energy."
         },
         {
           "key": "architecture",

@@ -63,7 +63,7 @@ the current counts and the gap list.
 
 What the public sources settle:
 
-- **Chemistry and energy.** LFP, 37 kWh net, 38.5 kWh installed, 102 prismatic Unified Cells co-developed
+- **Chemistry and energy.** LFP, 37 kWh net, a "38.5 kWh" pack size label, 102 prismatic Unified Cells co-developed
   with PowerCo, cell-to-pack with three packs, a load-bearing housing.
 - **Charging and use.** DC charging up to 88 kW (10–80 % in about 23 min), AC charging at 11 kW, Vehicle-to-Load up to 3.6 kW, WLTP 323–331 km.
 - **Warranty.** 8 years or 160,000 km, at least 70 % state of health.

@@ -37,7 +37,7 @@ Volkswagen fits a **37 kWh (net) LFP battery** to the 85 kW and 99 kW versions o
 | | Value | Source |
 |---|---|---|
 | Chemistry | Lithium iron phosphate (LFP), cobalt- and nickel-free | [VW media drive, Sep 2026](https://www.volkswagen-newsroom.com/en/the-all-new-electric-id-polo-international-media-drive-20668/drive-system-versions-and-performance-data-20669) |
-| Energy | 37 kWh net · 38.5 kWh installed | VW media drive · [VW Group, Martorell](https://www.volkswagen-group.com/en/articles/a-batterys-journey-20368) |
+| Energy | 37 kWh net · "38.5 kWh" pack size (VW does not say gross or installed) | VW media drive · [VW Group, Martorell](https://www.volkswagen-group.com/en/articles/a-batterys-journey-20368) |
 | Cells | 102 prismatic Unified Cells, co-developed with PowerCo | VW Group, Martorell · [PowerCo](https://www.powerco.de/en/product/unified-cell.html) |
 | Architecture | Cell-to-pack, no module housings, three packs, load-bearing housing, about 10 % higher energy density | VW media drive · [VW, Dec 2025](https://www.volkswagen-newsroom.com/en/press-releases/reinventing-a-bestseller-id-polo-on-the-road-to-series-production-20032) |
 | Charging | DC up to 88 kW (10–80 % in about 23 min) · AC 11 kW · Vehicle-to-Load up to 3.6 kW | VW media drive · [VW world premiere](https://www.volkswagen-newsroom.com/en/the-all-new-electric-id-polo-world-premiere-20343) |
